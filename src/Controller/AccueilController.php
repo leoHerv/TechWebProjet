@@ -1,10 +1,6 @@
 <?php
 //test Macine
 //test macine
-// test leo
-//test Macine
-//
-
 namespace App\Controller;
 
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
