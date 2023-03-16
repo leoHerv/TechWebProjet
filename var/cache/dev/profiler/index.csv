@@ -203,3 +203,5 @@ d85fe2,::1,GET,http://localhost:8000/produit/view/63,1678892080,,401
 4246fc,::1,GET,http://localhost:8000/sandbox/doctrine/list,1678892192,,403
 f7bffa,::1,GET,http://localhost:8000/_fragment?_path=_format%3Dhtml%26_locale%3Den%26_controller%3DApp%255CController%255CAccueilController%253A%253AmenuAction,1678952723,03d287,200
 03d287,::1,GET,http://localhost:8000/,1678952723,,200
+6428b5,127.0.0.1,GET,http://localhost:8000/_fragment?_path=_format%3Dhtml%26_locale%3Den%26_controller%3DApp%255CController%255CAccueilController%253A%253AmenuAction,1678957366,df41d6,200
+df41d6,127.0.0.1,GET,http://localhost:8000/,1678957366,,200
