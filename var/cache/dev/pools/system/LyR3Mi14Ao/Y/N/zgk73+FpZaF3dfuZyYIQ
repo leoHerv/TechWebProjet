@@ -1,0 +1,3 @@
+<?php //App%255CController%255CSandbox%255CInjectionController%2523deuxAction
+
+return [PHP_INT_MAX, []];
