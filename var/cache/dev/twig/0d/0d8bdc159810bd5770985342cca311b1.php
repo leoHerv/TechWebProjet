@@ -41,6 +41,10 @@ class __TwigTemplate_b750705ddbf43af593ba9566dbe38e73 extends Template
 
         // line 2
         echo "
+<img src=\"";
+        // line 3
+        echo twig_escape_filter($this->env, $this->extensions['Symfony\Bridge\Twig\Extension\AssetExtension']->getAssetUrl("Mix-Fruits-Basket-PNG-Pic.png"), "html", null, true);
+        echo "\" title=\"my image\" alt=\"My image\">
 <p>Pied de page : contact, gestion des cookies, ...</p>";
         
         $__internal_5a27a8ba21ca79b61932376b2fa922d2->leave($__internal_5a27a8ba21ca79b61932376b2fa922d2_prof);
@@ -55,15 +59,21 @@ class __TwigTemplate_b750705ddbf43af593ba9566dbe38e73 extends Template
         return "Layouts/footer.html.twig";
     }
 
+    public function isTraitable()
+    {
+        return false;
+    }
+
     public function getDebugInfo()
     {
-        return array (  43 => 2,);
+        return array (  46 => 3,  43 => 2,);
     }
 
     public function getSourceContext()
     {
         return new Source("{# bas de page #}
 
+<img src=\"{{asset('Mix-Fruits-Basket-PNG-Pic.png')}}\" title=\"my image\" alt=\"My image\">
 <p>Pied de page : contact, gestion des cookies, ...</p>", "Layouts/footer.html.twig", "/home/macine/Documents/Projet_Tech_Web/TechWebProjet/templates/Layouts/footer.html.twig");
     }
 }

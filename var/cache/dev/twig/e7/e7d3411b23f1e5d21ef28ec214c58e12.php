@@ -41,7 +41,7 @@ class __TwigTemplate_c3bb36061e8fb9f611f0a4a37261a3a9 extends Template
 
         // line 2
         echo "
-<strong>Menu</strong>
+<strong>Welcome</strong>
 <ul>
     <li>déconnexion</li>
     <li>liste des produits</li>
@@ -71,7 +71,7 @@ class __TwigTemplate_c3bb36061e8fb9f611f0a4a37261a3a9 extends Template
     {
         return new Source("{# menu de l'application #}
 
-<strong>Menu</strong>
+<strong>Welcome</strong>
 <ul>
     <li>déconnexion</li>
     <li>liste des produits</li>
