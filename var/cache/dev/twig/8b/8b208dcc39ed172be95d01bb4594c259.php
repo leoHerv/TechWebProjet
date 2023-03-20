@@ -41,7 +41,9 @@ class __TwigTemplate_7976915178182f1bc8c1ee705e053f44 extends Template
 
         // line 2
         echo "
-<p>Pied de page : contact, gestion des cookies, ...</p>";
+";
+        // line 4
+        echo "<a href=\"https://www.mangerbouger.fr\" target=\"_blank\" rel=\"noopener noreferrer\">www.mangerbouger.fr</a>";
         
         $__internal_5a27a8ba21ca79b61932376b2fa922d2->leave($__internal_5a27a8ba21ca79b61932376b2fa922d2_prof);
 
@@ -57,13 +59,14 @@ class __TwigTemplate_7976915178182f1bc8c1ee705e053f44 extends Template
 
     public function getDebugInfo()
     {
-        return array (  43 => 2,);
+        return array (  46 => 4,  43 => 2,);
     }
 
     public function getSourceContext()
     {
         return new Source("{# bas de page #}
 
-<p>Pied de page : contact, gestion des cookies, ...</p>", "Layouts/footer.html.twig", "C:\\Users\\Léo\\Documents\\Ecole\\Université\\L3\\_S6\\TWeb\\Projet\\ProjetTW\\TW\\templates\\Layouts\\footer.html.twig");
+{#  <img src=\"{{asset('Mix-Fruits-Basket-PNG-Pic.png')}}\" title=\"my image\" alt=\"My image\">#}
+<a href=\"https://www.mangerbouger.fr\" target=\"_blank\" rel=\"noopener noreferrer\">www.mangerbouger.fr</a>", "Layouts/footer.html.twig", "C:\\Users\\Léo\\Documents\\Ecole\\Université\\L3\\_S6\\TWeb\\Projet\\ProjetTW\\TWGit\\TechWebProjet\\templates\\Layouts\\footer.html.twig");
     }
 }

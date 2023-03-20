@@ -41,7 +41,7 @@ class __TwigTemplate_60f0f4ac0ec23d53ceaeaa0266fd17e9 extends Template
 
         // line 2
         echo "
-<strong>Menu</strong>
+<strong>Welcome</strong>
 <ul>
     <li>déconnexion</li>
     <li>liste des produits</li>
@@ -71,13 +71,13 @@ class __TwigTemplate_60f0f4ac0ec23d53ceaeaa0266fd17e9 extends Template
     {
         return new Source("{# menu de l'application #}
 
-<strong>Menu</strong>
+<strong>Welcome</strong>
 <ul>
     <li>déconnexion</li>
     <li>liste des produits</li>
     <li>ajouter un produit</li>
     <li>... to be completed</li>
 </ul>
-", "Layouts/menu.html.twig", "C:\\Users\\Léo\\Documents\\Ecole\\Université\\L3\\_S6\\TWeb\\Projet\\ProjetTW\\TW\\templates\\Layouts\\menu.html.twig");
+", "Layouts/menu.html.twig", "C:\\Users\\Léo\\Documents\\Ecole\\Université\\L3\\_S6\\TWeb\\Projet\\ProjetTW\\TWGit\\TechWebProjet\\templates\\Layouts\\menu.html.twig");
     }
 }

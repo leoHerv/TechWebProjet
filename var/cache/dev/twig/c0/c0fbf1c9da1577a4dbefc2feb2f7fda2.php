@@ -94,7 +94,7 @@ class __TwigTemplate_126cacf3fcda15bebf478bdf8bd465bd extends Template
         echo "
     <link rel=\"stylesheet\" media=\"screen\" type=\"text/css\" title=\"default\" href=\"";
         // line 8
-        echo twig_escape_filter($this->env, $this->extensions['Symfony\Bridge\Twig\Extension\AssetExtension']->getAssetUrl("css/default.css"), "html", null, true);
+        echo twig_escape_filter($this->env, $this->extensions['Symfony\Bridge\Twig\Extension\AssetExtension']->getAssetUrl("css/base.css"), "html", null, true);
         echo "\" />
 ";
         
@@ -258,7 +258,7 @@ class __TwigTemplate_126cacf3fcda15bebf478bdf8bd465bd extends Template
 
 {% block css %}
     {{ parent() }}
-    <link rel=\"stylesheet\" media=\"screen\" type=\"text/css\" title=\"default\" href=\"{{ asset('css/default.css') }}\" />
+    <link rel=\"stylesheet\" media=\"screen\" type=\"text/css\" title=\"default\" href=\"{{ asset('css/base.css') }}\" />
 {% endblock %}
 
 {% block javascript %}

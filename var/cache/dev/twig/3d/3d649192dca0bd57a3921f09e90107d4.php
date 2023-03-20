@@ -41,7 +41,9 @@ class __TwigTemplate_dfcf63433655e86ded3b72bce002de6a extends Template
 
         // line 2
         echo "
-<p>Entête : bandeau d'accueil</p>";
+<p>Fruits.io</p>
+
+";
         
         $__internal_5a27a8ba21ca79b61932376b2fa922d2->leave($__internal_5a27a8ba21ca79b61932376b2fa922d2_prof);
 
@@ -64,6 +66,8 @@ class __TwigTemplate_dfcf63433655e86ded3b72bce002de6a extends Template
     {
         return new Source("{# entête du site #}
 
-<p>Entête : bandeau d'accueil</p>", "Layouts/header.html.twig", "C:\\Users\\Léo\\Documents\\Ecole\\Université\\L3\\_S6\\TWeb\\Projet\\ProjetTW\\TW\\templates\\Layouts\\header.html.twig");
+<p>Fruits.io</p>
+
+", "Layouts/header.html.twig", "C:\\Users\\Léo\\Documents\\Ecole\\Université\\L3\\_S6\\TWeb\\Projet\\ProjetTW\\TWGit\\TechWebProjet\\templates\\Layouts\\header.html.twig");
     }
 }

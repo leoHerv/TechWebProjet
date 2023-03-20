@@ -30,7 +30,9 @@ class __TwigTemplate_08db5ec21b19aa8922675b0518a60e99 extends Template
             'title' => [$this, 'block_title'],
             'css' => [$this, 'block_css'],
             'javascript' => [$this, 'block_javascript'],
+            'header' => [$this, 'block_header'],
             'body' => [$this, 'block_body'],
+            'footer' => [$this, 'block_footer'],
         ];
     }
 
@@ -55,17 +57,43 @@ class __TwigTemplate_08db5ec21b19aa8922675b0518a60e99 extends Template
         ";
         // line 7
         $this->displayBlock('css', $context, $blocks);
-        // line 8
+        // line 10
         echo "        ";
         $this->displayBlock('javascript', $context, $blocks);
-        // line 9
+        // line 11
         echo "    </head>
     <body>
-        ";
-        // line 11
+
+        <header>
+            ";
+        // line 15
+        $this->displayBlock('header', $context, $blocks);
+        // line 16
+        echo "        </header>
+
+        <div id=\"bodyBox\">
+
+            <div class=\"borderBody\"></div>
+
+            <div id=\"body\">
+                ";
+        // line 23
         $this->displayBlock('body', $context, $blocks);
-        // line 12
-        echo "    </body>
+        // line 24
+        echo "            </div>
+
+            <div class=\"borderBody\"></div>
+
+        </div>
+
+        <footer>
+            ";
+        // line 31
+        $this->displayBlock('footer', $context, $blocks);
+        // line 32
+        echo "        </footer>
+
+    </body>
 </html>
 ";
         
@@ -104,6 +132,11 @@ class __TwigTemplate_08db5ec21b19aa8922675b0518a60e99 extends Template
         $__internal_6f47bbe9983af81f1e7450e9a3e3768f = $this->extensions["Symfony\\Bridge\\Twig\\Extension\\ProfilerExtension"];
         $__internal_6f47bbe9983af81f1e7450e9a3e3768f->enter($__internal_6f47bbe9983af81f1e7450e9a3e3768f_prof = new \Twig\Profiler\Profile($this->getTemplateName(), "block", "css"));
 
+        // line 8
+        echo "            <link rel=\"stylesheet\" href=\"";
+        echo twig_escape_filter($this->env, $this->extensions['Symfony\Bridge\Twig\Extension\AssetExtension']->getAssetUrl("css/Layouts/layout.css"), "html", null, true);
+        echo "\" />
+        ";
         
         $__internal_6f47bbe9983af81f1e7450e9a3e3768f->leave($__internal_6f47bbe9983af81f1e7450e9a3e3768f_prof);
 
@@ -112,7 +145,7 @@ class __TwigTemplate_08db5ec21b19aa8922675b0518a60e99 extends Template
 
     }
 
-    // line 8
+    // line 10
     public function block_javascript($context, array $blocks = [])
     {
         $macros = $this->macros;
@@ -130,7 +163,25 @@ class __TwigTemplate_08db5ec21b19aa8922675b0518a60e99 extends Template
 
     }
 
-    // line 11
+    // line 15
+    public function block_header($context, array $blocks = [])
+    {
+        $macros = $this->macros;
+        $__internal_5a27a8ba21ca79b61932376b2fa922d2 = $this->extensions["Symfony\\Bundle\\WebProfilerBundle\\Twig\\WebProfilerExtension"];
+        $__internal_5a27a8ba21ca79b61932376b2fa922d2->enter($__internal_5a27a8ba21ca79b61932376b2fa922d2_prof = new \Twig\Profiler\Profile($this->getTemplateName(), "block", "header"));
+
+        $__internal_6f47bbe9983af81f1e7450e9a3e3768f = $this->extensions["Symfony\\Bridge\\Twig\\Extension\\ProfilerExtension"];
+        $__internal_6f47bbe9983af81f1e7450e9a3e3768f->enter($__internal_6f47bbe9983af81f1e7450e9a3e3768f_prof = new \Twig\Profiler\Profile($this->getTemplateName(), "block", "header"));
+
+        
+        $__internal_6f47bbe9983af81f1e7450e9a3e3768f->leave($__internal_6f47bbe9983af81f1e7450e9a3e3768f_prof);
+
+        
+        $__internal_5a27a8ba21ca79b61932376b2fa922d2->leave($__internal_5a27a8ba21ca79b61932376b2fa922d2_prof);
+
+    }
+
+    // line 23
     public function block_body($context, array $blocks = [])
     {
         $macros = $this->macros;
@@ -148,6 +199,24 @@ class __TwigTemplate_08db5ec21b19aa8922675b0518a60e99 extends Template
 
     }
 
+    // line 31
+    public function block_footer($context, array $blocks = [])
+    {
+        $macros = $this->macros;
+        $__internal_5a27a8ba21ca79b61932376b2fa922d2 = $this->extensions["Symfony\\Bundle\\WebProfilerBundle\\Twig\\WebProfilerExtension"];
+        $__internal_5a27a8ba21ca79b61932376b2fa922d2->enter($__internal_5a27a8ba21ca79b61932376b2fa922d2_prof = new \Twig\Profiler\Profile($this->getTemplateName(), "block", "footer"));
+
+        $__internal_6f47bbe9983af81f1e7450e9a3e3768f = $this->extensions["Symfony\\Bridge\\Twig\\Extension\\ProfilerExtension"];
+        $__internal_6f47bbe9983af81f1e7450e9a3e3768f->enter($__internal_6f47bbe9983af81f1e7450e9a3e3768f_prof = new \Twig\Profiler\Profile($this->getTemplateName(), "block", "footer"));
+
+        
+        $__internal_6f47bbe9983af81f1e7450e9a3e3768f->leave($__internal_6f47bbe9983af81f1e7450e9a3e3768f_prof);
+
+        
+        $__internal_5a27a8ba21ca79b61932376b2fa922d2->leave($__internal_5a27a8ba21ca79b61932376b2fa922d2_prof);
+
+    }
+
     public function getTemplateName()
     {
         return "Layouts/layout.html.twig";
@@ -155,24 +224,46 @@ class __TwigTemplate_08db5ec21b19aa8922675b0518a60e99 extends Template
 
     public function getDebugInfo()
     {
-        return array (  134 => 11,  116 => 8,  98 => 7,  80 => 6,  68 => 12,  66 => 11,  62 => 9,  59 => 8,  57 => 7,  53 => 6,  47 => 2,);
+        return array (  203 => 31,  185 => 23,  167 => 15,  149 => 10,  136 => 8,  126 => 7,  108 => 6,  94 => 32,  92 => 31,  83 => 24,  81 => 23,  72 => 16,  70 => 15,  64 => 11,  61 => 10,  59 => 7,  55 => 6,  49 => 2,);
     }
 
     public function getSourceContext()
     {
-        return new Source("{# template racine (niveau 1) générique #}
+        return new Source("{# template racine (niveau 1)#}
 <!DOCTYPE html>
 <html lang=\"fr\">
     <head>
         <meta charset=\"UTF-8\">
         <title>{% block title %}{% endblock %}</title>
-        {% block css %}{% endblock %}
+        {% block css %}
+            <link rel=\"stylesheet\" href=\"{{ asset('css/Layouts/layout.css') }}\" />
+        {% endblock %}
         {% block javascript %}{% endblock %}
     </head>
     <body>
-        {% block body %}{% endblock %}
+
+        <header>
+            {% block header %}{% endblock %}
+        </header>
+
+        <div id=\"bodyBox\">
+
+            <div class=\"borderBody\"></div>
+
+            <div id=\"body\">
+                {% block body %}{% endblock %}
+            </div>
+
+            <div class=\"borderBody\"></div>
+
+        </div>
+
+        <footer>
+            {% block footer %}{% endblock %}
+        </footer>
+
     </body>
 </html>
-", "Layouts/layout.html.twig", "C:\\Users\\Léo\\Documents\\Ecole\\Université\\L3\\_S6\\TWeb\\Projet\\ProjetTW\\TW\\templates\\Layouts\\layout.html.twig");
+", "Layouts/layout.html.twig", "C:\\Users\\Léo\\Documents\\Ecole\\Université\\L3\\_S6\\TWeb\\Projet\\ProjetTW\\TWGit\\TechWebProjet\\templates\\Layouts\\layout.html.twig");
     }
 }

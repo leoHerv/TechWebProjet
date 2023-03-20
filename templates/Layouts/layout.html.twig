@@ -1,13 +1,35 @@
-{# template racine (niveau 1) générique #}
+{# template racine (niveau 1)#}
 <!DOCTYPE html>
 <html lang="fr">
     <head>
         <meta charset="UTF-8">
         <title>{% block title %}{% endblock %}</title>
-        {% block css %}{% endblock %}
+        {% block css %}
+            <link rel="stylesheet" href="{{ asset('css/Layouts/layout.css') }}" />
+        {% endblock %}
         {% block javascript %}{% endblock %}
     </head>
     <body>
-        {% block body %}{% endblock %}
+
+        <header>
+            {% block header %}{% endblock %}
+        </header>
+
+        <div id="bodyBox">
+
+            <div class="borderBody"></div>
+
+            <div id="body">
+                {% block body %}{% endblock %}
+            </div>
+
+            <div class="borderBody"></div>
+
+        </div>
+
+        <footer>
+            {% block footer %}{% endblock %}
+        </footer>
+
     </body>
 </html>

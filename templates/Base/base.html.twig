@@ -1,0 +1,41 @@
+{# template intermédiaire (niveau 2)#}
+{% extends 'Layouts/layout.html.twig' %}
+
+{% block title %}
+    {{ parent() }}
+{% endblock %}
+
+{% block css %}
+    {{ parent() }}
+    <link rel="stylesheet" href="{{ asset('css/Layouts/header.css') }}" />
+    <link rel="stylesheet" href="{{ asset('css/Layouts/footer.css') }}" />
+{% endblock %}
+
+{% block javascript %}
+    {{ parent() }}
+{% endblock %}
+
+{% block header %}
+    {{ parent() }}
+    {% include 'Layouts/header.html.twig' %}
+{% endblock %}
+
+{% block body %}
+    {#
+    <div id="flash">
+          {% include 'Layouts/flash.html.twig' %}
+    </div>
+
+    <div id="menu">
+        {{ render(controller('App\\Controller\\AccueilController::menuAction')) }}
+    </div>
+    #}
+
+    <p>test</p>
+
+{% endblock %}
+
+{% block footer %}
+    {{ parent() }}
+    {% include 'Layouts/footer.html.twig' %}
+{% endblock %}
