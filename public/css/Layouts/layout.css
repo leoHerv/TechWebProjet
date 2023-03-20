@@ -3,6 +3,17 @@ html, body, div, p, header, footer{
     padding: 0;
 }
 
+a, a:visited{
+    text-decoration: none;
+    font-family: 'Inter', serif;
+    font-style: normal;
+    font-weight: 600;
+    /*font-size: 20px;*/
+    font-size: 1.2vw;
+    line-height: 24px;
+    color: #F1B044;
+}
+
 html, body{
     background: #FEFAE0;
     width: 100%;
@@ -21,8 +32,14 @@ html, body{
 /*Les cotés du milieu de la page*/
 .borderBody{
     background: #FEFAE0;
-    width: 15%;
+    width: 20%;
     height: 100%;
+}
+.leftBody{
+    box-shadow: inset -10px 0 10px -5px rgba(161, 161, 161, 0.3);
+}
+.rightBody{
+    box-shadow: inset 10px 0 10px -5px rgba(161, 161, 161, 0.3);
 }
 /*le milieu de la page*/
 #body{

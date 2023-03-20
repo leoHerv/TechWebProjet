@@ -73,16 +73,16 @@ class __TwigTemplate_08db5ec21b19aa8922675b0518a60e99 extends Template
 
         <div id=\"bodyBox\">
 
-            <div class=\"borderBody\"></div>
+            <div class=\"borderBody leftBody\"></div>
 
-            <div id=\"body\">
-                ";
+                <div id=\"body\">
+                    ";
         // line 23
         $this->displayBlock('body', $context, $blocks);
         // line 24
-        echo "            </div>
+        echo "                </div>
 
-            <div class=\"borderBody\"></div>
+            <div class=\"borderBody rightBody\"></div>
 
         </div>
 
@@ -248,13 +248,13 @@ class __TwigTemplate_08db5ec21b19aa8922675b0518a60e99 extends Template
 
         <div id=\"bodyBox\">
 
-            <div class=\"borderBody\"></div>
+            <div class=\"borderBody leftBody\"></div>
 
-            <div id=\"body\">
-                {% block body %}{% endblock %}
-            </div>
+                <div id=\"body\">
+                    {% block body %}{% endblock %}
+                </div>
 
-            <div class=\"borderBody\"></div>
+            <div class=\"borderBody rightBody\"></div>
 
         </div>
 
