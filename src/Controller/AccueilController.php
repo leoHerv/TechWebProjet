@@ -5,9 +5,10 @@ use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 
+// Controlleur pour faire des tests
 class AccueilController extends AbstractController
 {
-    #[Route('/', name: 'accueil_index')]
+    #[Route('/test', name: 'accueil_index')]
     public function indexAction(): Response
     {
         return $this->render('Accueil/index.html.twig');

@@ -17,4 +17,13 @@ return [
     '_profiler_exception' => [['token'], ['_controller' => 'web_profiler.controller.exception_panel::body'], [], [['text', '/exception'], ['variable', '/', '[^/]++', 'token', true], ['text', '/_profiler']], [], [], []],
     '_profiler_exception_css' => [['token'], ['_controller' => 'web_profiler.controller.exception_panel::stylesheet'], [], [['text', '/exception.css'], ['variable', '/', '[^/]++', 'token', true], ['text', '/_profiler']], [], [], []],
     'accueil_index' => [[], ['_controller' => 'App\\Controller\\AccueilController::indexAction'], [], [['text', '/']], [], [], []],
+    'admin_addProduct' => [[], ['_controller' => 'App\\Controller\\AdminController::addProductAction'], [], [['text', '/addProduct']], [], [], []],
+    'anonyme_acceuil' => [[], ['_controller' => 'App\\Controller\\AnonymeController::accueilAction'], [], [['text', '/']], [], [], []],
+    'anonyme_login' => [[], ['_controller' => 'App\\Controller\\AnonymeController::loginAction'], [], [['text', '/login']], [], [], []],
+    'anonyme_signIn' => [[], ['_controller' => 'App\\Controller\\AnonymeController::signInAction'], [], [['text', '/signIn']], [], [], []],
+    'super_admin_editUsers' => [[], ['_controller' => 'App\\Controller\\SuperAdminController::editUsersAction'], [], [['text', '/editUsers']], [], [], []],
+    'super_admin_addAdmin' => [[], ['_controller' => 'App\\Controller\\SuperAdminController::addAdminAction'], [], [['text', '/addAdmin']], [], [], []],
+    'user_edit' => [[], ['_controller' => 'App\\Controller\\UserController::editAction'], [], [['text', '/edit']], [], [], []],
+    'user_panier' => [[], ['_controller' => 'App\\Controller\\UserController::panierAction'], [], [['text', '/panier']], [], [], []],
+    'user_listProduct' => [[], ['_controller' => 'App\\Controller\\UserController::listProductAction'], [], [['text', '/listProduct']], [], [], []],
 ];
