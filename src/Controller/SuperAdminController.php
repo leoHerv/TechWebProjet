@@ -11,12 +11,12 @@ class SuperAdminController extends AbstractController
     #[Route('/editUsers', name: 'super_admin_editUsers')]
     public function editUsersAction(): Response
     {
-        return $this->render('Accueil/index.html.twig');
+        return $this->render('MainTemplate/SuperAdmin/editUsers.html.twig');
     }
 
     #[Route('/addAdmin', name: 'super_admin_addAdmin')]
     public function addAdminAction(): Response
     {
-        return $this->render('Accueil/index.html.twig');
+        return $this->render('MainTemplate/SuperAdmin/addAdmin.html.twig');
     }
 }

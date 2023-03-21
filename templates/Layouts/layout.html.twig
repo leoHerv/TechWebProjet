@@ -3,7 +3,7 @@
 <html lang="fr">
     <head>
         <meta charset="UTF-8">
-        <title>{% block title %}{% endblock %}</title>
+        <title>{% block title %}Fruits.io{% endblock %}</title>
         {% block css %}
             <link rel="stylesheet" href="{{ asset('css/Layouts/layout.css') }}" />
         {% endblock %}
@@ -14,6 +14,10 @@
         <header>
             {% block header %}{% endblock %}
         </header>
+
+        <div id="menu">
+            {% block menu %}{% endblock %}
+        </div>
 
         <div id="bodyBox">
 

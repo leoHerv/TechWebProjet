@@ -11,6 +11,6 @@ class AdminController extends AbstractController
     #[Route('/addProduct', name: 'admin_addProduct')]
     public function addProductAction(): Response
     {
-        return $this->render('Accueil/index.html.twig');
+        return $this->render('MainTemplate/Admin/addProduct.html.twig');
     }
 }

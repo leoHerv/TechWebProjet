@@ -31,6 +31,7 @@ class __TwigTemplate_08db5ec21b19aa8922675b0518a60e99 extends Template
             'css' => [$this, 'block_css'],
             'javascript' => [$this, 'block_javascript'],
             'header' => [$this, 'block_header'],
+            'menu' => [$this, 'block_menu'],
             'body' => [$this, 'block_body'],
             'footer' => [$this, 'block_footer'],
         ];
@@ -71,15 +72,22 @@ class __TwigTemplate_08db5ec21b19aa8922675b0518a60e99 extends Template
         // line 16
         echo "        </header>
 
+        <div id=\"menu\">
+            ";
+        // line 19
+        $this->displayBlock('menu', $context, $blocks);
+        // line 20
+        echo "        </div>
+
         <div id=\"bodyBox\">
 
             <div class=\"borderBody leftBody\"></div>
 
                 <div id=\"body\">
                     ";
-        // line 23
+        // line 27
         $this->displayBlock('body', $context, $blocks);
-        // line 24
+        // line 28
         echo "                </div>
 
             <div class=\"borderBody rightBody\"></div>
@@ -88,9 +96,9 @@ class __TwigTemplate_08db5ec21b19aa8922675b0518a60e99 extends Template
 
         <footer>
             ";
-        // line 31
+        // line 35
         $this->displayBlock('footer', $context, $blocks);
-        // line 32
+        // line 36
         echo "        </footer>
 
     </body>
@@ -114,6 +122,7 @@ class __TwigTemplate_08db5ec21b19aa8922675b0518a60e99 extends Template
         $__internal_6f47bbe9983af81f1e7450e9a3e3768f = $this->extensions["Symfony\\Bridge\\Twig\\Extension\\ProfilerExtension"];
         $__internal_6f47bbe9983af81f1e7450e9a3e3768f->enter($__internal_6f47bbe9983af81f1e7450e9a3e3768f_prof = new \Twig\Profiler\Profile($this->getTemplateName(), "block", "title"));
 
+        echo "Fruits.io";
         
         $__internal_6f47bbe9983af81f1e7450e9a3e3768f->leave($__internal_6f47bbe9983af81f1e7450e9a3e3768f_prof);
 
@@ -181,7 +190,25 @@ class __TwigTemplate_08db5ec21b19aa8922675b0518a60e99 extends Template
 
     }
 
-    // line 23
+    // line 19
+    public function block_menu($context, array $blocks = [])
+    {
+        $macros = $this->macros;
+        $__internal_5a27a8ba21ca79b61932376b2fa922d2 = $this->extensions["Symfony\\Bundle\\WebProfilerBundle\\Twig\\WebProfilerExtension"];
+        $__internal_5a27a8ba21ca79b61932376b2fa922d2->enter($__internal_5a27a8ba21ca79b61932376b2fa922d2_prof = new \Twig\Profiler\Profile($this->getTemplateName(), "block", "menu"));
+
+        $__internal_6f47bbe9983af81f1e7450e9a3e3768f = $this->extensions["Symfony\\Bridge\\Twig\\Extension\\ProfilerExtension"];
+        $__internal_6f47bbe9983af81f1e7450e9a3e3768f->enter($__internal_6f47bbe9983af81f1e7450e9a3e3768f_prof = new \Twig\Profiler\Profile($this->getTemplateName(), "block", "menu"));
+
+        
+        $__internal_6f47bbe9983af81f1e7450e9a3e3768f->leave($__internal_6f47bbe9983af81f1e7450e9a3e3768f_prof);
+
+        
+        $__internal_5a27a8ba21ca79b61932376b2fa922d2->leave($__internal_5a27a8ba21ca79b61932376b2fa922d2_prof);
+
+    }
+
+    // line 27
     public function block_body($context, array $blocks = [])
     {
         $macros = $this->macros;
@@ -199,7 +226,7 @@ class __TwigTemplate_08db5ec21b19aa8922675b0518a60e99 extends Template
 
     }
 
-    // line 31
+    // line 35
     public function block_footer($context, array $blocks = [])
     {
         $macros = $this->macros;
@@ -224,7 +251,7 @@ class __TwigTemplate_08db5ec21b19aa8922675b0518a60e99 extends Template
 
     public function getDebugInfo()
     {
-        return array (  203 => 31,  185 => 23,  167 => 15,  149 => 10,  136 => 8,  126 => 7,  108 => 6,  94 => 32,  92 => 31,  83 => 24,  81 => 23,  72 => 16,  70 => 15,  64 => 11,  61 => 10,  59 => 7,  55 => 6,  49 => 2,);
+        return array (  230 => 35,  212 => 27,  194 => 19,  176 => 15,  158 => 10,  145 => 8,  135 => 7,  116 => 6,  102 => 36,  100 => 35,  91 => 28,  89 => 27,  80 => 20,  78 => 19,  73 => 16,  71 => 15,  65 => 11,  62 => 10,  60 => 7,  56 => 6,  50 => 2,);
     }
 
     public function getSourceContext()
@@ -234,7 +261,7 @@ class __TwigTemplate_08db5ec21b19aa8922675b0518a60e99 extends Template
 <html lang=\"fr\">
     <head>
         <meta charset=\"UTF-8\">
-        <title>{% block title %}{% endblock %}</title>
+        <title>{% block title %}Fruits.io{% endblock %}</title>
         {% block css %}
             <link rel=\"stylesheet\" href=\"{{ asset('css/Layouts/layout.css') }}\" />
         {% endblock %}
@@ -245,6 +272,10 @@ class __TwigTemplate_08db5ec21b19aa8922675b0518a60e99 extends Template
         <header>
             {% block header %}{% endblock %}
         </header>
+
+        <div id=\"menu\">
+            {% block menu %}{% endblock %}
+        </div>
 
         <div id=\"bodyBox\">
 

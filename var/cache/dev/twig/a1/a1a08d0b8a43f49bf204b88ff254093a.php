@@ -29,6 +29,7 @@ class __TwigTemplate_573539567a5ea01d7d63861e515ae689 extends Template
             'css' => [$this, 'block_css'],
             'javascript' => [$this, 'block_javascript'],
             'header' => [$this, 'block_header'],
+            'menu' => [$this, 'block_menu'],
             'body' => [$this, 'block_body'],
             'footer' => [$this, 'block_footer'],
         ];
@@ -104,6 +105,10 @@ class __TwigTemplate_573539567a5ea01d7d63861e515ae689 extends Template
         // line 11
         echo twig_escape_filter($this->env, $this->extensions['Symfony\Bridge\Twig\Extension\AssetExtension']->getAssetUrl("css/Layouts/footer.css"), "html", null, true);
         echo "\" />
+    <link rel=\"stylesheet\" href=\"";
+        // line 12
+        echo twig_escape_filter($this->env, $this->extensions['Symfony\Bridge\Twig\Extension\AssetExtension']->getAssetUrl("css/Layouts/menu.css"), "html", null, true);
+        echo "\" />
     <link href='https://fonts.googleapis.com/css?family=Inter' rel='stylesheet'>
 ";
         
@@ -114,7 +119,7 @@ class __TwigTemplate_573539567a5ea01d7d63861e515ae689 extends Template
 
     }
 
-    // line 15
+    // line 16
     public function block_javascript($context, array $blocks = [])
     {
         $macros = $this->macros;
@@ -124,7 +129,7 @@ class __TwigTemplate_573539567a5ea01d7d63861e515ae689 extends Template
         $__internal_6f47bbe9983af81f1e7450e9a3e3768f = $this->extensions["Symfony\\Bridge\\Twig\\Extension\\ProfilerExtension"];
         $__internal_6f47bbe9983af81f1e7450e9a3e3768f->enter($__internal_6f47bbe9983af81f1e7450e9a3e3768f_prof = new \Twig\Profiler\Profile($this->getTemplateName(), "block", "javascript"));
 
-        // line 16
+        // line 17
         echo "    ";
         $this->displayParentBlock("javascript", $context, $blocks);
         echo "
@@ -137,7 +142,7 @@ class __TwigTemplate_573539567a5ea01d7d63861e515ae689 extends Template
 
     }
 
-    // line 19
+    // line 20
     public function block_header($context, array $blocks = [])
     {
         $macros = $this->macros;
@@ -147,13 +152,13 @@ class __TwigTemplate_573539567a5ea01d7d63861e515ae689 extends Template
         $__internal_6f47bbe9983af81f1e7450e9a3e3768f = $this->extensions["Symfony\\Bridge\\Twig\\Extension\\ProfilerExtension"];
         $__internal_6f47bbe9983af81f1e7450e9a3e3768f->enter($__internal_6f47bbe9983af81f1e7450e9a3e3768f_prof = new \Twig\Profiler\Profile($this->getTemplateName(), "block", "header"));
 
-        // line 20
+        // line 21
         echo "    ";
         $this->displayParentBlock("header", $context, $blocks);
         echo "
     ";
-        // line 21
-        $this->loadTemplate("Layouts/header.html.twig", "Base/base.html.twig", 21)->display($context);
+        // line 22
+        $this->loadTemplate("Layouts/header.html.twig", "Base/base.html.twig", 22)->display($context);
         
         $__internal_6f47bbe9983af81f1e7450e9a3e3768f->leave($__internal_6f47bbe9983af81f1e7450e9a3e3768f_prof);
 
@@ -162,22 +167,20 @@ class __TwigTemplate_573539567a5ea01d7d63861e515ae689 extends Template
 
     }
 
-    // line 24
-    public function block_body($context, array $blocks = [])
+    // line 25
+    public function block_menu($context, array $blocks = [])
     {
         $macros = $this->macros;
         $__internal_5a27a8ba21ca79b61932376b2fa922d2 = $this->extensions["Symfony\\Bundle\\WebProfilerBundle\\Twig\\WebProfilerExtension"];
-        $__internal_5a27a8ba21ca79b61932376b2fa922d2->enter($__internal_5a27a8ba21ca79b61932376b2fa922d2_prof = new \Twig\Profiler\Profile($this->getTemplateName(), "block", "body"));
+        $__internal_5a27a8ba21ca79b61932376b2fa922d2->enter($__internal_5a27a8ba21ca79b61932376b2fa922d2_prof = new \Twig\Profiler\Profile($this->getTemplateName(), "block", "menu"));
 
         $__internal_6f47bbe9983af81f1e7450e9a3e3768f = $this->extensions["Symfony\\Bridge\\Twig\\Extension\\ProfilerExtension"];
-        $__internal_6f47bbe9983af81f1e7450e9a3e3768f->enter($__internal_6f47bbe9983af81f1e7450e9a3e3768f_prof = new \Twig\Profiler\Profile($this->getTemplateName(), "block", "body"));
+        $__internal_6f47bbe9983af81f1e7450e9a3e3768f->enter($__internal_6f47bbe9983af81f1e7450e9a3e3768f_prof = new \Twig\Profiler\Profile($this->getTemplateName(), "block", "menu"));
 
-        // line 25
+        // line 26
         echo "    ";
-        // line 34
+        echo $this->env->getRuntime('Symfony\Bridge\Twig\Extension\HttpKernelRuntime')->renderFragment(Symfony\Bridge\Twig\Extension\HttpKernelExtension::controller("App\\Controller\\AnonymeController::menuAction"));
         echo "
-    <p>test</p>
-
 ";
         
         $__internal_6f47bbe9983af81f1e7450e9a3e3768f->leave($__internal_6f47bbe9983af81f1e7450e9a3e3768f_prof);
@@ -187,7 +190,30 @@ class __TwigTemplate_573539567a5ea01d7d63861e515ae689 extends Template
 
     }
 
-    // line 39
+    // line 29
+    public function block_body($context, array $blocks = [])
+    {
+        $macros = $this->macros;
+        $__internal_5a27a8ba21ca79b61932376b2fa922d2 = $this->extensions["Symfony\\Bundle\\WebProfilerBundle\\Twig\\WebProfilerExtension"];
+        $__internal_5a27a8ba21ca79b61932376b2fa922d2->enter($__internal_5a27a8ba21ca79b61932376b2fa922d2_prof = new \Twig\Profiler\Profile($this->getTemplateName(), "block", "body"));
+
+        $__internal_6f47bbe9983af81f1e7450e9a3e3768f = $this->extensions["Symfony\\Bridge\\Twig\\Extension\\ProfilerExtension"];
+        $__internal_6f47bbe9983af81f1e7450e9a3e3768f->enter($__internal_6f47bbe9983af81f1e7450e9a3e3768f_prof = new \Twig\Profiler\Profile($this->getTemplateName(), "block", "body"));
+
+        // line 30
+        echo "    ";
+        // line 39
+        echo "
+";
+        
+        $__internal_6f47bbe9983af81f1e7450e9a3e3768f->leave($__internal_6f47bbe9983af81f1e7450e9a3e3768f_prof);
+
+        
+        $__internal_5a27a8ba21ca79b61932376b2fa922d2->leave($__internal_5a27a8ba21ca79b61932376b2fa922d2_prof);
+
+    }
+
+    // line 42
     public function block_footer($context, array $blocks = [])
     {
         $macros = $this->macros;
@@ -197,13 +223,13 @@ class __TwigTemplate_573539567a5ea01d7d63861e515ae689 extends Template
         $__internal_6f47bbe9983af81f1e7450e9a3e3768f = $this->extensions["Symfony\\Bridge\\Twig\\Extension\\ProfilerExtension"];
         $__internal_6f47bbe9983af81f1e7450e9a3e3768f->enter($__internal_6f47bbe9983af81f1e7450e9a3e3768f_prof = new \Twig\Profiler\Profile($this->getTemplateName(), "block", "footer"));
 
-        // line 40
+        // line 43
         echo "    ";
         $this->displayParentBlock("footer", $context, $blocks);
         echo "
     ";
-        // line 41
-        $this->loadTemplate("Layouts/footer.html.twig", "Base/base.html.twig", 41)->display($context);
+        // line 44
+        $this->loadTemplate("Layouts/footer.html.twig", "Base/base.html.twig", 44)->display($context);
         
         $__internal_6f47bbe9983af81f1e7450e9a3e3768f->leave($__internal_6f47bbe9983af81f1e7450e9a3e3768f_prof);
 
@@ -224,7 +250,7 @@ class __TwigTemplate_573539567a5ea01d7d63861e515ae689 extends Template
 
     public function getDebugInfo()
     {
-        return array (  206 => 41,  201 => 40,  191 => 39,  178 => 34,  176 => 25,  166 => 24,  156 => 21,  151 => 20,  141 => 19,  128 => 16,  118 => 15,  105 => 11,  101 => 10,  96 => 9,  86 => 8,  73 => 5,  63 => 4,  40 => 2,);
+        return array (  232 => 44,  227 => 43,  217 => 42,  206 => 39,  204 => 30,  194 => 29,  181 => 26,  171 => 25,  161 => 22,  156 => 21,  146 => 20,  133 => 17,  123 => 16,  110 => 12,  106 => 11,  102 => 10,  97 => 9,  87 => 8,  74 => 5,  64 => 4,  41 => 2,);
     }
 
     public function getSourceContext()
@@ -240,6 +266,7 @@ class __TwigTemplate_573539567a5ea01d7d63861e515ae689 extends Template
     {{ parent() }}
     <link rel=\"stylesheet\" href=\"{{ asset('css/Layouts/header.css') }}\" />
     <link rel=\"stylesheet\" href=\"{{ asset('css/Layouts/footer.css') }}\" />
+    <link rel=\"stylesheet\" href=\"{{ asset('css/Layouts/menu.css') }}\" />
     <link href='https://fonts.googleapis.com/css?family=Inter' rel='stylesheet'>
 {% endblock %}
 
@@ -252,6 +279,10 @@ class __TwigTemplate_573539567a5ea01d7d63861e515ae689 extends Template
     {% include 'Layouts/header.html.twig' %}
 {% endblock %}
 
+{% block menu %}
+    {{ render(controller('App\\\\Controller\\\\AnonymeController::menuAction')) }}
+{% endblock %}
+
 {% block body %}
     {#
     <div id=\"flash\">
@@ -262,8 +293,6 @@ class __TwigTemplate_573539567a5ea01d7d63861e515ae689 extends Template
         {{ render(controller('App\\\\Controller\\\\AccueilController::menuAction')) }}
     </div>
     #}
-
-    <p>test</p>
 
 {% endblock %}
 

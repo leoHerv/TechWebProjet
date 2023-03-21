@@ -9,6 +9,7 @@
     {{ parent() }}
     <link rel="stylesheet" href="{{ asset('css/Layouts/header.css') }}" />
     <link rel="stylesheet" href="{{ asset('css/Layouts/footer.css') }}" />
+    <link rel="stylesheet" href="{{ asset('css/Layouts/menu.css') }}" />
     <link href='https://fonts.googleapis.com/css?family=Inter' rel='stylesheet'>
 {% endblock %}
 
@@ -21,6 +22,10 @@
     {% include 'Layouts/header.html.twig' %}
 {% endblock %}
 
+{% block menu %}
+    {{ render(controller('App\\Controller\\AnonymeController::menuAction')) }}
+{% endblock %}
+
 {% block body %}
     {#
     <div id="flash">
@@ -31,8 +36,6 @@
         {{ render(controller('App\\Controller\\AccueilController::menuAction')) }}
     </div>
     #}
-
-    <p>test</p>
 
 {% endblock %}
 

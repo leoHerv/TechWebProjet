@@ -14,11 +14,9 @@ return [
         '/_profiler/phpinfo' => [[['_route' => '_profiler_phpinfo', '_controller' => 'web_profiler.controller.profiler::phpinfoAction'], null, null, null, false, false, null]],
         '/_profiler/xdebug' => [[['_route' => '_profiler_xdebug', '_controller' => 'web_profiler.controller.profiler::xdebugAction'], null, null, null, false, false, null]],
         '/_profiler/open' => [[['_route' => '_profiler_open_file', '_controller' => 'web_profiler.controller.profiler::openAction'], null, null, null, false, false, null]],
-        '/' => [
-            [['_route' => 'accueil_index', '_controller' => 'App\\Controller\\AccueilController::indexAction'], null, null, null, false, false, null],
-            [['_route' => 'anonyme_acceuil', '_controller' => 'App\\Controller\\AnonymeController::accueilAction'], null, null, null, false, false, null],
-        ],
+        '/test' => [[['_route' => 'accueil_index', '_controller' => 'App\\Controller\\AccueilController::indexAction'], null, null, null, false, false, null]],
         '/addProduct' => [[['_route' => 'admin_addProduct', '_controller' => 'App\\Controller\\AdminController::addProductAction'], null, null, null, false, false, null]],
+        '/' => [[['_route' => 'anonyme_accueil', '_controller' => 'App\\Controller\\AnonymeController::accueilAction'], null, null, null, false, false, null]],
         '/login' => [[['_route' => 'anonyme_login', '_controller' => 'App\\Controller\\AnonymeController::loginAction'], null, null, null, false, false, null]],
         '/signIn' => [[['_route' => 'anonyme_signIn', '_controller' => 'App\\Controller\\AnonymeController::signInAction'], null, null, null, false, false, null]],
         '/editUsers' => [[['_route' => 'super_admin_editUsers', '_controller' => 'App\\Controller\\SuperAdminController::editUsersAction'], null, null, null, false, false, null]],
