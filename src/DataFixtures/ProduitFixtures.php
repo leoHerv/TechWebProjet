@@ -23,43 +23,43 @@ class ProduitFixtures extends Fixture
             $em->persist($product);
         }
         // Pomme
-        addProduct($em, 'Apple', 1.22, null, 100, null);
+        addProduct($em, 'Apple', 1.22, '', 100, null);
         // Poire
-        addProduct($em, 'Pear', 3.2, null, 120, null);
+        addProduct($em, 'Pear', 3.2, '', 120, null);
         // Orange
-        addProduct($em, 'Orange', 0.75, null, 400, null);
+        addProduct($em, 'Orange', 0.75, '', 400, null);
         // Pastèque
-        addProduct($em, 'Watermelon', 4.99, null, 40, null);
+        addProduct($em, 'Watermelon', 4.99, '', 40, null);
         // Fraise
-        addProduct($em, 'Strawberry', 0.1472, null, 650, null);
+        addProduct($em, 'Strawberry', 0.1472, '', 650, null);
         // Cerise
-        addProduct($em, 'Cherry', 0.245, null, 1200, null);
+        addProduct($em, 'Cherry', 0.245, '', 1200, null);
         // Nectarine
-        addProduct($em, 'Nectarine', 0.45, null, 460, null);
+        addProduct($em, 'Nectarine', 0.45, '', 460, null);
         // Raisin
-        addProduct($em, 'Grape', 0.875, null, 85, null);
+        addProduct($em, 'Grape', 0.875, '', 85, null);
         // Mangue
-        addProduct($em, 'Mango', 2.872, null, 70, null);
+        addProduct($em, 'Mango', 2.872, '', 70, null);
         // Myrtille
-        addProduct($em, 'Blueberry', 0.03374, null, 1550, null);
+        addProduct($em, 'Blueberry', 0.03374, '', 1550, null);
         // Prune
-        addProduct($em, 'Plum', 0.1494, null, 630, null);
+        addProduct($em, 'Plum', 0.1494, '', 630, null);
         // Banane
-        addProduct($em, 'Banana', 0.12, null, 405, null);
+        addProduct($em, 'Banana', 0.12, '', 405, null);
         // Framboise
-        addProduct($em, 'Raspberry', 0.0544, null, 940, null);
+        addProduct($em, 'Raspberry', 0.0544, '', 940, null);
         // Kiwi
-        addProduct($em, 'Kiwi', 0.196, null, 640, null);
+        addProduct($em, 'Kiwi', 0.196, '', 640, null);
         // Ananas
-        addProduct($em, 'Pineapple', 3.72, null, 85, null);
+        addProduct($em, 'Pineapple', 3.72, '', 85, null);
         // Citron
-        addProduct($em, 'Lemon', 0.12, null, 240, null);
+        addProduct($em, 'Lemon', 0.12, '', 240, null);
         // Abricot
-        addProduct($em, 'Apricot', 0.0855, null, 585, null);
+        addProduct($em, 'Apricot', 0.0855, '', 585, null);
         // Noix de coco
-        addProduct($em, 'Coconut', 1.19, null, 130, null);
+        addProduct($em, 'Coconut', 1.19, '', 130, null);
         // Peche
-        addProduct($em, 'Peach', 0.5985, null, 610, null);
+        addProduct($em, 'Peach', 0.5985, '', 610, null);
 
         $em->flush();
     }
