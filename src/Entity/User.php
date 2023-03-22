@@ -3,6 +3,7 @@
 namespace App\Entity;
 
 use App\Repository\UserRepository;
+use Doctrine\DBAL\Types\Types;
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Component\Security\Core\User\PasswordAuthenticatedUserInterface;
 use Symfony\Component\Security\Core\User\UserInterface;
@@ -14,14 +15,6 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
     #[ORM\GeneratedValue]
     #[ORM\Column]
     private ?int $id = null;
-
-
-    #[ORM\Column]
-    private ?string $name;
-
-
-    #[ORM\Column]
-    private ?string $firstName;
 
 
     #[ORM\Column(length: 180, unique: true)]
@@ -36,6 +29,21 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
     #[ORM\Column]
     private ?string $password = null;
 
+    #[ORM\Column(length: 200)]
+    private ?string $name = null;
+
+    #[ORM\Column(length: 200)]
+    private ?string $firstName = null;
+
+    #[ORM\Column(length: 255)]
+    private ?string $mail = null;
+
+    #[ORM\Column(type: Types::DATE_MUTABLE)]
+    private ?\DateTimeInterface $birthDate = null;
+
+    #[ORM\Column]
+    private ?bool $status = null;
+
     public function getId(): ?int
     {
         return $this->id;
@@ -44,29 +52,6 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
     public function getLogin(): ?string
     {
         return $this->login;
-    }
-
-    public function getName(): ?string
-    {
-        return $this->name;
-    }
-
-    public function setName(string $name): self
-    {
-        $this->name = $name;
-
-        return $this;
-    }
-
-    public function getFirstName(): ?string
-    {
-        return $this->firstName;
-    }
-    public function setFirstName(string $firstName): self
-    {
-        $this->firstName = $firstName;
-
-        return $this;
     }
 
 
@@ -128,5 +113,65 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
     {
         // If you store any temporary, sensitive data on the user, clear it here
         // $this->plainPassword = null;
+    }
+
+    public function getName(): ?string
+    {
+        return $this->name;
+    }
+
+    public function setName(string $name): self
+    {
+        $this->name = $name;
+
+        return $this;
+    }
+
+    public function getFirstName(): ?string
+    {
+        return $this->firstName;
+    }
+
+    public function setFirstName(string $firstName): self
+    {
+        $this->firstName = $firstName;
+
+        return $this;
+    }
+
+    public function getMail(): ?string
+    {
+        return $this->mail;
+    }
+
+    public function setMail(string $mail): self
+    {
+        $this->mail = $mail;
+
+        return $this;
+    }
+
+    public function getBirthDate(): ?\DateTimeInterface
+    {
+        return $this->birthDate;
+    }
+
+    public function setBirthDate(\DateTimeInterface $birthDate): self
+    {
+        $this->birthDate = $birthDate;
+
+        return $this;
+    }
+
+    public function isStatus(): ?bool
+    {
+        return $this->status;
+    }
+
+    public function setStatus(bool $status): self
+    {
+        $this->status = $status;
+
+        return $this;
     }
 }
