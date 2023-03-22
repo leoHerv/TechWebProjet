@@ -9,7 +9,7 @@ header{
     font-style: normal;
     font-weight: 700;
     /*font-size: 64px;*/
-    font-size: 4vw;
+    font-size: calc(2vw + 3vh);
     line-height: 77px;
     display: flex;
     align-items: center;
