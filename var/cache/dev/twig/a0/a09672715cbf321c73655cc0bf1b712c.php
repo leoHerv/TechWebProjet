@@ -41,14 +41,14 @@ class __TwigTemplate_60f0f4ac0ec23d53ceaeaa0266fd17e9 extends Template
 
         // line 2
         echo "
-<div class=\"menu\"><a>Accueil</a></div>
+<div class=\"menu\"><a href=\"/\">Accueil</a></div>
 
 ";
         // line 5
         if ((isset($context["isAuth"]) || array_key_exists("isAuth", $context) ? $context["isAuth"] : (function () { throw new RuntimeError('Variable "isAuth" does not exist.', 5, $this->source); })())) {
             // line 6
             echo "
-    <div class=\"menu\"><a>Edit Profile</a></div>
+    <div class=\"menu\"><a href=\"/edit\">Edit Profile</a></div>
 
 ";
         }
@@ -59,8 +59,8 @@ class __TwigTemplate_60f0f4ac0ec23d53ceaeaa0266fd17e9 extends Template
         if ( !(isset($context["isAuth"]) || array_key_exists("isAuth", $context) ? $context["isAuth"] : (function () { throw new RuntimeError('Variable "isAuth" does not exist.', 11, $this->source); })())) {
             // line 12
             echo "
-    <div class=\"menu\"><a>Login</a></div>
-    <div class=\"menu\"><a>SignIn</a></div>
+    <div class=\"menu\"><a href=\"/login\">Login</a></div>
+    <div class=\"menu\"><a href=\"/signIn\">SignIn</a></div>
 
 ";
         }
@@ -71,8 +71,8 @@ class __TwigTemplate_60f0f4ac0ec23d53ceaeaa0266fd17e9 extends Template
         if (((isset($context["isAuth"]) || array_key_exists("isAuth", $context) ? $context["isAuth"] : (function () { throw new RuntimeError('Variable "isAuth" does not exist.', 18, $this->source); })()) &&  !(isset($context["isSuperAdmin"]) || array_key_exists("isSuperAdmin", $context) ? $context["isSuperAdmin"] : (function () { throw new RuntimeError('Variable "isSuperAdmin" does not exist.', 18, $this->source); })()))) {
             // line 19
             echo "
-    <div class=\"menu\"><a>Panier</a></div>
-    <div class=\"menu\"><a>Products</a></div>
+    <div class=\"menu\"><a href=\"/panier\">Panier</a></div>
+    <div class=\"menu\"><a href=\"/listProduct\">Products</a></div>
 
 ";
         }
@@ -83,9 +83,9 @@ class __TwigTemplate_60f0f4ac0ec23d53ceaeaa0266fd17e9 extends Template
         if ((((isset($context["isAuth"]) || array_key_exists("isAuth", $context) ? $context["isAuth"] : (function () { throw new RuntimeError('Variable "isAuth" does not exist.', 25, $this->source); })()) && (isset($context["isAdmin"]) || array_key_exists("isAdmin", $context) ? $context["isAdmin"] : (function () { throw new RuntimeError('Variable "isAdmin" does not exist.', 25, $this->source); })())) &&  !(isset($context["isSuperAdmin"]) || array_key_exists("isSuperAdmin", $context) ? $context["isSuperAdmin"] : (function () { throw new RuntimeError('Variable "isSuperAdmin" does not exist.', 25, $this->source); })()))) {
             // line 26
             echo "
-    <div class=\"menu\"><a>Edit Users</a></div>
-    <div class=\"menu\"><a>Add Products</a></div>
-    <div class=\"menu\"><a>The Truman Show</a></div>
+    <div class=\"menu\"><a href=\"/editUsers\">Edit Users</a></div>
+    <div class=\"menu\"><a href=\"/addProduct\">Add Products</a></div>
+    <div class=\"menu\"><a href=\"https://fr.wikipedia.org/wiki/The_Truman_Show\" target=\"_blank\" rel=\"noopener noreferrer\">The Truman Show</a></div>
 
 ";
         }
@@ -96,8 +96,8 @@ class __TwigTemplate_60f0f4ac0ec23d53ceaeaa0266fd17e9 extends Template
         if ((((isset($context["isAuth"]) || array_key_exists("isAuth", $context) ? $context["isAuth"] : (function () { throw new RuntimeError('Variable "isAuth" does not exist.', 33, $this->source); })()) &&  !(isset($context["isAdmin"]) || array_key_exists("isAdmin", $context) ? $context["isAdmin"] : (function () { throw new RuntimeError('Variable "isAdmin" does not exist.', 33, $this->source); })())) && (isset($context["isSuperAdmin"]) || array_key_exists("isSuperAdmin", $context) ? $context["isSuperAdmin"] : (function () { throw new RuntimeError('Variable "isSuperAdmin" does not exist.', 33, $this->source); })()))) {
             // line 34
             echo "
-    <div class=\"menu\"><a>Edit Users + Admin ?</a></div>
-    <div class=\"menu\"><a>Add Admin</a></div>
+    <div class=\"menu\"><a href=\"/editUsers\">Edit Users + Admin ?</a></div>
+    <div class=\"menu\"><a href=\"/addAdmin\">Add Admin</a></div>
 
 ";
         }
@@ -128,40 +128,40 @@ class __TwigTemplate_60f0f4ac0ec23d53ceaeaa0266fd17e9 extends Template
     {
         return new Source("{# menu de l'application #}
 
-<div class=\"menu\"><a>Accueil</a></div>
+<div class=\"menu\"><a href=\"/\">Accueil</a></div>
 
 {% if isAuth %}
 
-    <div class=\"menu\"><a>Edit Profile</a></div>
+    <div class=\"menu\"><a href=\"/edit\">Edit Profile</a></div>
 
 {% endif %}
 
 {% if not isAuth %}
 
-    <div class=\"menu\"><a>Login</a></div>
-    <div class=\"menu\"><a>SignIn</a></div>
+    <div class=\"menu\"><a href=\"/login\">Login</a></div>
+    <div class=\"menu\"><a href=\"/signIn\">SignIn</a></div>
 
 {% endif %}
 
 {% if isAuth and not isSuperAdmin %}
 
-    <div class=\"menu\"><a>Panier</a></div>
-    <div class=\"menu\"><a>Products</a></div>
+    <div class=\"menu\"><a href=\"/panier\">Panier</a></div>
+    <div class=\"menu\"><a href=\"/listProduct\">Products</a></div>
 
 {% endif %}
 
 {% if isAuth and isAdmin and not isSuperAdmin %}
 
-    <div class=\"menu\"><a>Edit Users</a></div>
-    <div class=\"menu\"><a>Add Products</a></div>
-    <div class=\"menu\"><a>The Truman Show</a></div>
+    <div class=\"menu\"><a href=\"/editUsers\">Edit Users</a></div>
+    <div class=\"menu\"><a href=\"/addProduct\">Add Products</a></div>
+    <div class=\"menu\"><a href=\"https://fr.wikipedia.org/wiki/The_Truman_Show\" target=\"_blank\" rel=\"noopener noreferrer\">The Truman Show</a></div>
 
 {% endif %}
 
 {% if isAuth and not isAdmin and isSuperAdmin %}
 
-    <div class=\"menu\"><a>Edit Users + Admin ?</a></div>
-    <div class=\"menu\"><a>Add Admin</a></div>
+    <div class=\"menu\"><a href=\"/editUsers\">Edit Users + Admin ?</a></div>
+    <div class=\"menu\"><a href=\"/addAdmin\">Add Admin</a></div>
 
 {% endif %}
 ", "Layouts/menu.html.twig", "C:\\Users\\Léo\\Documents\\Ecole\\Université\\L3\\_S6\\TWeb\\Projet\\ProjetTW\\TWGit\\TechWebProjet\\templates\\Layouts\\menu.html.twig");

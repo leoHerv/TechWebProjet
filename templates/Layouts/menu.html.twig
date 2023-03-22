@@ -1,38 +1,38 @@
 {# menu de l'application #}
 
-<div class="menu"><a>Accueil</a></div>
+<div class="menu"><a href="/">Accueil</a></div>
 
 {% if isAuth %}
 
-    <div class="menu"><a>Edit Profile</a></div>
+    <div class="menu"><a href="/edit">Edit Profile</a></div>
 
 {% endif %}
 
 {% if not isAuth %}
 
-    <div class="menu"><a>Login</a></div>
-    <div class="menu"><a>SignIn</a></div>
+    <div class="menu"><a href="/login">Login</a></div>
+    <div class="menu"><a href="/signIn">SignIn</a></div>
 
 {% endif %}
 
 {% if isAuth and not isSuperAdmin %}
 
-    <div class="menu"><a>Panier</a></div>
-    <div class="menu"><a>Products</a></div>
+    <div class="menu"><a href="/panier">Panier</a></div>
+    <div class="menu"><a href="/listProduct">Products</a></div>
 
 {% endif %}
 
 {% if isAuth and isAdmin and not isSuperAdmin %}
 
-    <div class="menu"><a>Edit Users</a></div>
-    <div class="menu"><a>Add Products</a></div>
-    <div class="menu"><a>The Truman Show</a></div>
+    <div class="menu"><a href="/editUsers">Edit Users</a></div>
+    <div class="menu"><a href="/addProduct">Add Products</a></div>
+    <div class="menu"><a href="https://fr.wikipedia.org/wiki/The_Truman_Show" target="_blank" rel="noopener noreferrer">The Truman Show</a></div>
 
 {% endif %}
 
 {% if isAuth and not isAdmin and isSuperAdmin %}
 
-    <div class="menu"><a>Edit Users + Admin ?</a></div>
-    <div class="menu"><a>Add Admin</a></div>
+    <div class="menu"><a href="/editUsers">Edit Users + Admin ?</a></div>
+    <div class="menu"><a href="/addAdmin">Add Admin</a></div>
 
 {% endif %}

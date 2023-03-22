@@ -41,7 +41,7 @@ class __TwigTemplate_dfcf63433655e86ded3b72bce002de6a extends Template
 
         // line 2
         echo "
-<p id=\"title\">Fruits.io</p>
+<p><a id=\"title\" href=\"/\">Fruits.io</a></p>
 
 
 ";
@@ -67,7 +67,7 @@ class __TwigTemplate_dfcf63433655e86ded3b72bce002de6a extends Template
     {
         return new Source("{# entête du site #}
 
-<p id=\"title\">Fruits.io</p>
+<p><a id=\"title\" href=\"/\">Fruits.io</a></p>
 
 
 ", "Layouts/header.html.twig", "C:\\Users\\Léo\\Documents\\Ecole\\Université\\L3\\_S6\\TWeb\\Projet\\ProjetTW\\TWGit\\TechWebProjet\\templates\\Layouts\\header.html.twig");

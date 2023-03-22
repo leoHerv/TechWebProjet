@@ -11,11 +11,11 @@ a, a:visited{
     /*font-size: 20px;*/
     font-size: 1.2vw;
     line-height: 24px;
-    color: #F1B044;
+    color: #FFEA2D;
 }
 
 html, body{
-    background: #FEFAE0;
+    background: #064005;
     width: 100%;
     height: 100%;
     display: flex;
@@ -31,7 +31,7 @@ html, body{
 }
 /*Les cotés du milieu de la page*/
 .borderBody{
-    background: #FEFAE0;
+    background: #FFFFFF;
     width: 20%;
     height: 100%;
 }
@@ -43,6 +43,6 @@ html, body{
 }
 /*le milieu de la page*/
 #body{
-    background: #FFF2D1;
+    background: #FAFFFA;
     flex-grow : 1;
 }
