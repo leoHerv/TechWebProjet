@@ -2,12 +2,37 @@
 
 <div class="menu"><a href="/">Accueil</a></div>
 
+{# Si l'utilisateur est authentifier#}
 {% if isAuth %}
 
     <div class="menu"><a href="/edit">Edit Profile</a></div>
 
+    {% if not isSuperAdmin %}
+
+        <div class="menu"><a href="/panier">Panier</a></div>
+        <div class="menu"><a href="/listProduct">Products</a></div>
+
+    {% endif %}
+
+    {% if isAdmin and not isSuperAdmin %}
+
+        <div class="menu"><a href="/editUsers">Edit Users</a></div>
+        <div class="menu"><a href="/addProduct">Add Products</a></div>
+        <div class="menu"><a href="https://fr.wikipedia.org/wiki/The_Truman_Show" target="_blank" rel="noopener noreferrer">The Truman Show</a></div>
+
+    {% endif %}
+
+    {% if not isAdmin and isSuperAdmin %}
+
+        <div class="menu"><a href="/addAdmin">Add Admin</a></div>
+
+    {% endif %}
+
+    <div class="menu"><a href="/">Deconnection</a></div>
+
 {% endif %}
 
+{# Si il n'y a pas d'authentification de l'utilisateur #}
 {% if not isAuth %}
 
     <div class="menu"><a href="/login">Login</a></div>
@@ -15,24 +40,3 @@
 
 {% endif %}
 
-{% if isAuth and not isSuperAdmin %}
-
-    <div class="menu"><a href="/panier">Panier</a></div>
-    <div class="menu"><a href="/listProduct">Products</a></div>
-
-{% endif %}
-
-{% if isAuth and isAdmin and not isSuperAdmin %}
-
-    <div class="menu"><a href="/editUsers">Edit Users</a></div>
-    <div class="menu"><a href="/addProduct">Add Products</a></div>
-    <div class="menu"><a href="https://fr.wikipedia.org/wiki/The_Truman_Show" target="_blank" rel="noopener noreferrer">The Truman Show</a></div>
-
-{% endif %}
-
-{% if isAuth and not isAdmin and isSuperAdmin %}
-
-    <div class="menu"><a href="/editUsers">Edit Users + Admin ?</a></div>
-    <div class="menu"><a href="/addAdmin">Add Admin</a></div>
-
-{% endif %}
