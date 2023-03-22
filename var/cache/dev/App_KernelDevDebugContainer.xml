@@ -322,13 +322,6 @@
     <service id="App\Entity" class="App\Entity" abstract="true">
       <tag name="container.excluded" source="in &quot;config/services.yaml&quot;"/>
     </service>
-    <service id="App\Controller\AccueilController" class="App\Controller\AccueilController" public="true" autowire="true" autoconfigure="true">
-      <tag name="controller.service_arguments"/>
-      <tag name="container.service_subscriber"/>
-      <call method="setContainer">
-        <argument type="service" id=".service_locator.CshazM0.App\Controller\AccueilController"/>
-      </call>
-    </service>
     <service id="App\Controller\AdminController" class="App\Controller\AdminController" public="true" autowire="true" autoconfigure="true">
       <tag name="controller.service_arguments"/>
       <tag name="container.service_subscriber"/>
@@ -5242,9 +5235,6 @@
         <argument>Hash a user password</argument>
       </call>
     </service>
-    <service id=".instanceof.Symfony\Contracts\Service\ServiceSubscriberInterface.0.App\Controller\AccueilController" class="App\Controller\AccueilController" autowire="true" abstract="true"/>
-    <service id=".instanceof.Symfony\Bundle\FrameworkBundle\Controller\AbstractController.0.App\Controller\AccueilController" class="App\Controller\AccueilController" autowire="true" abstract="true"/>
-    <service id=".abstract.instanceof.App\Controller\AccueilController" class="App\Controller\AccueilController" autowire="true" autoconfigure="true" abstract="true"/>
     <service id=".instanceof.Symfony\Contracts\Service\ServiceSubscriberInterface.0.App\Controller\AdminController" class="App\Controller\AdminController" autowire="true" abstract="true"/>
     <service id=".instanceof.Symfony\Bundle\FrameworkBundle\Controller\AbstractController.0.App\Controller\AdminController" class="App\Controller\AdminController" autowire="true" abstract="true"/>
     <service id=".abstract.instanceof.App\Controller\AdminController" class="App\Controller\AdminController" autowire="true" autoconfigure="true" abstract="true"/>
@@ -5923,12 +5913,6 @@
         <argument key="security.token_storage" type="service_closure" id="security.token_storage" on-invalid="ignore"/>
         <argument key="twig" type="service_closure" id="twig" on-invalid="ignore"/>
       </argument>
-    </service>
-    <service id=".service_locator.CshazM0.App\Controller\AccueilController" class="Symfony\Component\DependencyInjection\ServiceLocator">
-      <tag name="container.service_locator_context" id="App\Controller\AccueilController"/>
-      <argument>App\Controller\AccueilController</argument>
-      <argument type="service" id="service_container"/>
-      <factory service=".service_locator.CshazM0" method="withContext"/>
     </service>
     <service id=".service_locator.CshazM0.App\Controller\AdminController" class="Symfony\Component\DependencyInjection\ServiceLocator">
       <tag name="container.service_locator_context" id="App\Controller\AdminController"/>

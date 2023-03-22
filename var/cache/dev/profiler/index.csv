@@ -544,3 +544,9 @@ a61ee9,::1,GET,http://localhost:8000/_fragment?_path=_format%3Dhtml%26_locale%3D
 ea3fa3,::1,GET,http://localhost:8000/login,1679475610,,200
 549485,::1,GET,http://localhost:8000/_fragment?_path=_format%3Dhtml%26_locale%3Den%26_controller%3DApp%255CController%255CAnonymeController%253A%253AmenuAction,1679475611,c5a06b,200
 c5a06b,::1,GET,http://localhost:8000/signIn,1679475611,,200
+001416,::1,GET,http://localhost:8000/_fragment?_path=_format%3Dhtml%26_locale%3Den%26_controller%3DApp%255CController%255CAnonymeController%253A%253AmenuAction,1679475905,4f5e8c,200
+4f5e8c,::1,GET,http://localhost:8000/signIn,1679475905,,200
+e9f8bd,::1,GET,http://localhost:8000/_fragment?_path=_format%3Dhtml%26_locale%3Den%26_controller%3DApp%255CController%255CAnonymeController%253A%253AmenuAction,1679475907,726a22,200
+726a22,::1,GET,http://localhost:8000/,1679475908,,200
+da7358,::1,GET,http://localhost:8000/_fragment?_path=_format%3Dhtml%26_locale%3Den%26_controller%3DApp%255CController%255CAnonymeController%253A%253AmenuAction,1679475909,252581,200
+252581,::1,GET,http://localhost:8000/,1679475909,,200
