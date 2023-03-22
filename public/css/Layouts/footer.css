@@ -5,5 +5,8 @@ footer{
     display: flex;
     justify-content: center;
     align-items: center;
+}
 
+.aRedirect, .aRedirect:visited{
+    font-size: calc(0.5vw + 1vh);
 }
