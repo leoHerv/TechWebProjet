@@ -48,29 +48,3 @@ html, body{
     flex-grow : 1;
 }
 
-/*Le css pour les formulaires*/
-
-input[type=button], input[type=submit], input[type=reset]{
-    background-color: #064005;
-    border: none;
-    color: white;
-    /*padding: 10px 30px;*/
-    padding: 1% 3%;
-    text-decoration: none;
-    margin: 4px 2px;
-    cursor: pointer;
-    border-radius: 5px;
-}
-
-input[type=text]{
-    background-color: #FAFFFA;
-    border: 2px solid black ;
-    color: white;
-    /*padding: 10px 30px;*/
-    padding: 0.5% 3%;
-    text-decoration: none;
-    margin: 4px 2px;
-    cursor: pointer;
-    border-radius: 2px;
-}
-
