@@ -40,6 +40,9 @@ class UserFixtures extends Fixture
         $roles =['ROLE_USER'];
         addUser($em,'rita',$roles,'atir','rita','atir','rita@atir','2023-03-23','false');
 
+        //simon
+        addUser($em,'simon',$roles,'nomis','simon','nomis','simon@nomis','2023-03-23','false');
+
         $em->flush();
     }
 }
