@@ -10,8 +10,6 @@ class UserFixtures extends Fixture
 {
     public function load(ObjectManager $em): void
     {
-        // $product = new Product();
-        // $manager->persist($product);
         function addUser($em ,$login , $roles , $password , $name , $first_name, $mail , $birthdate, $status)
         {
                 $user = new User();

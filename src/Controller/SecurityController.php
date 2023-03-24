@@ -7,25 +7,35 @@ use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Component\Security\Http\Authentication\AuthenticationUtils;
 
-#[Route(path: '/security', name:'security')]
 class SecurityController extends AbstractController
 {
-    #[Route(path: '/login', name: '_login')]
+    #[Route(path: '/login', name: 'security_login')]
     public function login(AuthenticationUtils $authenticationUtils): Response
     {
-        // if ($this->getUser()) {
-        //     return $this->redirectToRoute('target_path');
-        // }
+        /*
+        if ($this->getUser() != null)
+        {
+            dump($this->getUser());
+            return $this->render('MainTemplate/Anonyme/accueil.html.twig');
+        }
+        */
 
         // get the login error if there is one
         $error = $authenticationUtils->getLastAuthenticationError();
         // last username entered by the user
         $lastUsername = $authenticationUtils->getLastUsername();
 
-        return $this->render('security/login.html.twig', ['last_username' => $lastUsername, 'error' => $error]);
+        $args = array(
+            'last_username' => $lastUsername,
+            'error' => $error
+        );
+
+        dump($args);
+
+        return $this->render('MainTemplate/Security/login.html.twig', $args);
     }
 
-    #[Route(path: '/logout', name: '_logout')]
+    #[Route(path: '/logout', name: 'security_logout')]
     public function logout(): void
     {
         throw new \LogicException('This method can be blank - it will be intercepted by the logout key on your firewall.');

@@ -5,7 +5,6 @@ namespace App\Controller;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
-use Symfony\Component\Security\Http\Authentication\AuthenticationUtils;
 
 class AnonymeController extends AbstractController
 {
@@ -15,12 +14,13 @@ class AnonymeController extends AbstractController
         return $this->render('MainTemplate/Anonyme/accueil.html.twig');
     }
 
-    #[Route('/login', name: 'anonyme_login')]
-    public function loginAction(AuthenticationUtils $authenticationUtils): Response
+    /*
+    #[Route('/logintemp', name: 'anonyme_login')]
+    public function loginAction(): Response
     {
         return $this->render('MainTemplate/Anonyme/login.html.twig');
     }
-
+    */
     #[Route('/signIn', name: 'anonyme_signIn')]
     public function signInAction(): Response
     {
@@ -30,9 +30,9 @@ class AnonymeController extends AbstractController
     public function menuAction(): Response
     {
         $args = array(
-            'isAuth' => true,
+            'isAuth' => false,
             'isAdmin' => false,
-            'isSuperAdmin' => true
+            'isSuperAdmin' => false
         );
         return $this->render('Layouts/menu.html.twig', $args);
     }

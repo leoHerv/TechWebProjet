@@ -19,7 +19,7 @@ class FruitIoAuthenticator extends AbstractLoginFormAuthenticator
 {
     use TargetPathTrait;
 
-    public const LOGIN_ROUTE = 'app_login';
+    public const LOGIN_ROUTE = 'security_login';
 
     public function __construct(private UrlGeneratorInterface $urlGenerator)
     {
@@ -47,12 +47,12 @@ class FruitIoAuthenticator extends AbstractLoginFormAuthenticator
         }
 
         // For example:
-        return new RedirectResponse($this->urlGenerator->generate('user_accueil'));
-
+        return new RedirectResponse($this->urlGenerator->generate('anonyme_accueil'));
+        //throw new \Exception('TODO: provide a valid redirect inside '.__FILE__);
     }
 
     protected function getLoginUrl(Request $request): string
     {
-        return $this->urlGenerator->generate('anonyme_accueil');
+        return $this->urlGenerator->generate(self::LOGIN_ROUTE);
     }
 }
