@@ -14,12 +14,13 @@ class AnonymeController extends AbstractController
         return $this->render('MainTemplate/Anonyme/accueil.html.twig');
     }
 
-    #[Route('/login', name: 'anonyme_login')]
+    /*
+    #[Route('/logintemp', name: 'anonyme_login')]
     public function loginAction(): Response
     {
         return $this->render('MainTemplate/Anonyme/login.html.twig');
     }
-
+    */
     #[Route('/signIn', name: 'anonyme_signIn')]
     public function signInAction(): Response
     {
