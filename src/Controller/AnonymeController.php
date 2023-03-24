@@ -30,9 +30,9 @@ class AnonymeController extends AbstractController
     public function menuAction(): Response
     {
         $args = array(
-            'isAuth' => true,
+            'isAuth' => false,
             'isAdmin' => false,
-            'isSuperAdmin' => true
+            'isSuperAdmin' => false
         );
         return $this->render('Layouts/menu.html.twig', $args);
     }
