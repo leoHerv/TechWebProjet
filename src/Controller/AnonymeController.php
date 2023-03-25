@@ -4,6 +4,8 @@ namespace App\Controller;
 
 use App\Entity\User;
 use App\Form\UserSignInType;
+use Doctrine\ORM\EntityManagerInterface;
+use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\Form\Extension\Core\Type\SubmitType;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Response;
@@ -25,12 +27,24 @@ class AnonymeController extends AbstractController
     }
     */
     #[Route('/signIn', name: 'anonyme_signIn')]
-    public function signInAction(): Response
+    public function signInAction(EntityManagerInterface $em , Request $request): Response
     {
         $user = new User();
 
+        $user->setRoles(['ROLE_USER']);
+        $user->setStatus(false);
+
         $form = $this->createForm(UserSignInType::class, $user);
         $form->add('send', SubmitType::class, ['label' => 'create New User']);
+        $form->handleRequest($request);
+
+
+        if($form->isSubmitted())
+        {
+            $em->persist($user);
+            $em->flush();
+        }
+
 
         $args = array(
             'userSignIn' => $form->createView(),
