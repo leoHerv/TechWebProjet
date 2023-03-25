@@ -47,7 +47,7 @@ class FruitIoAuthenticator extends AbstractLoginFormAuthenticator
         }
 
         // For example:
-        return new RedirectResponse($this->urlGenerator->generate('anonyme_accueil'));
+        return new RedirectResponse($this->urlGenerator->generate('user_edit'));
         //throw new \Exception('TODO: provide a valid redirect inside '.__FILE__);
     }
 

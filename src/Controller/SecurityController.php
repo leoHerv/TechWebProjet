@@ -30,8 +30,6 @@ class SecurityController extends AbstractController
             'error' => $error
         );
 
-        dump($args);
-
         return $this->render('MainTemplate/Security/login.html.twig', $args);
     }
 

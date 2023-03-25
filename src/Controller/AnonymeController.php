@@ -2,6 +2,9 @@
 
 namespace App\Controller;
 
+use App\Entity\User;
+use App\Form\UserSignInType;
+use Symfony\Component\Form\Extension\Core\Type\SubmitType;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
@@ -24,7 +27,16 @@ class AnonymeController extends AbstractController
     #[Route('/signIn', name: 'anonyme_signIn')]
     public function signInAction(): Response
     {
-        return $this->render('MainTemplate/Anonyme/signIn.html.twig');
+        $user = new User();
+
+        $form = $this->createForm(UserSignInType::class, $user);
+        $form->add('send', SubmitType::class, ['label' => 'create New User']);
+
+        $args = array(
+            'userSignIn' => $form->createView(),
+        );
+
+        return $this->render('MainTemplate/Anonyme/signIn.html.twig',$args);
     }
 
     public function menuAction(): Response
