@@ -1,49 +1,80 @@
+#body{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
 .form{
     background: #D9D9D9;
     display: flex;
     justify-content: center;
     align-items: center;
-    padding: 1%;
-    width: 60%;
-    height: 20%;
+
+    padding: 3%;
+    width: 50%;
     border-radius: 15px;
 }
 
-.divButton{
+.divForm{
     display: flex;
+    flex-flow: column;
+    align-items: center;
+    width: 90%;
+    height: 40%;
+}
+
+.divCenter{
     justify-content: center;
+    align-items: center;
 }
 
 input[type=button], input[type=submit], input[type=reset], button{
     background-color: #064005;
     border: none;
+
     color: white;
+    font-family: 'Inter', serif;
+    font-style: normal;
     /*padding: 10px 30px;*/
-    padding: 2% 4%;
+    padding: 4% 8%;
+    margin: 5%;
     text-decoration: none;
-    margin: 4px 2px;
     cursor: pointer;
     border-radius: 5px;
 }
 
-input[type=text]{
+input[type=text], input[type=password]{
     background-color: #FAFFFA;
     border: 2px solid black ;
-    color: white;
+
+    font-family: 'Inter', serif;
+    font-style: normal;
+    color: black;
     /*padding: 10px 30px;*/
     padding: 0.5% 3%;
     text-decoration: none;
     margin: 4px 2px;
     cursor: pointer;
     border-radius: 2px;
+
+    width: 80%;
 }
 
-label{
+h3{
     font-family: 'Inter', serif;
     font-style: normal;
-    font-size: calc(0.6vw + 0.9vh);
+    font-size: calc(1vw + 1.2vh);
 }
 
 .errorForm {
+    font-family: 'Inter', serif;
+    font-style: normal;
     background-color: #F62626;
+}
+
+input::placeholder {
+    font-family: 'Inter', serif;
+    font-style: normal;
+    opacity: 0.7;
+    color: black;
 }

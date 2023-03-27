@@ -23,7 +23,7 @@ class AnonymeController extends AbstractController
     // Gestion du login et logout par le SecurityController
 
     #[Route('/signIn', name: 'anonyme_signIn')]
-    public function signInAction(EntityManagerInterface $em , Request $request , UserPasswordHasherInterface $passwordHasher): Response
+    public function signInAction(EntityManagerInterface $em, Request $request, UserPasswordHasherInterface $passwordHasher): Response
     {
         $user = new User();
 
@@ -31,7 +31,7 @@ class AnonymeController extends AbstractController
         $user->setStatus(false);
 
         $form = $this->createForm(UserSignInType::class, $user);
-        $form->add('send', SubmitType::class, ['label' => 'create New User']);
+        $form->add('send', SubmitType::class, ['label' => 'Sign In']);
         $form->handleRequest($request);
 
 
@@ -41,7 +41,6 @@ class AnonymeController extends AbstractController
             $em->persist($user);
             $em->flush();
         }
-
 
         $args = array(
             'userSignIn' => $form->createView(),

@@ -6,6 +6,23 @@
 {% endblock %}
 
 {% block body %}
-    <p>signIn</p>
-    {{ form(userSignIn) }}
+
+    <div class="form">
+
+
+        {{ form_start(userSignIn, {'attr': {'class': 'divForm'}}) }}
+
+        <h3>Sign In</h3>
+
+        {{ form_widget(userSignIn.login, {'attr': {'placeholder': 'Login'}}) }}
+        {{ form_widget(userSignIn.password, {'attr': {'placeholder': 'Password'}}) }}
+        {{ form_widget(userSignIn.name, {'attr': {'placeholder': 'Name'}}) }}
+        {{ form_widget(userSignIn.firstName, {'attr': {'placeholder': 'First name'}}) }}
+        {{ form_widget(userSignIn.mail, {'attr': {'placeholder': 'Mail'}}) }}
+        {{ form_widget(userSignIn.birthDate, {'attr': {'placeholder': 'Birth date : 01/01/2000'}}) }}
+
+        <button type="submit" id="user_sign_in_send" name="user_sign_in[send]">Sign In</button>
+
+    </div>
+
 {% endblock %}

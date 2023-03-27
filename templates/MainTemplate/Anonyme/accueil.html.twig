@@ -2,9 +2,16 @@
 
 
 {% block body %}
-    <p>accueil</p><br/>
 
+    <h1>Accueil</h1><br/>
     {% if app.user %}
+
         <p>Bienvenue {{ app.user.userIdentifier }} !<p>
+
     {% endif %}
+
+    <div id="flash">
+        {% include 'Layouts/flash.html.twig' %}
+    </div>
+
 {% endblock %}

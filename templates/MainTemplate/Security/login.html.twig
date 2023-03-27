@@ -7,27 +7,29 @@
 {% endblock %}
 
 {% block body %}
+
     <div class="form">
-        <form method="post">
+
+        <form class="divForm" method="post">
+
+            <h3>Login</h3>
+
+            <input type="text" value="{{ last_username }}" name="login" autocomplete="username" required autofocus placeholder="Login">
+
+
+            <input type="password" name="password"  autocomplete="current-password" required placeholder="Password">
+
+
+            <input type="hidden" name="_csrf_token" value="{{ csrf_token('authenticate') }}">
+
             {% if error %}
                 <p class="errorForm">Votre login ou votre mot de passe n'est pas bon.</p>
             {% endif %}
 
-            <p>Login</p>
-            <label for="inputLogin">Login</label>
-            <label>
-                <input type="text" value="{{ last_username }}" name="login" autocomplete="username" required autofocus>
-            </label>
-            <label for="inputPassword">Password</label>
-            <label>
-                <input type="password" name="password"  autocomplete="current-password" required>
-            </label>
+            <button type="submit">Connexion</button>
 
-            <input type="hidden" name="_csrf_token" value="{{ csrf_token('authenticate') }}">
-
-            <button type="submit">
-                Sign in
-            </button>
         </form>
+
     </div>
+
 {% endblock %}
