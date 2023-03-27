@@ -10,16 +10,23 @@
     <div class="form">
 
 
-        {{ form_start(userSignIn, {'attr': {'class': 'divForm'}}) }}
+        {{ form_start(form, {'attr': {'class': 'divForm'}}) }}
 
         <h3>Sign In</h3>
 
-        {{ form_widget(userSignIn.login, {'attr': {'placeholder': 'Login'}}) }}
-        {{ form_widget(userSignIn.password, {'attr': {'placeholder': 'Password'}}) }}
-        {{ form_widget(userSignIn.name, {'attr': {'placeholder': 'Name'}}) }}
-        {{ form_widget(userSignIn.firstName, {'attr': {'placeholder': 'First name'}}) }}
-        {{ form_widget(userSignIn.mail, {'attr': {'placeholder': 'Mail'}}) }}
-        {{ form_widget(userSignIn.birthDate, {'attr': {'placeholder': 'Birth date : 01/01/2000'}}) }}
+        {{ form_widget(form.login, {'attr': {'placeholder': 'Login'}}) }}
+        {{ form_errors(form.login, {'attr': {'class': 'errorForm'}}) }}
+        {{ form_widget(form.password, {'attr': {'placeholder': 'Password'}}) }}
+        {{ form_errors(form.password, {'attr': {'class': 'errorForm'}}) }}
+        {{ form_widget(form.name, {'attr': {'placeholder': 'Name'}}) }}
+        {{ form_errors(form.name, {'attr': {'class': 'errorForm'}}) }}
+        {{ form_widget(form.firstName, {'attr': {'placeholder': 'First name'}}) }}
+        {{ form_errors(form.firstName, {'attr': {'class': 'errorForm'}}) }}
+        {{ form_widget(form.mail, {'attr': {'placeholder': 'Mail'}}) }}
+        {{ form_errors(form.mail, {'attr': {'class': 'errorForm'}}) }}
+        {{ form_widget(form.birthDate, {'attr': {'placeholder': 'Birth date : 01/01/2000'}}) }}
+        {{ form_errors(form.birthDate, {'attr': {'class': 'errorForm'}}) }}
+        {{ form_row(form._token) }}
 
         <button type="submit" id="user_sign_in_send" name="user_sign_in[send]">Sign In</button>
 

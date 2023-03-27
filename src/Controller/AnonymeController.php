@@ -34,16 +34,16 @@ class AnonymeController extends AbstractController
         $form->add('send', SubmitType::class, ['label' => 'Sign In']);
         $form->handleRequest($request);
 
-
         if($form->isSubmitted() && $form->isValid())
         {
             $user->setPassword($passwordHasher->hashPassword($user, $user->getPassword()));
             $em->persist($user);
             $em->flush();
+            return $this->render('MainTemplate/Anonyme/Accueil.html.twig');
         }
 
         $args = array(
-            'userSignIn' => $form->createView(),
+            'form' => $form->createView(),
         );
 
         return $this->render('MainTemplate/Anonyme/signIn.html.twig',$args);
@@ -63,7 +63,6 @@ class AnonymeController extends AbstractController
             $isAuth = (in_array('ROLE_NOROLE', $roles));
             $isAdmin = (in_array('ROLE_ADMIN', $roles));
             $isSuper = (in_array('ROLE_SUPER_ADMIN', $roles));
-            dump($roles);
         }
 
         $args = array(

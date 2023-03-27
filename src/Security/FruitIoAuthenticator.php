@@ -2,6 +2,7 @@
 
 namespace App\Security;
 
+
 use Symfony\Component\HttpFoundation\RedirectResponse;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
@@ -14,7 +15,6 @@ use Symfony\Component\Security\Http\Authenticator\Passport\Badge\UserBadge;
 use Symfony\Component\Security\Http\Authenticator\Passport\Credentials\PasswordCredentials;
 use Symfony\Component\Security\Http\Authenticator\Passport\Passport;
 use Symfony\Component\Security\Http\Util\TargetPathTrait;
-use Symfony\Component\Security\Http\Attribute\IsGranted;
 
 class FruitIoAuthenticator extends AbstractLoginFormAuthenticator
 {
@@ -47,12 +47,8 @@ class FruitIoAuthenticator extends AbstractLoginFormAuthenticator
             return new RedirectResponse($targetPath);
         }
 
-        // For example:
-            return new RedirectResponse($this->urlGenerator->generate('anonyme_accueil'));
-
-
-
-        //throw new \Exception('TODO: provide a valid redirect inside '.__FILE__);
+        //$this->addFlash('info', 'Déconnection reussite !'); ?
+        return new RedirectResponse($this->urlGenerator->generate('anonyme_accueil'));
     }
 
     protected function getLoginUrl(Request $request): string
