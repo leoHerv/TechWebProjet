@@ -81,7 +81,9 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
      */
     public function getRoles(): array
     {
-        return  $this->roles;
+        $oldRoles = $this->roles;
+        $oldRoles[] = 'ROLE_NOROLE';
+        return $oldRoles;
     }
 
     public function setRoles(array $roles): self

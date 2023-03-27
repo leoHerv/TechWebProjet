@@ -52,24 +52,20 @@ class AnonymeController extends AbstractController
 
     public function menuAction(): Response
     {
+        $isAuth = false;
+        $isAdmin = false;
+        $isSuper = false;
+
         $user = $this->getUser();
         if($user != null)
         {
-            $isAdmin = $user->getStatus();
-            $isAuth = ($user->getRoles() != 'ROLE_NOROLE');
-            $isSuper = ($user->getRoles() == 'ROLE_SUPER_ADMIN');
-            if($isSuper)
-            {
-                $isAdmin = false;
-            }
-        }
-        else
-        {
-            $isAdmin = false;
-            $isAuth = false;
-            $isSuper = false;
-        }
+            $roles = $user->getRoles();
 
+            $isAuth = (in_array('ROLE_NOROLE', $roles));
+            $isAdmin = (in_array('ROLE_ADMIN', $roles));
+            $isSuper = (in_array('ROLE_SUPER_ADMIN', $roles));
+            dump($roles);
+        }
 
         $args = array(
             'isAuth' => $isAuth,
