@@ -1,11 +1,12 @@
-# l3-web-2022-23
+# Techno Web Project
 
-## Nom
+## Name
 Université de Poitiers - L3 informatique - 2022-2023  
 Technologies du Web 2
+By BEN MOHAND Macine & HERVOUET Léo
 
 ## Description
-Corrigés des TP de la partie Symfony
+Project for the end of the year.
 
 
 ## Installation
