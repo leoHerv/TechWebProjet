@@ -14,7 +14,7 @@
     justify-content: center;
 }
 
-input[type=button], input[type=submit], input[type=reset]{
+input[type=button], input[type=submit], input[type=reset], button{
     background-color: #064005;
     border: none;
     color: white;
@@ -42,4 +42,8 @@ label{
     font-family: 'Inter', serif;
     font-style: normal;
     font-size: calc(0.6vw + 0.9vh);
+}
+
+.errorForm {
+    background-color: #F62626;
 }
