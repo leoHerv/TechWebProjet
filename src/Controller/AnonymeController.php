@@ -20,13 +20,8 @@ class AnonymeController extends AbstractController
         return $this->render('MainTemplate/Anonyme/accueil.html.twig');
     }
 
-    /*
-    #[Route('/logintemp', name: 'anonyme_login')]
-    public function loginAction(): Response
-    {
-        return $this->render('MainTemplate/Anonyme/login.html.twig');
-    }
-    */
+    // Gestion du login et logout par le SecurityController
+
     #[Route('/signIn', name: 'anonyme_signIn')]
     public function signInAction(EntityManagerInterface $em , Request $request , UserPasswordHasherInterface $passwordHasher): Response
     {
