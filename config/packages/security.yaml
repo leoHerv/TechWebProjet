@@ -42,7 +42,7 @@ security:
         - { path: ^/addAdmin, roles: ROLE_SUPER_ADMIN}
         - { path: ^/editUsers, roles: ROLE_SUPER_ADMIN}
         - { path: ^/addProduct, roles: ROLE_ADMIN}
-        - { path: ^/edit, roles: ROLE_USER}
+        - { path: ^/edit, roles: [ROLE_USER, ROLE_SUPER_ADMIN]}
         - { path: ^/listProduct, roles: ROLE_USER}
         - { path: ^/panier, roles: ROLE_USER}
         - { path: ^/, roles: PUBLIC_ACCESS}
