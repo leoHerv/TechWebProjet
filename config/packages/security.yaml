@@ -45,6 +45,7 @@ security:
         - { path: ^/edit, roles: [ROLE_USER, ROLE_SUPER_ADMIN]}
         - { path: ^/listProduct, roles: ROLE_USER}
         - { path: ^/panier, roles: ROLE_USER}
+        - { path: ^/product, roles: ROLE_USER}
         - { path: ^/, roles: PUBLIC_ACCESS}
         - { path: ^/login, roles: PUBLIC_ACCESS}
         - { path: ^/signup, roles: PUBLIC_ACCESS}

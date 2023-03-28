@@ -54,6 +54,10 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
     #[ORM\Column]
     private ?bool $status = null;
 
+    /*
+    #[ORM\OneToOne(mappedBy: 'user', cascade: ['persist', 'remove'])]
+    private ?Bag $bag = null;
+*/
 
     public function getId(): ?int
     {
@@ -184,5 +188,28 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
         return $this;
     }
 
+    /*
+    public function getBag(): ?Bag
+    {
+        return $this->bag;
+    }
+
+    public function setBag(?Bag $bag): self
+    {
+        // unset the owning side of the relation if necessary
+        if ($bag === null && $this->bag !== null) {
+            $this->bag->setUser(null);
+        }
+
+        // set the owning side of the relation if necessary
+        if ($bag !== null && $bag->getUser() !== $this) {
+            $bag->setUser($this);
+        }
+
+        $this->bag = $bag;
+
+        return $this;
+    }
+*/
 
 }

@@ -15,10 +15,10 @@ class ProductController extends AbstractController
         return $this->render('MainTemplate/Product/index.html.twig');
     }
 
-    #[Route('/agrumes', name: '_agrumes')]
+    #[Route('/citrus', name: '_citrus')]
     public function agrumesAction(): Response
     {
-        return $this->render('MainTemplate/Product/agrumes.html.twig');
+        return $this->render('MainTemplate/Product/citrus.html.twig');
     }
 
     #[Route('/exotic', name: '_exotic')]
