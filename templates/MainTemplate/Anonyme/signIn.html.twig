@@ -9,22 +9,21 @@
 
     <div class="form">
 
-
         {{ form_start(form, {'attr': {'class': 'divForm'}}) }}
 
         <h3>Sign In</h3>
 
-        {{ form_widget(form.login, {'attr': {'placeholder': 'Login'}}) }}
+        {{ form_widget(form.login) }}
         {{ form_errors(form.login, {'attr': {'class': 'errorForm'}}) }}
-        {{ form_widget(form.password, {'attr': {'placeholder': 'Password'}}) }}
+        {{ form_widget(form.password) }}
         {{ form_errors(form.password, {'attr': {'class': 'errorForm'}}) }}
-        {{ form_widget(form.name, {'attr': {'placeholder': 'Name'}}) }}
+        {{ form_widget(form.name) }}
         {{ form_errors(form.name, {'attr': {'class': 'errorForm'}}) }}
-        {{ form_widget(form.firstName, {'attr': {'placeholder': 'First name'}}) }}
+        {{ form_widget(form.firstName) }}
         {{ form_errors(form.firstName, {'attr': {'class': 'errorForm'}}) }}
-        {{ form_widget(form.mail, {'attr': {'placeholder': 'Mail'}}) }}
+        {{ form_widget(form.mail) }}
         {{ form_errors(form.mail, {'attr': {'class': 'errorForm'}}) }}
-        {{ form_widget(form.birthDate, {'attr': {'placeholder': 'Birth date : 01/01/2000'}}) }}
+        {{ form_widget(form.birthDate) }}
         {{ form_errors(form.birthDate, {'attr': {'class': 'errorForm'}}) }}
         {{ form_row(form._token) }}
 

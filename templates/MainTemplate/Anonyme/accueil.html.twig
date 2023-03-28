@@ -1,23 +1,24 @@
 {% extends 'Base/base.html.twig' %}
 
+{% block css %}
+    {{ parent() }}
+    <link rel="stylesheet" href="{{ asset('css/Anonyme/accueil.css') }}" />
+{% endblock %}
 
-{% block body %}
+{% block body%}
 
-    <h1>Accueil</h1><br/>
-    {% if app.user %}
+    <div id="imgBack">
+        <h1>Accueil</h1><br/>
+        {% if app.user %}
 
-        <p>Bienvenue {{ app.user.userIdentifier }} !<p>
+            <p>Bienvenue {{ app.user.userIdentifier }} !<p>
 
-    {% endif %}
-
-
-    <div id = "image">
-        <img src="{{ asset('Mix-Fruits-Basket-PNG-Pic.png') }}" alt="Panier Fruits">
-    </div>
+        {% endif %}
 
 
-    <div id="flash">
-        {% include 'Layouts/flash.html.twig' %}
+        <div id="flash">
+            {% include 'Layouts/flash.html.twig' %}
+        </div>
     </div>
 
 {% endblock %}

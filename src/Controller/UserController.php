@@ -17,18 +17,22 @@ class UserController extends AbstractController
     public function editAction(EntityManagerInterface $em , Request $request , UserPasswordHasherInterface $passwordHasher): Response
     {
         $user = $this->getUser();
+
         $form = $this->createForm(EditProfilFormType::class , $user);
         $form->add('send',SubmitType::class, ['label'=> 'Edit Profile']);
         $form->handleRequest($request);
+
         if($form->isSubmitted() && $form->isValid())
         {
             $user->setPassword($passwordHasher->hashPassword($user, $user->getPassword()));
             $em->persist($user);
             $em->flush();
+
+            $this->addFlash('info', 'Modification réussite !');
             return $this->render('MainTemplate/Anonyme/accueil.html.twig');
         }
         $args = array(
-            'editProfile' => $form->createView(),
+            'form' => $form->createView(),
         );
         return $this->render('MainTemplate/User/editProfil.html.twig',$args);
     }

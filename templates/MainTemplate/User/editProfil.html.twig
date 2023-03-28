@@ -1,9 +1,33 @@
 {% extends 'Base/base.html.twig' %}
 
+{% block css %}
+    {{ parent() }}
+    <link rel="stylesheet" href="{{ asset('css/Layouts/form.css') }}" />
+{% endblock %}
 
 {% block body %}
-        <h2>editProfile</h2>
-    <div id = "form">
-        {{ form(editProfile) }}
+
+    <div class="form">
+
+        {{ form_start(form, {'attr': {'class': 'divForm'}}) }}
+
+        <h3>Edit Profile</h3>
+
+        {{ form_widget(form.login) }}
+        {{ form_errors(form.login, {'attr': {'class': 'errorForm'}}) }}
+        {{ form_widget(form.password) }}
+        {{ form_errors(form.password, {'attr': {'class': 'errorForm'}}) }}
+        {{ form_widget(form.name) }}
+        {{ form_errors(form.name, {'attr': {'class': 'errorForm'}}) }}
+        {{ form_widget(form.firstName) }}
+        {{ form_errors(form.firstName, {'attr': {'class': 'errorForm'}}) }}
+        {{ form_widget(form.mail) }}
+        {{ form_errors(form.mail, {'attr': {'class': 'errorForm'}}) }}
+        {{ form_widget(form.birthDate) }}
+        {{ form_errors(form.birthDate, {'attr': {'class': 'errorForm'}}) }}
+        {{ form_row(form._token) }}
+
+        <button type="submit" id="user_sign_in_send" name="user_sign_in[send]">Edit</button>
+
     </div>
 {% endblock %}
