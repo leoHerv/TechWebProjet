@@ -14,11 +14,11 @@ use Symfony\Component\Routing\Annotation\Route;
 class UserController extends AbstractController
 {
     #[Route('/edit', name: 'user_edit')]
-    public function editAction(EntityManagerInterface $em , Request $request , UserPasswordHasherInterface $passwordHasher): Response
+    public function editAction(EntityManagerInterface $em, Request $request, UserPasswordHasherInterface $passwordHasher): Response
     {
         $user = $this->getUser();
 
-        $form = $this->createForm(EditProfilFormType::class , $user);
+        $form = $this->createForm(EditProfilFormType::class, $user);
         $form->add('send',SubmitType::class, ['label'=> 'Edit Profile']);
         $form->handleRequest($request);
 
