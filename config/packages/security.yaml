@@ -40,7 +40,7 @@ security:
     # Note: Only the *first* access control that matches will be used
     access_control:
         - { path: ^/addAdmin, roles: ROLE_SUPER_ADMIN}
-        - { path: ^/editUsers, roles: ROLE_SUPER_ADMIN}
+        - { path: ^/editUsers, roles: ROLE_ADMIN}
         - { path: ^/addProduct, roles: ROLE_ADMIN}
         - { path: ^/edit, roles: [ROLE_USER, ROLE_SUPER_ADMIN]}
         - { path: ^/listProduct, roles: ROLE_USER}
