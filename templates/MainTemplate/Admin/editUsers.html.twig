@@ -20,6 +20,18 @@
                         <p>First Name: {{ user.firstName }} </p>
                         <p>Mail: {{ user.mail }} </p>
                         <p>Birth Date: {{ user.birthDate }} </p>
+                        <p>Type :
+                        {% if ('ROLE_SUPER_ADMIN' in user.roles) %}
+                            Super Admin
+                        {% elseif('ROLE_ADMIN' in user.roles) %}
+                            Admin
+                        {% elseif ('ROLE_USER' in user.roles) %}
+                            User
+                        {% else %}
+                            Unknown
+                        {% endif %}
+
+                        </p>
                         <button type="submit">Remove</button>
                     </form>
                 </li>
