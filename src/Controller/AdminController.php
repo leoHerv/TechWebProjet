@@ -53,6 +53,10 @@ class AdminController extends AbstractController
                 $em->flush();
                 $this->addFlash('info', 'The user is remove.');
             }
+            else
+            {
+                $this->addFlash('info', 'You cannot remove this user.');
+            }
         }
         else
         {

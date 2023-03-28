@@ -1,43 +1,50 @@
 {% extends 'Base/base.html.twig' %}
 
+{% block css %}
+    {{ parent() }}
+    <link rel="stylesheet" href="{{ asset('css/Admin/editUsers.css') }}" />
+{% endblock %}
 
 {% block body %}
-    <h3>editUsers</h3>
+    <h3>Edit Users</h3>
 
     <div id="flash">
         {% include 'Layouts/flash.html.twig' %}
     </div>
 
-    <ul>
         {% for user in users %}
-            {% if not(('ROLE_SUPER_ADMIN' in user.roles) and (currentUser == user)) %}
 
-                <li>
-                    <form action="/suppUser/{{ user.id }}">
-                        <p>Login: {{ user.login }} </p>
-                        <p>Password: {{ user.password }} </p>
-                        <p>Last Name: {{ user.name }} </p>
-                        <p>First Name: {{ user.firstName }} </p>
-                        <p>Mail: {{ user.mail }} </p>
-                        <p>Birth Date: {{ user.birthDate }} </p>
-                        <p>Type :
-                        {% if ('ROLE_SUPER_ADMIN' in user.roles) %}
-                            Super Admin
-                        {% elseif('ROLE_ADMIN' in user.roles) %}
-                            Admin
-                        {% elseif ('ROLE_USER' in user.roles) %}
-                            User
-                        {% else %}
-                            Unknown
-                        {% endif %}
 
-                        </p>
+            <form action="/suppUser/{{ user.id }}">
+                <ul>
+                    <li><strong>Login:</strong> {{ user.login }} </li>
+                    <li><strong>Password:</strong> {{ user.password }} </li>
+                    <li><strong>Last Name:</strong> {{ user.name }} </li>
+                    <li><strong>First Name:</strong> {{ user.firstName }} </li>
+                    <li><strong>Mail:</strong> {{ user.mail }} </li>
+                    <li><strong>Birth Date:</strong> {{ user.birthDate }} </li>
+                    <li><strong>Type :</strong>
+                    {% if ('ROLE_SUPER_ADMIN' in user.roles) %}
+                        Super Admin
+                    {% elseif('ROLE_ADMIN' in user.roles) %}
+                        Admin
+                    {% elseif ('ROLE_USER' in user.roles) %}
+                        User
+                    {% else %}
+                        Unknown
+                    {% endif %}
+
+                    </li>
+                    {% if not(('ROLE_SUPER_ADMIN' in user.roles) or (currentUser == user)) %}
+
                         <button type="submit">Remove</button>
-                    </form>
-                </li>
 
-            {% endif %}
+                    {% endif %}
+                </ul>
+            </form>
+
+
 
         {% endfor %}
-    </ul>
+
 {% endblock %}
