@@ -18,7 +18,7 @@ header{
     margin-top: 1%;
     margin-left: 1%;
 
-    /* met le titre avec 3 couleurs
+    /* met le titre avec 3 couleurs (rouge, orange, jaune)
     background: linear-gradient(to right, red 0.1%, yellow 10%, yellow 60%);
     -webkit-background-clip: text;
     color: transparent;
