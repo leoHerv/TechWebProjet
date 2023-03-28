@@ -3,7 +3,11 @@
 namespace App\Controller;
 
 use App\Entity\User;
+use App\Entity\Produit;
+use App\Form\ProductFormType;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
+use Symfony\Component\Form\Extension\Core\Type\SubmitType;
+use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 use Doctrine\ORM\EntityManagerInterface;
@@ -11,9 +15,29 @@ use Doctrine\ORM\EntityManagerInterface;
 class AdminController extends AbstractController
 {
     #[Route('/addProduct', name: 'admin_addProduct')]
-    public function addProductAction(): Response
+    public function addProductAction(EntityManagerInterface $em , Request $request): Response
     {
-        return $this->render('MainTemplate/Admin/addProduct.html.twig');
+        $product = new Produit();
+        /*$product->setCategorie('waitACategory');*/
+
+        $form = $this->createForm(ProductFormType::class , $product);
+        $form->add('send',SubmitType::class, ['label'=> 'Create Product']);
+        $form->handleRequest($request);
+
+        if($form->isSubmitted() && $form->isValid())
+        {
+            $em->persist($product);
+            $em->flush();
+
+            $this->addFlash('info', 'Le produit a bien été crée !');
+            return $this->render('MainTemplate/Anonyme/Accueil.html.twig');
+        }
+
+        $args = array(
+            'form' => $form->createView(),
+        );
+
+        return $this->render('MainTemplate/Admin/addProduct.html.twig',$args);
     }
 
     #[Route('/editUsers', name: 'super_admin_editUsers')]

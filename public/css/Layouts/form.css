@@ -43,7 +43,7 @@ input[type=button], input[type=submit], input[type=reset], button{
     border-radius: 5px;
 }
 
-input[type=text], input[type=password]{
+input[type=text], input[type=password], input[type=number]{
     background-color: #FAFFFA;
     border: 2px solid black ;
 

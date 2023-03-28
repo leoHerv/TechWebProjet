@@ -1,7 +1,28 @@
-{% extends 'Base/base.html.twig' %}
+{% extends 'Base/baseForm.html.twig' %}
 
 {% block body %}
-    <p>addProduct</p>
+
+    <div class="form">
+
+        {{ form_start(form, {'attr': {'class': 'divForm'}}) }}
+
+        <h3>Add Product</h3>
+
+        {{ form_widget(form.Nom) }}
+        {{ form_errors(form.Nom, {'attr': {'class': 'errorForm'}}) }}
+        {{ form_widget(form.prix) }}
+        {{ form_errors(form.prix, {'attr': {'class': 'errorForm'}}) }}
+        {#
+        {{ form_widget(form.categorie) }}
+        {{ form_errors(form.categorie, {'attr': {'class': 'errorForm'}}) }}
+        #}
+        {{ form_widget(form.quantity) }}
+        {{ form_errors(form.quantity, {'attr': {'class': 'errorForm'}}) }}
+        {{ form_row(form._token) }}
+
+        <button type="submit" id="product_form_Nom" name="product_form_Nom[send]">Add Product</button>
+
+    </div>
 {% endblock %}
 
 

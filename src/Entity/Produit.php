@@ -4,38 +4,47 @@ namespace App\Entity;
 
 use App\Repository\ProduitsRepository;
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
+use Symfony\Component\Validator\Constraints as Assert;
 
 #[ORM\Table(name :'i23_produits')]
 #[ORM\Entity(repositoryClass: ProduitsRepository::class)]
+#[UniqueEntity(
+    fields: ['Nom'],
+    message: 'This name already exist.',
+)]
 class Produit
 {
-
-    private ?int $id = null;
-
     #[ORM\Id]
     #[ORM\GeneratedValue]
     #[ORM\Column]
     private ?int $id_produit = null;
 
     #[ORM\Column(length: 70)]
+    #[Assert\NotNull]
     private ?string $Nom = null;
 
     #[ORM\Column]
+    #[Assert\NotNull]
+    #[Assert\Range(
+        minMessage: 'The price need to be above 0.',
+        min: 0,
+    )]
     private ?float $prix = null;
 
-    #[ORM\Column(length: 60)]
+    #[ORM\Column(length: 60, nullable: true)]
     private ?string $categorie = null;
 
     #[ORM\Column]
+    #[Assert\NotNull]
+    #[Assert\Range(
+        minMessage: 'The quantity need to be above 0.',
+        min: 0,
+    )]
     private ?int $quantity = null;
 
     #[ORM\Column(length: 255, nullable: true)]
     private ?string $img = null;
-
-    public function getId(): ?int
-    {
-        return $this->id;
-    }
 
     public function getIdProduit(): ?int
     {
