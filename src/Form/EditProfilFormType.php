@@ -23,7 +23,6 @@ class EditProfilFormType extends AbstractType
                 [
                     'data' => '',
                     'attr' => ['placeholder' => 'Password'],
-                    //'required' => false
                 ])
             ->add('name',
                 TextType::class,

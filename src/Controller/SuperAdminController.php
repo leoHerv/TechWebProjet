@@ -22,21 +22,25 @@ class SuperAdminController extends AbstractController
     #[Route('/addAdmin', name: 'super_admin_addAdmin')]
     public function addAdminAction(EntityManagerInterface $em , Request $request): Response
     {
-        $user = new User();
-        $user->setRoles(['ROLE_ADMIN']);
-        $user->setStatus(true);
+        $admin = new User();
+        $admin->setRoles(['ROLE_ADMIN']);
+        $admin->setStatus(true);
 
-        $form = $this->createForm(AdminCreatorFormType::class , $user);
+        $form = $this->createForm(AdminCreatorFormType::class , $admin);
         $form->add('send',SubmitType::class, ['label'=> 'Create Admin']);
         $form->handleRequest($request);
 
-        if($form->isSubmitted()) {
-            $em->persist($user);
+        if($form->isSubmitted() && $form->isValid())
+        {
+            $em->persist($admin);
             $em->flush();
+
+            $this->addFlash('info', 'Le nouvelle admin a bien été crée !');
+            return $this->render('MainTemplate/Anonyme/Accueil.html.twig');
         }
 
         $args = array(
-            'addAdmin' => $form->createView(),
+            'form' => $form->createView(),
         );
 
         return $this->render('MainTemplate/SuperAdmin/addAdmin.html.twig',$args);

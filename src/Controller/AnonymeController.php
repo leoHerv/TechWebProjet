@@ -39,6 +39,8 @@ class AnonymeController extends AbstractController
             $user->setPassword($passwordHasher->hashPassword($user, $user->getPassword()));
             $em->persist($user);
             $em->flush();
+
+            $this->addFlash('info', 'Votre compte a bien été crée !');
             return $this->render('MainTemplate/Anonyme/Accueil.html.twig');
         }
 
