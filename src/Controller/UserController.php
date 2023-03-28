@@ -43,9 +43,4 @@ class UserController extends AbstractController
         return $this->render('MainTemplate/User/panier.html.twig');
     }
 
-    #[Route('/listProduct', name: 'user_listProduct')]
-    public function listProductAction(): Response
-    {
-        return $this->render('MainTemplate/User/listProduct.html.twig');
-    }
 }
