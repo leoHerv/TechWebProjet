@@ -16,7 +16,7 @@ class UserFixtures extends Fixture
     {
         $this->passwordHasher = $passwordHasher;
     }
-    function addUser($em ,$login , $roles , $password , $name , $first_name, $mail , $birthdate)
+    function addUser($em ,$login , $roles , $password , $name , $first_name, $mail , $birthDate)
     {
         $user = new User();
         $hashedPassword = $this->passwordHasher->hashPassword($user, $password);
@@ -26,8 +26,8 @@ class UserFixtures extends Fixture
             ->setRoles($roles)
             ->setName($name)
             ->setFirstName($first_name)
-            ->setBirthDate($birthdate)
-            ->setMail($mail);
+            ->setMail($mail)
+            ->setBirthDate($birthDate);
 
         $em->persist($user);
     }
@@ -35,7 +35,6 @@ class UserFixtures extends Fixture
     {
 
         $date = new DateTime('now');
-        $date = $date->format('Y-m-d');
 
         //Sadmin
         $roles = ['ROLE_SUPER_ADMIN'];

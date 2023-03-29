@@ -3,6 +3,7 @@
 namespace App\Entity;
 
 use App\Repository\UserRepository;
+use Doctrine\DBAL\Types\Types;
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Component\Security\Core\User\PasswordAuthenticatedUserInterface;
 use Symfony\Component\Security\Core\User\UserInterface;
@@ -57,10 +58,8 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
     #[ORM\Column(length: 255)]
     private ?string $mail = null;
 
-    #[ORM\Column]
-    #[Assert\Date]
-    private ?string $birthDate;
-
+    #[ORM\Column(type: Types::DATE_MUTABLE)]
+    private ?\DateTimeInterface $birthDate = null;
 
     /*
     #[ORM\OneToOne(mappedBy: 'user', cascade: ['persist', 'remove'])]
@@ -76,7 +75,6 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
     {
         return $this->login;
     }
-
 
     public function setLogin(string $login): self
     {
@@ -172,20 +170,6 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
         return $this;
     }
 
-    public function getBirthDate(): ?string
-    {
-            return $this->birthDate;
-    }
-
-    public function setBirthDate(string $birthDate): self
-    {
-        $this->birthDate = $birthDate;
-
-        return $this;
-    }
-
-
-
     public function getBag(): ?Bag
     {
         return $this->bag;
@@ -210,4 +194,15 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
     }
 */
 
+    public function getBirthDate(): ?\DateTimeInterface
+    {
+        return $this->birthDate;
+    }
+
+    public function setBirthDate(\DateTimeInterface $birthDate): self
+    {
+        $this->birthDate = $birthDate;
+
+        return $this;
+    }
 }
