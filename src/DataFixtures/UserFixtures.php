@@ -36,6 +36,7 @@ class UserFixtures extends Fixture
     {
 
         $date = new DateTime('now');
+        $date = $date->format('Y-m-d');
 
         //Sadmin
         $roles = ['ROLE_SUPER_ADMIN'];

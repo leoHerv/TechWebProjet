@@ -49,8 +49,8 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
     private ?string $mail = null;
 
     #[ORM\Column]
-    #[Assert\DateTime]
-    private ?\DateTime $birthDate = null;
+    #[Assert\Date]
+    private ?string $birthDate;
 
     #[ORM\Column]
     private ?bool $status = null;
@@ -167,10 +167,10 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
 
     public function getBirthDate(): ?string
     {
-        return $this->birthDate->format('d/m/Y');
+            return $this->birthDate;
     }
 
-    public function setBirthDate(\DateTime $birthDate): self
+    public function setBirthDate(string $birthDate): self
     {
         $this->birthDate = $birthDate;
 
