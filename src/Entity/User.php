@@ -7,7 +7,7 @@ use Doctrine\ORM\Mapping as ORM;
 use Symfony\Component\Security\Core\User\PasswordAuthenticatedUserInterface;
 use Symfony\Component\Security\Core\User\UserInterface;
 use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
-//use Symfony\Component\Validator\Constraints as Assert;
+use Symfony\Component\Validator\Constraints as Assert;
 
 #[ORM\Table(name:'i23_users')]
 #[ORM\Entity(repositoryClass: UserRepository::class)]
@@ -48,8 +48,9 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
     #[ORM\Column(length: 255)]
     private ?string $mail = null;
 
-    #[ORM\Column(length: 20)]
-    private ?string $birthDate = null;
+    #[ORM\Column]
+    #[Assert\DateTime]
+    private ?\DateTime $birthDate = null;
 
     #[ORM\Column]
     private ?bool $status = null;
@@ -166,10 +167,10 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
 
     public function getBirthDate(): ?string
     {
-        return $this->birthDate;
+        return $this->birthDate->format('d/m/Y');
     }
 
-    public function setBirthDate(string $birthDate): self
+    public function setBirthDate(\DateTime $birthDate): self
     {
         $this->birthDate = $birthDate;
 

@@ -30,7 +30,7 @@ class AdminController extends AbstractController
             $em->flush();
 
             $this->addFlash('info', 'Le produit a bien été crée !');
-            return $this->render('MainTemplate/Anonyme/Accueil.html.twig');
+            return $this->render('MainTemplate/Anonyme/accueil.html.twig');
         }
 
         $args = array(

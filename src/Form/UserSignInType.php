@@ -4,6 +4,7 @@ namespace App\Form;
 
 use App\Entity\User;
 use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
+use Symfony\Component\Form\Extension\Core\Type\DateType;
 use Symfony\Component\Form\Extension\Core\Type\IntegerType;
 use Symfony\Component\Form\Extension\Core\Type\NumberType;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
@@ -43,9 +44,9 @@ class UserSignInType extends AbstractType
                     'attr' => ['placeholder' => 'Mail']
                 ])
             ->add('birthDate',
-                TextType::class,
+                DateType::class,
                 [
-                    'attr' => ['placeholder' => 'Birth Date : 01/01/2000']
+                    'widget' => 'choice',
                 ])
         ;
     }
