@@ -1,13 +1,37 @@
 {% extends 'Base/base.html.twig' %}
 
+{% block css %}
+    {{ parent() }}
+    <link rel="stylesheet" href="{{ asset('css/User/listProduct.css') }}" />
+{% endblock %}
 
 {% block body %}
 
     <div class="product">
-        <a href="/product/citrus"><img src="{{ asset('/Images/citrus.png') }}" alt="citrus">Citrus</a>
-        <a href="/product/redFruits"><img src="{{ asset('/Images/redFruits.png') }}" alt="redFruits">Red Fruits</a>
-        <a href="/product/exotic"><img src="{{ asset('/Images/exotic.png') }}" alt="exotic">Exotic Fruits</a>
-        <a href="/product/autres"><img src="{{ asset('/Images/autres.png') }}" alt="autres">Autres</a>
+        <div class="blockProduct">
+            <a href="/product/citrus">
+                <img src="{{ asset('/Images/citrus.png') }}" alt="Citrus Fruits page">
+            </a>
+            <a href="/product/citrus">Citrus Fruits</a>
+        </div>
+        <div class="blockProduct">
+            <a href="/product/redFruits">
+                <img src="{{ asset('/Images/redFruits.png') }}" alt="Red Fruits page">
+            </a>
+            <a href="/product/redFruits">Red Fruits</a>
+        </div>
+        <div class="blockProduct">
+            <a href="/product/exotic">
+                <img src="{{ asset('/Images/exotic.png') }}" alt="Exotic Fruits page">
+            </a>
+            <a href="/product/exotic">Exotic Fruits</a>
+        </div>
+        <div class="blockProduct">
+            <a href="/product/others">
+                <img src="{{ asset('/Images/others.png') }}" alt="Others Fruits page">
+            </a>
+            <a href="/product/others">Others</a>
+        </div>
     </div>
 
 {% endblock %}

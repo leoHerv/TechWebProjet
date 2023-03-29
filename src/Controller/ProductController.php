@@ -33,7 +33,7 @@ class ProductController extends AbstractController
         return $this->render('MainTemplate/Product/redFruits.html.twig');
     }
 
-    #[Route('/autres', name: '_autres')]
+    #[Route('/others', name: '_others')]
     public function autresAction(): Response
     {
         return $this->render('MainTemplate/Product/others.html.twig');

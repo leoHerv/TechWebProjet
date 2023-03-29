@@ -1,3 +1,13 @@
 .product{
+    flex-flow: row wrap;
+    display: flex;
+}
+
+.blockProduct{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-flow: column;
+    width: 50%;
 
 }
