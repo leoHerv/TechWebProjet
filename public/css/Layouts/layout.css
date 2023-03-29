@@ -42,12 +42,11 @@ html, body{
 /*le milieu de la page*/
 #body{
     background: #FAFFFA;
-    /*flex-grow : 1;*/
     width: 60%;
     height: 100%;
     overflow:auto;
 }
-/*
+/* Pour ne pas avoir la scroll bar quand on scroll(notament pour editUsers)
 // Hide scrollbar for Chrome, Safari and Opera
 #body::-webkit-scrollbar {
     display: none;
