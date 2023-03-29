@@ -1,6 +1,8 @@
 .product{
     flex-flow: row wrap;
     display: flex;
+    width: 100%;
+    height: 100%;
 }
 
 .blockProduct{
@@ -9,5 +11,52 @@
     align-items: center;
     flex-flow: column;
     width: 50%;
-
+    height: 49%;
 }
+
+.blockProduct:hover{
+    box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    -webkit-box-sizing: border-box;
+    border: 2px solid black;
+    border-radius: 5px;
+}
+.back{
+    background-repeat: no-repeat;
+    background-position: center;
+    transition: background-size 500ms ease-in-out;
+    background-size: 70%;
+    width: 100%;
+    height: 100%;
+}
+.back:hover{
+    /*
+    transition-delay: 250ms;
+    background-size: 80%;*/
+    /*
+    -webkit-transition: background-image 0.2s ease-in-out;
+    transition: background-image 0.2s ease-in-out;*/
+    transition: background-size 500ms ease-in;
+    background-size: 80%;
+}
+
+.citrus{
+    background-image: url("../../Images/citrus.png");
+}
+
+.redFruits{
+    background-image: url("../../Images/redFruits.png");
+}
+
+.exotic{
+    background-image: url("../../Images/exotic.png");
+}
+
+.others{
+    background-image: url("../../Images/others.png");
+}
+
+.pProduct {
+    color: #064005;
+}
+

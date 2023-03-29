@@ -5,22 +5,27 @@ header{
 }
 
 #title{
+    display: inline-block;
     font-family: 'Inter', serif;
     font-style: normal;
     font-weight: 700;
     /*font-size: 64px;*/
     font-size: calc(2vw + 3vh);
     line-height: 77px;
-    display: flex;
+    /*display: flex;*/
     align-items: center;
 
+    transition: color 1500ms ease;
     color: #FFFFFF;
     margin-top: 1%;
     margin-left: 1%;
 
-    /* met le titre avec 3 couleurs (rouge, orange, jaune)
-    background: linear-gradient(to right, red 0.1%, yellow 10%, yellow 60%);
+    /* met le titre avec 3 couleurs (rouge, orange, jaune)*/
+    background: linear-gradient(to right, red 10%, yellow 90%, yellow 100%);
     -webkit-background-clip: text;
+}
+
+#title:hover{
+    transition: color 1500ms ease;
     color: transparent;
-    */
 }

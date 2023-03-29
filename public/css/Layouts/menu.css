@@ -16,3 +16,11 @@
     align-items: center;
     margin: 0 2% 0 2%;
 }
+
+.linkMenu, .linkMenu:visited{
+    color: #FFEA2D;
+}
+
+.linkMenu:hover{
+    color: #FFFFFF;
+}

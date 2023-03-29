@@ -8,30 +8,52 @@
 {% block body %}
 
     <div class="product">
+        {#
         <div class="blockProduct">
             <a href="/product/citrus">
-                <img src="{{ asset('/Images/citrus.png') }}" alt="Citrus Fruits page">
+                <img class="img" src="{{ asset('/Images/citrus.png') }}" alt="Citrus Fruits page">
             </a>
-            <a href="/product/citrus">Citrus Fruits</a>
+            <a class="linkProduct" href="/product/citrus">Citrus Fruits</a>
         </div>
         <div class="blockProduct">
             <a href="/product/redFruits">
-                <img src="{{ asset('/Images/redFruits.png') }}" alt="Red Fruits page">
+                <img class="img" src="{{ asset('/Images/redFruits.png') }}" alt="Red Fruits page">
             </a>
-            <a href="/product/redFruits">Red Fruits</a>
+            <a class="linkProduct" href="/product/redFruits">Red Fruits</a>
         </div>
         <div class="blockProduct">
             <a href="/product/exotic">
-                <img src="{{ asset('/Images/exotic.png') }}" alt="Exotic Fruits page">
+                <img class="img" src="{{ asset('/Images/exotic.png') }}" alt="Exotic Fruits page">
             </a>
-            <a href="/product/exotic">Exotic Fruits</a>
+            <a class="linkProduct" href="/product/exotic">Exotic Fruits</a>
         </div>
         <div class="blockProduct">
-            <a href="/product/others">
-                <img src="{{ asset('/Images/others.png') }}" alt="Others Fruits page">
-            </a>
-            <a href="/product/others">Others</a>
+
+                <img class="img" src="{{ asset('/Images/others.png') }}" alt="Others Fruits page">
+
+            <a class="linkProduct" href="/product/others">Others</a>
         </div>
+         #}
+
+        <a class="blockProduct" href="/product/citrus">
+            <div class="back citrus"></div>
+            <p class="pProduct">Citrus Fruits</p>
+        </a>
+
+        <a class="blockProduct" href="/product/redFruits">
+            <div class="back redFruits"></div>
+            <p class="pProduct">Red Fruits</p>
+        </a>
+
+        <a class="blockProduct" href="/product/exotic">
+            <div class="back exotic"></div>
+            <p class="pProduct">Exotic Fruits</p>
+        </a>
+
+        <a class="blockProduct" href="/product/others">
+            <div class="back others"></div>
+            <p class="pProduct">Others Fruits</p>
+        </a>
     </div>
 
 {% endblock %}

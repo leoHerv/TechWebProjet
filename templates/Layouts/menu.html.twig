@@ -1,41 +1,41 @@
 {# menu de l'application #}
 
-<div class="menu"><a href="/">Accueil</a></div>
+<div class="menu"><a class="linkMenu" href="/">Accueil</a></div>
 
 {# Si l'utilisateur est authentifier#}
 {% if isAuth %}
 
-    <div class="menu"><a href="/edit">Edit Profile</a></div>
+    <div class="menu"><a class="linkMenu" href="/edit">Edit Profile</a></div>
 
     {% if not isSuperAdmin %}
 
-        <div class="menu"><a href="/panier">Panier</a></div>
-        <div class="menu"><a href="/product">Products</a></div>
+        <div class="menu"><a class="linkMenu" href="/panier">Panier</a></div>
+        <div class="menu"><a class="linkMenu" href="/product">Products</a></div>
 
     {% endif %}
 
     {% if isAdmin and not isSuperAdmin %}
 
-        <div class="menu"><a href="/editUsers">Edit Users</a></div>
-        <div class="menu"><a href="/addProduct">Add Products</a></div>
-        <div class="menu"><a href="https://fr.wikipedia.org/wiki/The_Truman_Show" target="_blank" rel="noopener noreferrer">The Truman Show</a></div>
+        <div class="menu"><a class="linkMenu" href="/editUsers">Edit Users</a></div>
+        <div class="menu"><a class="linkMenu" href="/addProduct">Add Products</a></div>
+        <div class="menu"><a class="linkMenu" href="https://fr.wikipedia.org/wiki/The_Truman_Show" target="_blank" rel="noopener noreferrer">The Truman Show</a></div>
 
     {% endif %}
 
     {% if not isAdmin and isSuperAdmin %}
 
-        <div class="menu"><a href="/addAdmin">Add Admin</a></div>
+        <div class="menu"><a class="linkMenu" href="/addAdmin">Add Admin</a></div>
     {% endif %}
 
-    <div class="menu"><a href="/logout">Deconnection</a></div>
+    <div class="menu"><a class="linkMenu" href="/logout">Deconnection</a></div>
 
 {% endif %}
 
 {# Si il n'y a pas d'authentification de l'utilisateur #}
 {% if not isAuth %}
 
-    <div class="menu"><a href="/login">Login</a></div>
-    <div class="menu"><a href="/signIn">SignIn</a></div>
+    <div class="menu"><a class="linkMenu" href="/login">Login</a></div>
+    <div class="menu"><a class="linkMenu" href="/signIn">SignIn</a></div>
 
 {% endif %}
 
