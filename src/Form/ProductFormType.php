@@ -4,6 +4,7 @@ namespace App\Form;
 
 use App\Entity\Produit;
 use Symfony\Component\Form\AbstractType;
+use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
 use Symfony\Component\Form\Extension\Core\Type\IntegerType;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\Form\FormBuilderInterface;
@@ -24,13 +25,19 @@ class ProductFormType extends AbstractType
                 [
                     'attr' => ['placeholder' => 'Price']
                 ])
-            /*
+
             ->add('categorie',
-                TextType::class,
+                ChoiceType::class,
                 [
-                    'attr' => ['placeholder' => 'Category']
+                    'choices' => [
+                                  'Category' => 'other',
+                                  'Citrus' => 'citrus',
+                                  'RedFruits' => 'redFruits',
+                                  'Exotic' => 'exotic',
+                                  'Other' => 'other',
+                        ],
                 ])
-            */
+
             ->add('quantity',
                 IntegerType::class,
                 [
