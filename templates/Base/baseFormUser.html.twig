@@ -1,6 +1,11 @@
 {# template intermédiaire (niveau 2)#}
 {% extends 'Base/baseForm.html.twig' %}
 
+{% block css %}
+    {{ parent() }}
+    <link rel="stylesheet" href="{{ asset('css/User/userForm.css') }}" />
+{% endblock %}
+
 {% block body %}
     <div class="form">
 
@@ -18,8 +23,10 @@
         {{ form_errors(form.firstName, {'attr': {'class': 'errorForm'}}) }}
         {{ form_widget(form.mail) }}
         {{ form_errors(form.mail, {'attr': {'class': 'errorForm'}}) }}
-        <div>
+        <div class="birth">
+            <div id="springLeft"></div>
             {{ form_label(form.birthDate) }}
+            <div id="springRight"></div>
             {{ form_widget(form.birthDate) }}
         </div>
         {{ form_errors(form.birthDate, {'attr': {'class': 'errorForm'}}) }}
