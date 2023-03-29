@@ -30,6 +30,15 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
     #[ORM\Column(length: 180, unique: true)]
     private ?string $login = null;
 
+    #[ORM\OneToOne(
+        inversedBy: 'user', targetEntity: Bag::class, cascade: ['persist' , 'remove']
+    )]
+    #[ORM\JoinColumn(
+        name : 'id_bag',referencedColumnName: 'id',nullable: true,
+    )]
+    private ?Bag $bag = null;
+
+
     #[ORM\Column]
     private array $roles = ['ROLE_NOROLE'];
 
@@ -176,12 +185,13 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
     }
 
 
-    /*
+
     public function getBag(): ?Bag
     {
         return $this->bag;
     }
 
+    /*
     public function setBag(?Bag $bag): self
     {
         // unset the owning side of the relation if necessary
