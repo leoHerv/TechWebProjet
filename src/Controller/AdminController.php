@@ -18,7 +18,6 @@ class AdminController extends AbstractController
     public function addProductAction(EntityManagerInterface $em , Request $request): Response
     {
         $product = new Produit();
-        /*$product->setCategorie('waitACategory');*/
 
         $form = $this->createForm(ProductFormType::class , $product);
         $form->add('send',SubmitType::class, ['label'=> 'Create Product']);
