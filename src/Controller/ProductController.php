@@ -12,7 +12,7 @@ class ProductController extends AbstractController
     #[Route('/' , name: '_index')]
     public function indexAction() : Response
     {
-        return $this->render('MainTemplate/Product/index.html.twig');
+        return $this->render('MainTemplate/User/listProduct.html.twig');
     }
 
     #[Route('/citrus', name: '_citrus')]
@@ -36,7 +36,7 @@ class ProductController extends AbstractController
     #[Route('/autres', name: '_autres')]
     public function autresAction(): Response
     {
-        return $this->render('MainTemplate/Product/autres.html.twig');
+        return $this->render('MainTemplate/Product/others.html.twig');
     }
 
 
