@@ -1,0 +1,32 @@
+{# template intermédiaire (niveau 2)#}
+{% extends 'Base/baseForm.html.twig' %}
+
+{% block body %}
+    <div class="form">
+
+        {{ form_start(form, {'attr': {'class': 'divForm'}}) }}
+
+        <h3>{% block formTitle %}{% endblock %}</h3>
+
+        {{ form_widget(form.login) }}
+        {{ form_errors(form.login, {'attr': {'class': 'errorForm'}}) }}
+        {{ form_widget(form.password) }}
+        {{ form_errors(form.password, {'attr': {'class': 'errorForm'}}) }}
+        {{ form_widget(form.name) }}
+        {{ form_errors(form.name, {'attr': {'class': 'errorForm'}}) }}
+        {{ form_widget(form.firstName) }}
+        {{ form_errors(form.firstName, {'attr': {'class': 'errorForm'}}) }}
+        {{ form_widget(form.mail) }}
+        {{ form_errors(form.mail, {'attr': {'class': 'errorForm'}}) }}
+        <div>
+            {{ form_label(form.birthDate) }}
+            {{ form_widget(form.birthDate) }}
+        </div>
+        {{ form_errors(form.birthDate, {'attr': {'class': 'errorForm'}}) }}
+        {{ form_row(form._token) }}
+
+        <button type="submit" id="users_form_send" name="users_form[send]">{% block formSubmit %}{% endblock %}</button>
+
+    </div>
+{% endblock %}
+

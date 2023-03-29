@@ -4,11 +4,12 @@ namespace App\Form;
 
 use App\Entity\User;
 use Symfony\Component\Form\AbstractType;
+use Symfony\Component\Form\Extension\Core\Type\DateType;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 
-class AdminCreatorFormType extends AbstractType
+class UsersFormType extends AbstractType
 {
     public function buildForm(FormBuilderInterface $builder, array $options): void
     {
@@ -39,9 +40,11 @@ class AdminCreatorFormType extends AbstractType
                     'attr' => ['placeholder' => 'Mail']
                 ])
             ->add('birthDate',
-                TextType::class,
+                DateType::class,
                 [
-                    'attr' => ['placeholder' => 'Birth Date : 01/01/2000']
+                    'widget' => 'choice',
+                    'years' => range(1900, date("Y")),
+                    'label' => 'Birth date:',
                 ])
         ;
     }

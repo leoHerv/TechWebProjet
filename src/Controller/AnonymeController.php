@@ -3,7 +3,7 @@
 namespace App\Controller;
 
 use App\Entity\User;
-use App\Form\UserSignInType;
+use App\Form\UsersFormType;
 use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\Form\Extension\Core\Type\SubmitType;
@@ -29,7 +29,7 @@ class AnonymeController extends AbstractController
 
         $user->setRoles(['ROLE_USER']);
 
-        $form = $this->createForm(UserSignInType::class, $user);
+        $form = $this->createForm(UsersFormType::class, $user);
         $form->add('send', SubmitType::class, ['label' => 'Sign In']);
         $form->handleRequest($request);
 

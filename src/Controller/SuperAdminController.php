@@ -3,7 +3,7 @@
 namespace App\Controller;
 
 use App\Entity\User;
-use App\Form\AdminCreatorFormType;
+use App\Form\UsersFormType;
 use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\Form\Extension\Core\Type\SubmitType;
@@ -21,7 +21,7 @@ class SuperAdminController extends AbstractController
         $admin->setRoles(['ROLE_ADMIN']);
 
 
-        $form = $this->createForm(AdminCreatorFormType::class , $admin);
+        $form = $this->createForm(UsersFormType::class , $admin);
         $form->add('send',SubmitType::class, ['label'=> 'Create Admin']);
         $form->handleRequest($request);
 
