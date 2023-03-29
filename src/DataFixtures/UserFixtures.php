@@ -47,7 +47,7 @@ class UserFixtures extends Fixture
 
         //Mazen
         $roles = ['ROLE_ADMIN'];
-        $this->addUser($em,'Mazen',$roles,'nezam','AlNat','Mazen','mazen@mazen',$date,'true');
+        $this->addUser($em,'Mazen',$roles,'nezam','AlNat','Mazen','mazen@mazen',$date);
 
         //Rita
         $roles =['ROLE_USER'];
