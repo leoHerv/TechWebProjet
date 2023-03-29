@@ -30,11 +30,10 @@ class ProductFormType extends AbstractType
                 ChoiceType::class,
                 [
                     'choices' => [
-                                  'Category' => 'other',
+                                  'Other' => 'other',
                                   'Citrus' => 'citrus',
                                   'RedFruits' => 'redFruits',
                                   'Exotic' => 'exotic',
-                                  'Other' => 'other',
                         ],
                 ])
 
