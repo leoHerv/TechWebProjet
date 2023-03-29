@@ -16,7 +16,7 @@ class UserFixtures extends Fixture
     {
         $this->passwordHasher = $passwordHasher;
     }
-    function addUser($em ,$login , $roles , $password , $name , $first_name, $mail , $birthdate, $status)
+    function addUser($em ,$login , $roles , $password , $name , $first_name, $mail , $birthdate)
     {
         $user = new User();
         $hashedPassword = $this->passwordHasher->hashPassword($user, $password);
@@ -27,8 +27,7 @@ class UserFixtures extends Fixture
             ->setName($name)
             ->setFirstName($first_name)
             ->setBirthDate($birthdate)
-            ->setMail($mail)
-            ->setStatus($status);
+            ->setMail($mail);
 
         $em->persist($user);
     }
@@ -40,19 +39,19 @@ class UserFixtures extends Fixture
 
         //Sadmin
         $roles = ['ROLE_SUPER_ADMIN'];
-        $this->addUser($em,'sadmin',$roles,'nimdas','sadmin','nimdas','sadmin@nimdas',$date,'false');
+        $this->addUser($em,'sadmin',$roles,'nimdas','sadmin','nimdas','sadmin@nimdas',$date);
 
         //Gilles
         $roles = ['ROLE_ADMIN'];
-        $this->addUser($em,'gilles',$roles,'sellig','gilles','sellig','gilles@sellig',$date,'true');
+        $this->addUser($em,'gilles',$roles,'sellig','gilles','sellig','gilles@sellig',$date);
 
         //Rita
         $roles =['ROLE_USER'];
-        $this->addUser($em,'rita',$roles,'atir','rita','atir','rita@atir',$date,'false');
+        $this->addUser($em,'rita',$roles,'atir','rita','atir','rita@atir',$date);
 
         //simon
         //$roles = ['ROLE_USER'];
-        $this->addUser($em,'simon',$roles,'nomis','simon','nomis','simon@nomis',$date,'false');
+        $this->addUser($em,'simon',$roles,'nomis','simon','nomis','simon@nomis',$date);
 
         $em->flush();
     }

@@ -19,7 +19,7 @@ class SuperAdminController extends AbstractController
     {
         $admin = new User();
         $admin->setRoles(['ROLE_ADMIN']);
-        $admin->setStatus(true);
+
 
         $form = $this->createForm(AdminCreatorFormType::class , $admin);
         $form->add('send',SubmitType::class, ['label'=> 'Create Admin']);

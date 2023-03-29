@@ -52,8 +52,6 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
     #[Assert\Date]
     private ?string $birthDate;
 
-    #[ORM\Column]
-    private ?bool $status = null;
 
     /*
     #[ORM\OneToOne(mappedBy: 'user', cascade: ['persist', 'remove'])]
@@ -177,17 +175,6 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
         return $this;
     }
 
-    public function getStatus(): ?bool
-    {
-        return $this->status;
-    }
-
-    public function setStatus(bool $status): self
-    {
-        $this->status = $status;
-
-        return $this;
-    }
 
     /*
     public function getBag(): ?Bag

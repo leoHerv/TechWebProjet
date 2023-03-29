@@ -28,7 +28,6 @@ class AnonymeController extends AbstractController
         $user = new User();
 
         $user->setRoles(['ROLE_USER']);
-        $user->setStatus(false);
 
         $form = $this->createForm(UserSignInType::class, $user);
         $form->add('send', SubmitType::class, ['label' => 'Sign In']);
