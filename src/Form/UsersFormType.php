@@ -17,27 +17,27 @@ class UsersFormType extends AbstractType
             ->add('login',
                 TextType::class,
                 [
-                    'attr' => ['placeholder' => 'Login']
+                    'attr' => ['placeholder' => 'Login'],
                 ])
             ->add('password',
                 TextType::class,
                 [
-                    'attr' => ['placeholder' => 'Password']
+                    'attr' => ['placeholder' => 'Password'],
                 ])
             ->add('name',
                 TextType::class,
                 [
-                    'attr' => ['placeholder' => 'Last Name']
+                    'attr' => ['placeholder' => 'Last Name'],
                 ])
             ->add('firstName',
                 TextType::class,
                 [
-                    'attr' => ['placeholder' => 'First Name']
+                    'attr' => ['placeholder' => 'First Name'],
                 ])
             ->add('mail',
                 TextType::class,
                 [
-                    'attr' => ['placeholder' => 'Mail']
+                    'attr' => ['placeholder' => 'Mail'],
                 ])
             ->add('birthDate',
                 DateType::class,
