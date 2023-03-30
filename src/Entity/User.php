@@ -29,7 +29,9 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
 
 
     #[ORM\Column(length: 180, unique: true)]
-    #[Assert\NotBlank]
+    #[Assert\NotBlank(
+        message: 'The login is empty.',
+    )]
     private ?string $login = null;
 
     #[ORM\OneToOne(
@@ -48,23 +50,31 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
      * @var string The hashed password
      */
     #[ORM\Column]
-    #[Assert\NotBlank]
+    #[Assert\NotBlank(
+        message: 'The password is empty.',
+    )]
     private ?string $password = null;
 
     #[ORM\Column(length: 200)]
-    #[Assert\NotBlank]
+    #[Assert\NotBlank(
+        message: 'The Last name is empty.',
+    )]
     private ?string $name = null;
 
     #[ORM\Column(length: 200)]
-    #[Assert\NotBlank]
+    #[Assert\NotBlank(
+        message: 'The First name is empty.',
+    )]
     private ?string $firstName = null;
 
     #[ORM\Column(length: 255)]
-    #[Assert\NotBlank]
+    #[Assert\NotBlank(
+        message: 'The mail is empty.',
+    )]
     private ?string $mail = null;
 
     #[ORM\Column(type: Types::DATE_MUTABLE)]
-    #[Assert\Date]
+    #[Assert\Type("\DateTimeInterface")]
     private ?\DateTimeInterface $birthDate = null;
 
     /*
@@ -82,7 +92,7 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
         return $this->login;
     }
 
-    public function setLogin(string $login): self
+    public function setLogin(string $login = null): self
     {
         $this->login = $login;
 
@@ -124,7 +134,7 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
         return $this->password;
     }
 
-    public function setPassword(string $password): self
+    public function setPassword(string $password = null): self
     {
         $this->password = $password;
 
@@ -145,7 +155,7 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
         return $this->name;
     }
 
-    public function setName(string $name): self
+    public function setName(string $name = null): self
     {
         $this->name = $name;
 
@@ -157,7 +167,7 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
         return $this->firstName;
     }
 
-    public function setFirstName(string $firstName): self
+    public function setFirstName(string $firstName = null): self
     {
         $this->firstName = $firstName;
 
@@ -169,7 +179,7 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
         return $this->mail;
     }
 
-    public function setMail(string $mail): self
+    public function setMail(string $mail = null): self
     {
         $this->mail = $mail;
 
