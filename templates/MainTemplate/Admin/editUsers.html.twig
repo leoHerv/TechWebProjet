@@ -17,13 +17,13 @@
 
             <form action="/suppUser/{{ user.id }}">
                 <ul>
-                    <li><strong>Login:</strong> {{ user.login }} </li>
-                    <li><strong>Password:</strong> {{ user.password }} </li>
-                    <li><strong>Last Name:</strong> {{ user.name }} </li>
-                    <li><strong>First Name:</strong> {{ user.firstName }} </li>
-                    <li><strong>Mail:</strong> {{ user.mail }} </li>
-                    <li><strong>Birth Date:</strong> {{ user.birthDate }} </li>
-                    <li><strong>Type :</strong>
+                    <li><strong>Login: </strong> {{ user.login }} </li>
+                    <li><strong>Password: </strong> {{ user.password }} </li>
+                    <li><strong>Last Name: </strong> {{ user.name }} </li>
+                    <li><strong>First Name: </strong> {{ user.firstName }} </li>
+                    <li><strong>Mail: </strong> {{ user.mail }} </li>
+                    <li><strong>Birth Date: </strong> {{ user.birthDate }} </li>
+                    <li><strong>Type: </strong>
                     {% if ('ROLE_SUPER_ADMIN' in user.roles) %}
                         Super Admin
                     {% elseif('ROLE_ADMIN' in user.roles) %}
@@ -42,8 +42,6 @@
                     {% endif %}
                 </ul>
             </form>
-
-
 
         {% endfor %}
 

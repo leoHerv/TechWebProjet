@@ -6,6 +6,7 @@ use App\Entity\Produit;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\Extension\Core\Type\ChoiceType;
 use Symfony\Component\Form\Extension\Core\Type\IntegerType;
+use Symfony\Component\Form\Extension\Core\Type\NumberType;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
@@ -21,11 +22,15 @@ class ProductFormType extends AbstractType
                     'attr' => ['placeholder' => 'Name']
                 ])
             ->add('prix',
-                IntegerType::class,
+                NumberType::class,
                 [
                     'attr' => ['placeholder' => 'Price']
                 ])
-
+            ->add('quantity',
+        IntegerType::class,
+                [
+                    'attr' => ['placeholder' => 'Quantity']
+                ])
             ->add('categorie',
                 ChoiceType::class,
                 [
@@ -35,12 +40,6 @@ class ProductFormType extends AbstractType
                                   'RedFruits' => 'redFruits',
                                   'Exotic' => 'exotic',
                         ],
-                ])
-
-            ->add('quantity',
-                IntegerType::class,
-                [
-                    'attr' => ['placeholder' => 'Quantity']
                 ])
             //->add('img')
         ;

@@ -29,6 +29,7 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
 
 
     #[ORM\Column(length: 180, unique: true)]
+    #[Assert\NotBlank]
     private ?string $login = null;
 
     #[ORM\OneToOne(
@@ -47,18 +48,23 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
      * @var string The hashed password
      */
     #[ORM\Column]
+    #[Assert\NotBlank]
     private ?string $password = null;
 
     #[ORM\Column(length: 200)]
+    #[Assert\NotBlank]
     private ?string $name = null;
 
     #[ORM\Column(length: 200)]
+    #[Assert\NotBlank]
     private ?string $firstName = null;
 
     #[ORM\Column(length: 255)]
+    #[Assert\NotBlank]
     private ?string $mail = null;
 
     #[ORM\Column(type: Types::DATE_MUTABLE)]
+    #[Assert\Date]
     private ?\DateTimeInterface $birthDate = null;
 
     /*

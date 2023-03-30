@@ -35,6 +35,9 @@ class Produit
     private ?float $prix = null;
 
     #[ORM\Column(length: 60, nullable: true)]
+    #[Assert\ExpressionSyntax(
+        allowedVariables: ['other', 'citrus', 'redFruits', 'exotic'],
+    )]
     private ?string $categorie = null;
 
     #[ORM\Column]
