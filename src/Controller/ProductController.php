@@ -2,8 +2,11 @@
 
 namespace App\Controller;
 
+use App\Entity\LineProduct;
 use App\Entity\Produit;
+use App\Entity\Bag;
 use Doctrine\ORM\EntityManagerInterface;
+use Symfony\Component\HttpFoundation\Request;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
@@ -54,5 +57,63 @@ class ProductController extends AbstractController
         return $this->render('MainTemplate/Product/afficheProducts.html.twig',$args);
     }
 
+
+    #[Route(
+        '/addproductinbag/{idproduct}',
+        name: '_addproductinbag',
+        requirements: ['idproduct' => '[1-9]\d*'])]
+    public function suppUserAction(int $idproduct,Request $request, EntityManagerInterface $em): Response
+    {
+        $currentUser = $this->getUser();
+
+        $productRepository = $em->getRepository(Produit::class);
+
+        $product_to_add = $productRepository->find($idproduct);
+
+        $quantity = $request->query->get('quantity');
+
+        if(!empty($product_to_add))
+        {
+            if($product_to_add->getQuantity() >= $quantity) {
+                if ($currentUser->getBag() == null) {
+                    $bag = new Bag();
+                    $bag
+                        ->setPrice(0)
+                        ->setQuantity(0);
+
+                    $em->persist($bag);
+
+                    $currentUser->setBag($bag);
+                }
+
+                $newLineBag = new LineProduct();
+                $newLineBag
+                    ->setQuantity($quantity)
+                    ->setIdBag($currentUser->getBag())
+                    ->setIdProduits($product_to_add)
+                    ->setPrice($product_to_add->getPrix() * $quantity);
+
+                $em->persist($newLineBag);
+
+                $product_to_add->setQuantity($product_to_add->getQuantity() - $quantity);
+
+                $currentUser->getBag()->setPrice($currentUser->getBag()->getPrice()+$newLineBag->getPrice());
+                $currentUser->getBag()->setQuantity($currentUser->getBag()->getQuantity()+1);
+
+                $em->flush();
+                $this->addFlash('info', 'The product has been added to your Bag');
+            }
+            else
+                {
+                    $this->addFlash('info', 'Error Quantity');
+                }
+        }
+        else
+            {
+                $this->addFlash('info', 'Sorry we do not have this Product');
+            }
+
+        return $this->redirectToRoute('user_panier');
+    }
 
 }

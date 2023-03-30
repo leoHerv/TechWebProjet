@@ -60,12 +60,12 @@ class Produit
     }
 
 
-    public function getIdProduit(): ?int
+    public function getId(): ?int
     {
         return $this->id;
     }
 
-    public function setIdProduit(int $id_produit): self
+    public function setId(int $id_produit): self
     {
         $this->id = $id_produit;
 
