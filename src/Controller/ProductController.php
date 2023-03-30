@@ -2,6 +2,8 @@
 
 namespace App\Controller;
 
+use App\Entity\Produit;
+use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
@@ -16,30 +18,41 @@ class ProductController extends AbstractController
     }
 
     #[Route('/citrus', name: '_citrus')]
-    public function agrumesAction(): Response
+    public function citrusAction(EntityManagerInterface $em): Response
     {
-        return $this->render('MainTemplate/Product/citrus.html.twig');
+        return $this->afficheProductAction($em,"citrus");
     }
 
     #[Route('/exotic', name: '_exotic')]
-    public function exoticAction(): Response
+    public function exoticAction(EntityManagerInterface $em): Response
     {
-        return $this->render('MainTemplate/Product/exotic.html.twig');
+        return $this->afficheProductAction($em,"exotic");
     }
 
     #[Route('/redFruits', name: '_redFruits')]
-    public function redFruitsAction(): Response
+    public function redFruitsAction(EntityManagerInterface $em): Response
     {
-        return $this->render('MainTemplate/Product/redFruits.html.twig');
+        return $this->afficheProductAction($em,"redFruits");
     }
 
     #[Route('/others', name: '_others')]
-    public function autresAction(): Response
+    public function othersAction(EntityManagerInterface $em): Response
     {
-        return $this->render('MainTemplate/Product/others.html.twig');
+        return $this->afficheProductAction($em,"other");
     }
 
+    public function afficheProductAction(EntityManagerInterface $em , string $string ) : Response
+    {
+        $productRep = $em->getRepository(Produit::class);
+        $products = $productRep->findBy(array('categorie'=>$string));
 
+        $args =  array(
+            'categorie'=>$string,
+            'products'=>$products
+        );
+
+        return $this->render('MainTemplate/Product/afficheProducts.html.twig',$args);
+    }
 
 
 }

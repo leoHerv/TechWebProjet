@@ -191,7 +191,7 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
         return $this->bag;
     }
 
-    /*
+
     public function setBag(?Bag $bag): self
     {
         // unset the owning side of the relation if necessary
@@ -208,7 +208,6 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
 
         return $this;
     }
-*/
 
     public function getBirthDate(): ?\DateTimeInterface
     {

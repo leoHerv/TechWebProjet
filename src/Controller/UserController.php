@@ -2,6 +2,7 @@
 
 namespace App\Controller;
 
+use App\Entity\Bag;
 use App\Form\EditProfilFormType;
 use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Component\HttpFoundation\Request;
@@ -38,9 +39,27 @@ class UserController extends AbstractController
     }
 
     #[Route('/panier', name: 'user_panier')]
-    public function panierAction(): Response
+    public function panierAction(EntityManagerInterface $em): Response
     {
-        return $this->render('MainTemplate/User/panier.html.twig');
+        $user = $this->getUser();
+
+        $bag = $user->getBag();
+        if ($bag == null)
+        {
+            $bag = new Bag();
+            $bag
+                ->setQuantity(0)
+                ->setPrice(0);
+            $em->persist($bag);
+
+            $user->setBag($bag);
+        }
+
+        $args = array(
+            'panier' => $bag
+        );
+
+        return $this->render('MainTemplate/User/panier.html.twig',$args);
     }
 
 }
