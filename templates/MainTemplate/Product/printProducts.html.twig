@@ -1,0 +1,48 @@
+{% extends 'Base/base.html.twig' %}
+
+{% block css %}
+    {{ parent() }}
+    <link rel="stylesheet" href="{{ asset('css/Product/printProducts.css') }}" />
+{% endblock %}
+
+{% block body %}
+
+    <p class="titleProduct">{{ categorie }}</p>
+
+    <div class="productForm">
+        <p class="productField nameAndPrice textS">Name</p>
+        <p class="productField nameAndPrice textS">Price</p>
+        <div class="selectAndButton">
+            <p class="textS">Select quantity</p>
+        </div>
+        <div class="selectAndButton">
+            <p class="textS">Send to bag</p>
+        </div>
+    </div>
+
+    {% for product in products %}
+
+        <form class="productForm" action="/product/addProductInBag/{{ product.id }}">
+
+            <p class="productField nameAndPrice textS">{{ product.nom }}</p>
+            <p class="productField nameAndPrice textS">{{ product.prix }}</p>
+            <div class="selectAndButton">
+                <select name="quantity" class="selectQ">
+
+                    {% for i in 0..product.quantity %}
+
+                        <option value="{{ i }}">{{ i }}</option>
+
+                    {% endfor %}
+
+                </select>
+            </div>
+            <div class="selectAndButton">
+                <button type="submit">Add</button>
+            </div>
+
+        </form>
+
+    {% endfor %}
+
+{% endblock %}

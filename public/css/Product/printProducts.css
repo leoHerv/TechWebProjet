@@ -1,0 +1,63 @@
+.productForm{
+    background: #D9D9D9;
+    display: flex;
+    height: 8%;
+    padding: 0.5%;
+    margin: 2%;
+    align-items: center;
+    border-radius: 5px;
+}
+
+.productField{
+    padding: 0 2% 0 2%;
+}
+
+.nameAndPrice{
+    width: 25%
+}
+
+.textS{
+    font-size: calc(0.8vw + 1vh);
+}
+
+.selectQ{
+    /*width: 60px;*/
+    width: 8vw;
+    /*height: 25px;*/
+    height: 4vh;
+    border: 1px solid #999;
+    font-size: 16px;
+    background-color: #eee;
+    border-radius: 5px;
+    box-shadow: 4px 4px #ccc;
+
+}
+
+.selectAndButton{
+    width: 25%;
+    display: flex;
+    align-items: center;
+}
+
+button{
+    background-color: #064005;
+    border: none;
+
+    color: white;
+    /*padding: 10px 30px;*/
+    padding: 4% 15%;
+    margin: 5%;
+    text-decoration: none;
+    cursor: pointer;
+    border-radius: 5px;
+}
+
+.titleProduct{
+    display: flex;
+    justify-content: center;
+    padding: 2%;
+
+    font-size: calc(1.5vw + 2vh);
+    line-height: 77px;
+    font-weight: 700;
+}

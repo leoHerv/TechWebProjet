@@ -23,52 +23,52 @@ class ProductController extends AbstractController
     #[Route('/citrus', name: '_citrus')]
     public function citrusAction(EntityManagerInterface $em): Response
     {
-        return $this->afficheProductAction($em,"citrus");
+        return $this->afficheProductAction($em,"citrus", "Citrus Fruits");
     }
 
     #[Route('/exotic', name: '_exotic')]
     public function exoticAction(EntityManagerInterface $em): Response
     {
-        return $this->afficheProductAction($em,"exotic");
+        return $this->afficheProductAction($em,"exotic", "Exotic Fruits");
     }
 
     #[Route('/redFruits', name: '_redFruits')]
     public function redFruitsAction(EntityManagerInterface $em): Response
     {
-        return $this->afficheProductAction($em,"redFruits");
+        return $this->afficheProductAction($em,"redFruits", "Red Fruits");
     }
 
     #[Route('/others', name: '_others')]
     public function othersAction(EntityManagerInterface $em): Response
     {
-        return $this->afficheProductAction($em,"other");
+        return $this->afficheProductAction($em,"other", "Others Fruits");
     }
 
-    public function afficheProductAction(EntityManagerInterface $em , string $string ) : Response
+    public function afficheProductAction(EntityManagerInterface $em , string $string, string $name) : Response
     {
         $productRep = $em->getRepository(Produit::class);
-        $products = $productRep->findBy(array('categorie'=>$string));
+        $products = $productRep->findBy(array('categorie'=> $string));
 
         $args =  array(
-            'categorie'=>$string,
-            'products'=>$products
+            'categorie' => $name,
+            'products' => $products
         );
 
-        return $this->render('MainTemplate/Product/afficheProducts.html.twig',$args);
+        return $this->render('MainTemplate/Product/printProducts.html.twig',$args);
     }
 
 
     #[Route(
-        '/addproductinbag/{idproduct}',
-        name: '_addproductinbag',
-        requirements: ['idproduct' => '[1-9]\d*'])]
-    public function suppUserAction(int $idproduct,Request $request, EntityManagerInterface $em): Response
+        '/addProductInBag/{idProduct}',
+        name: '_addProductInBag',
+        requirements: ['idProduct' => '[1-9]\d*'])]
+    public function suppUserAction(int $idProduct, Request $request, EntityManagerInterface $em): Response
     {
         $currentUser = $this->getUser();
 
         $productRepository = $em->getRepository(Produit::class);
 
-        $product_to_add = $productRepository->find($idproduct);
+        $product_to_add = $productRepository->find($idProduct);
 
         $quantity = $request->query->get('quantity');
 
