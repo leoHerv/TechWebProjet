@@ -91,7 +91,7 @@ class ProductController extends AbstractController
                     ->setQuantity($quantity)
                     ->setIdBag($currentUser->getBag())
                     ->setIdProduits($product_to_add)
-                    ->setPrice($product_to_add->getPrix() * $quantity);
+                    ->setPrice($product_to_add->getPrix() * (float)$quantity);
 
                 $em->persist($newLineBag);
 
