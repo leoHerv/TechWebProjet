@@ -28,7 +28,7 @@ class Bag
     private ?int $quantity = null;
 
     #[ORM\Column]
-    private ?int $price = 0;
+    private ?float $price = 0.0;
 
     #[ORM\OneToMany(mappedBy: 'id_bag', targetEntity: LineProduct::class, orphanRemoval: true)]
     private Collection $id_LineProducts;
@@ -72,7 +72,7 @@ class Bag
         return $this;
     }
 
-    public function getPrice() : ?int
+    public function getPrice() : ?float
     {
         return $this->price;
     }
