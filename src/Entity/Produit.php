@@ -36,7 +36,9 @@ class Produit
 
     #[ORM\Column(length: 60, nullable: true)]
     #[Assert\ExpressionSyntax(
+        message: 'You selected a wrong category.',
         allowedVariables: ['other', 'citrus', 'redFruits', 'exotic'],
+
     )]
     private ?string $categorie = null;
 

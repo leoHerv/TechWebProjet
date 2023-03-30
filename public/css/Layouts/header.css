@@ -13,20 +13,19 @@ header{
     /*display: flex;*/
     align-items: center;
 
-    transition: color 1500ms ease;
+    transition: color 3500ms ease;
+
     color: #FFFFFF;
     margin-top: 1%;
     margin-left: 1%;
 
-    background: #FFFFFF;
-    -webkit-background-clip: text;
     /* met le titre avec 3 couleurs (rouge, orange, jaune)*/
+    background: linear-gradient(to right, red 10%, yellow 90%, yellow 100%);
+    -webkit-background-clip: text;
 
 }
 
 #title:hover{
     transition: color 1500ms ease;
     color: transparent;
-    background: linear-gradient(to right, red 10%, yellow 90%, yellow 100%);
-    -webkit-background-clip: text;
 }
