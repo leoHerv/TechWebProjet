@@ -49,8 +49,6 @@ class AdminController extends AbstractController
             'currentUser' => $this->getUser()
         );
 
-        dump($users);
-
         return $this->render('MainTemplate/Admin/editUsers.html.twig', $args);
     }
 
@@ -87,5 +85,16 @@ class AdminController extends AbstractController
         }
 
         return $this->redirectToRoute('super_admin_editUsers');
+    }
+
+    public function stringDateAction($date): Response
+    {
+        $res = date_format($date, "d/m/Y");
+
+        $args = array(
+          'string' => $res
+        );
+
+        return $this->render('Layouts/printString.html.twig', $args);
     }
 }
