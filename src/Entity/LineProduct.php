@@ -15,7 +15,10 @@ class LineProduct
     private ?int $id = null;
 
     #[ORM\ManyToOne(targetEntity: Bag::class, inversedBy: 'id_LineProducts')]
-    #[ORM\JoinColumn(nullable: false)]
+    #[ORM\JoinColumn(
+        name : "id_bag",
+        referencedColumnName : "id",
+        nullable: false)]
     private ?Bag $id_bag = null;
 
     #[ORM\ManyToOne(targetEntity: Produit::class, inversedBy: 'lineProducts')]
