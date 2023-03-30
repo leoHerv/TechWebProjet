@@ -38,28 +38,55 @@ class UserController extends AbstractController
         return $this->render('MainTemplate/User/editProfil.html.twig',$args);
     }
 
+    public function getUserBag(EntityManagerInterface $em): ?Bag
+    {
+        // On recupère l'utilisateur et son panier.
+        $user = $this->getUser();
+        // Si l'utilisateur existe.
+        if(!empty($user))
+        {
+            $bag = $user->getBag();
+            // Si son panier est vide, on en crée un.
+            if ($bag == null)
+            {
+                $bag = new Bag();
+                $bag
+                    ->setQuantity(0)
+                    ->setPrice(0);
+                $em->persist($bag);
+
+                $user->setBag($bag);
+            }
+            return $bag;
+        }
+        return null;
+    }
+
     #[Route('/panier', name: 'user_panier')]
     public function panierAction(EntityManagerInterface $em): Response
     {
-        $user = $this->getUser();
-
-        $bag = $user->getBag();
-        if ($bag == null)
-        {
-            $bag = new Bag();
-            $bag
-                ->setQuantity(0)
-                ->setPrice(0);
-            $em->persist($bag);
-
-            $user->setBag($bag);
-        }
-
         $args = array(
-            'panier' => $bag
+            'panier' => $this->getUserBag($em)
         );
 
         return $this->render('MainTemplate/User/panier.html.twig',$args);
+    }
+
+    public function getSizePanierAction(EntityManagerInterface $em): Response
+    {
+        $bag = $this->getUserBag($em);
+
+        $quantity = null;
+        if(!empty($bag))
+        {
+            $quantity = $bag->getQuantity();
+        }
+
+        $args = array(
+            'sizePanier' => $quantity,
+        );
+
+        return $this->render('Layouts/sizePanier.html.twig', $args);
     }
 
 }

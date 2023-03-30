@@ -1,5 +1,8 @@
 {# entête du site #}
 
-<p><a id="title" href="/">Fruits.io</a></p>
+<div id="topHeader">
+    <p><a id="title" href="/">Fruits.io</a></p>
 
+    {{ render(controller('App\\Controller\\UserController::getSizePanierAction')) }}
 
+</div>

@@ -29,3 +29,15 @@ header{
     transition: color 1500ms ease;
     color: transparent;
 }
+
+#topHeader{
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+}
+
+#itemBag{
+    color: #FFFFFF;
+    font-size: calc(0.8vw + 1.2vh);
+    padding: 1%;
+}
