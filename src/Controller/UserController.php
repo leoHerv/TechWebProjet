@@ -29,7 +29,7 @@ class UserController extends AbstractController
             $em->flush();
 
             $this->addFlash('info', 'Modification réussite !');
-            return $this->render('MainTemplate/Anonyme/accueil.html.twig');
+            return $this->render('MainTemplate/Anonyme/Accueil.html.twig');
         }
         $args = array(
             'form' => $form->createView(),

@@ -17,7 +17,7 @@ class AnonymeController extends AbstractController
     #[Route('/', name: 'anonyme_accueil')]
     public function accueilAction(): Response
     {
-        return $this->render('MainTemplate/Anonyme/accueil.html.twig');
+        return $this->render('MainTemplate/Anonyme/Accueil.html.twig');
     }
 
     // Gestion du login et logout par le SecurityController

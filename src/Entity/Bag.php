@@ -8,7 +8,7 @@ use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
 
 
-#[ORM\Table(name :'i23_bag')]
+#[ORM\Table(name :'i23_bags')]
 #[ORM\Entity(repositoryClass: BagRepository::class)]
 class Bag
 {
@@ -27,9 +27,15 @@ class Bag
     #[ORM\Column]
     private ?int $quantity = null;
 
+    #[ORM\Column]
+    private ?int $price = 0;
+
+    #[ORM\OneToMany(mappedBy: 'id_bag', targetEntity: LineProduct::class, orphanRemoval: true)]
+    private Collection $id_LineProducts;
+
     public function __construct()
     {
-        $this->products = new ArrayCollection();
+        $this->id_LineProducts = new ArrayCollection();
     }
 
     public function getId(): ?int
@@ -53,27 +59,7 @@ class Bag
     /**
      * @return Collection<int, Produit>
      */
-    public function getProducts(): Collection
-    {
-        return $this->products;
-    }
-  /*
-    public function addProduct(Produit $product): self
-    {
-        if (!$this->products->contains($product)) {
-            $this->products->add($product);
-        }
 
-        return $this;
-    }
-
-    public function removeProduct(Produit $product): self
-    {
-        $this->products->removeElement($product);
-
-        return $this;
-    }
-*/
     public function getQuantity(): ?int
     {
         return $this->quantity;
@@ -82,6 +68,47 @@ class Bag
     public function setQuantity(int $quantity): self
     {
         $this->quantity = $quantity;
+
+        return $this;
+    }
+
+    public function getPrice() : ?int
+    {
+        return $this->price;
+    }
+
+    public function setPrice(int $price) : self
+    {
+        $this->price = $price;
+        return $this;
+    }
+
+    /**
+     * @return Collection<int, LineProduct>
+     */
+    public function getIdLineProducts(): Collection
+    {
+        return $this->id_LineProducts;
+    }
+
+    public function addIdLineProduct(LineProduct $idLineProduct): self
+    {
+        if (!$this->id_LineProducts->contains($idLineProduct)) {
+            $this->id_LineProducts->add($idLineProduct);
+            $idLineProduct->setIdBag($this);
+        }
+
+        return $this;
+    }
+
+    public function removeIdLineProduct(LineProduct $idLineProduct): self
+    {
+        if ($this->id_LineProducts->removeElement($idLineProduct)) {
+            // set the owning side to null (unless already changed)
+            if ($idLineProduct->getIdBag() === $this) {
+                $idLineProduct->setIdBag(null);
+            }
+        }
 
         return $this;
     }

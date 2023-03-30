@@ -3,6 +3,8 @@
 namespace App\Entity;
 
 use App\Repository\ProduitsRepository;
+use Doctrine\Common\Collections\ArrayCollection;
+use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
 use Symfony\Component\Validator\Constraints as Assert;
@@ -18,7 +20,7 @@ class Produit
     #[ORM\Id]
     #[ORM\GeneratedValue]
     #[ORM\Column]
-    private ?int $id_produit = null;
+    private ?int $id = null;
 
     #[ORM\Column(length: 70)]
     #[Assert\NotNull]
@@ -46,14 +48,23 @@ class Produit
     #[ORM\Column(length: 255, nullable: true)]
     private ?string $img = null;
 
+    #[ORM\OneToMany(mappedBy: 'id_products', targetEntity: LineProduct::class, orphanRemoval: true)]
+    private Collection $lineProducts;
+
+    public function __construct()
+    {
+        $this->lineProducts = new ArrayCollection();
+    }
+
+
     public function getIdProduit(): ?int
     {
-        return $this->id_produit;
+        return $this->id;
     }
 
     public function setIdProduit(int $id_produit): self
     {
-        $this->id_produit = $id_produit;
+        $this->id = $id_produit;
 
         return $this;
     }
@@ -117,4 +128,35 @@ class Produit
 
         return $this;
     }
+
+    /**
+     * @return Collection<int, LineProduct>
+     */
+    public function getLineProducts(): Collection
+    {
+        return $this->lineProducts;
+    }
+
+    public function addLineProduct(LineProduct $lineProduct): self
+    {
+        if (!$this->lineProducts->contains($lineProduct)) {
+            $this->lineProducts->add($lineProduct);
+            $lineProduct->setIdProduits($this);
+        }
+
+        return $this;
+    }
+
+    public function removeLineProduct(LineProduct $lineProduct): self
+    {
+        if ($this->lineProducts->removeElement($lineProduct)) {
+            // set the owning side to null (unless already changed)
+            if ($lineProduct->getIdProduits() === $this) {
+                $lineProduct->setIdProduits(null);
+            }
+        }
+
+        return $this;
+    }
+
 }
