@@ -32,7 +32,7 @@ class LineProduct
     private ?int $quantity = null;
 
 
-    public function getId(): ?int
+    public function getid(): ?int
     {
         return $this->id;
     }

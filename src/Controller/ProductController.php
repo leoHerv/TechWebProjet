@@ -122,68 +122,52 @@ class ProductController extends AbstractController
     }
 
     #[Route(
-        '/removeProductFromBag/{idProduct}',
+        '/removeProductFromBag/{idlineproduct}',
         name: '_removeProductFromBag',
         requirements: ['idProduct' => '[1-9]\d*'])]
-    public function removeProductFromBagAction(int $idProduct, Request $request, EntityManagerInterface $em): Response
+    public function removeProductFromBagAction(int $idlineproduct, Request $request, EntityManagerInterface $em): Response
     {
-        /*
+
         $currentUser = $this->getUser();
+
+        $bag = $currentUser->getBag();
 
         $productRepository = $em->getRepository(Produit::class);
 
-        $product_to_rem = $productRepository->find($idProduct);
+        $lineProductRepository = $em->getRepository(LineProduct::class);
+
+        $product_to_rem = $lineProductRepository->find($idlineproduct);
+
+        $product = $productRepository->find($product_to_rem->getid_product());
 
         $quantity = $request->query->get('quantity');
 
-        if($quantity == 0)
+        if($quantity > $product_to_rem->getQuantity() || $quantity < 0)
         {
-            return $this->redirectToRoute('product_index');
+            return $this->redirectToRoute('user_panier');
         }
 
-        if(!empty($product_to_add))
-        {
-            if($product_to_add->getQuantity() >= $quantity) {
-                if ($currentUser->getBag() == null) {
-                    $bag = new Bag();
-                    $bag
-                        ->setPrice(0)
-                        ->setQuantity(0);
+        if(!empty($product_to_rem)) {
 
-                    $em->persist($bag);
-
-                    $currentUser->setBag($bag);
-                }
-
-                $newLineBag = new LineProduct();
-                $newLineBag
-                    ->setQuantity($quantity)
-                    ->setIdBag($currentUser->getBag())
-                    ->setIdProduits($product_to_add)
-                    ->setPrice($product_to_add->getPrix() * (float)$quantity);
-
-                $em->persist($newLineBag);
-
-                $product_to_add->setQuantity($product_to_add->getQuantity() - $quantity);
-
-                $currentUser->getBag()->setPrice($currentUser->getBag()->getPrice()+$newLineBag->getPrice());
-                $currentUser->getBag()->setQuantity($currentUser->getBag()->getQuantity()+1);
-
-                $em->flush();
-                $this->addFlash('info', 'The product has been added to your Bag');
+            if ($quantity != $product_to_rem->getQuantity()) {
+                $product_to_rem->setQuantity($product_to_rem->getQuantity() - $quantity);
+                $product_to_rem->setPrice($product_to_rem->getQuantity() * $product->getPrix());
             }
             else
             {
-                $this->addFlash('info', 'Error Quantity');
+                $bag->setQuantity($bag->getQuantity()-1);
+                $em->remove($product_to_rem);
             }
+
+            $product->setQuantity($product->getQuantity() + $quantity);
+            $bag->setPrice($bag->getPrice() - ($product->getPrix() * $quantity));
+            $em->flush();
         }
-        else
-        {
-            $this->addFlash('info', 'Sorry we do not have this Product');
-        }
-        $em->remove($userToSupp);
-        */
+
         return $this->redirectToRoute('user_panier');
+
     }
+
+
 
 }
