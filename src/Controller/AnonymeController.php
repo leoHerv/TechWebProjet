@@ -74,4 +74,18 @@ class AnonymeController extends AbstractController
         return $this->render('Layouts/menu.html.twig', $args);
     }
 
+    public function imgUserAction(): Response
+    {
+        $userRoles = $this->getUser();
+        if (!empty($userRoles))
+        {
+            $userRoles = $userRoles->getRoles();
+        }
+        $args = array(
+            'userRoles' => $userRoles,
+        );
+
+        return $this->render('Layouts/imgUser.html.twig', $args);
+    }
+
 }
