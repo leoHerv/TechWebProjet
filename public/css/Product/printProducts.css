@@ -33,6 +33,7 @@
 .selectAndButton{
     width: 20%;
     display: flex;
+    justify-content: center;
     align-items: center;
 }
 
@@ -73,4 +74,16 @@ button{
     padding: 0 1% 0 1%;
     justify-content: center;
     align-items: center;
+}
+
+.orderButton{
+    background-color: #b01c16;
+}
+
+.orderDiv{
+
+}
+
+.total{
+    width : 40%;
 }

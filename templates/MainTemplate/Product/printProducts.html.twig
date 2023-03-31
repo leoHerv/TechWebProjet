@@ -25,38 +25,40 @@
 
     {% for product in products %}
 
-        <form class="productForm" action="/product/addProductInBag/{{ product.id }}">
+        {% if product.quantity > 0 %}
+            <form class="productForm" action="/product/addProductInBag/{{ product.id }}">
 
-            {% if product.img is not empty %}
+                {% if product.img is not empty %}
 
-                {% set pathImg =  "Images/fruitsImg/" ~ product.img %}
-                <div class="divImg"><img class="imgProduct" alt="{{ product.nom }}" src="{{ asset(pathImg) }}"/></div>
+                    {% set pathImg =  "Images/fruitsImg/" ~ product.img %}
+                    <div class="divImg"><img class="imgProduct" alt="{{ product.nom }}" src="{{ asset(pathImg) }}"/></div>
 
-            {% else  %}
+                {% else  %}
 
-                <div class="divImg"><img class="imgProduct" alt="Default image" src="{{ asset('Images/defaultImage.png')}}"/></div>
+                    <div class="divImg"><img class="imgProduct" alt="Default image" src="{{ asset('Images/defaultImage.png')}}"/></div>
 
-            {% endif %}
-            <p class="nameAndPrice textS">{{ product.nom }}</p>
-            <p class="nameAndPrice textS">{{ product.prix }}</p>
-            <div class="selectAndButton">
-                <label>
-                    <select name="quantity" class="selectQ">
+                {% endif %}
+                <p class="nameAndPrice textS">{{ product.nom }}</p>
+                <p class="nameAndPrice textS">{{ product.prix }}€</p>
+                <div class="selectAndButton">
+                    <label>
+                        <select name="quantity" class="selectQ">
 
-                        {% for i in 0..product.quantity %}
+                            {% for i in 0..product.quantity %}
 
-                            <option value="{{ i }}">{{ i }}</option>
+                                <option value="{{ i }}">{{ i }}</option>
 
-                        {% endfor %}
+                            {% endfor %}
 
-                    </select>
-                </label>
-            </div>
-            <div class="selectAndButton">
-                <button type="submit">Add</button>
-            </div>
+                        </select>
+                    </label>
+                </div>
+                <div class="selectAndButton">
+                    <button type="submit">Add</button>
+                </div>
 
-        </form>
+            </form>
+        {% endif %}
 
     {% endfor %}
 
