@@ -46,12 +46,20 @@ class ProductController extends AbstractController
 
     public function afficheProductAction(EntityManagerInterface $em , string $string, string $name) : Response
     {
+
+        $user = $this->getUser();
+        $bag =$user->getBag();
+
         $productRep = $em->getRepository(Produit::class);
         $products = $productRep->findBy(array('categorie'=> $string));
 
+        $lineproducts = $em->getRepository(LineProduct::class);
+        $lineproduct = $lineproducts->findBy(['id_bag'=>$bag]);
+
         $args =  array(
             'categorie' => $name,
-            'products' => $products
+            'products' => $products,
+            'lineproduct' =>$lineproducts
         );
 
         return $this->render('MainTemplate/Product/printProducts.html.twig',$args);
@@ -71,6 +79,10 @@ class ProductController extends AbstractController
         $product_to_add = $productRepository->find($idProduct);
 
         $quantity = $request->query->get('quantity');
+        $quantity_to_remove = $request->query->get('quantity_to_remove');
+
+
+
 
         if($quantity == 0)
         {
@@ -104,6 +116,29 @@ class ProductController extends AbstractController
 
                 $currentUser->getBag()->setPrice($currentUser->getBag()->getPrice()+$newLineBag->getPrice());
                 $currentUser->getBag()->setQuantity($currentUser->getBag()->getQuantity()+1);
+
+                $lineproducts = $em->getRepository(LineProduct::class);
+                $lineproduct = $lineproducts->findBy(['id_bag'=>$bag , 'id_products_id'=>$product_to_add]);
+                if(!empty($lineproduct))
+                {
+                    if($quantity_to_remove == $lineproduct->getQuantity())
+                    {
+                        $product_to_add->setQuantity($product_to_add->getQuantity()+$quantity_to_remove);
+                        $em->remove($lineproduct);
+                    }
+                    else
+                    {
+                        if($quantity_to_remove < $lineproduct->getQuantity())
+                        {
+                            $product_to_add->setQuantity($product_to_add->getQuantity()+$quantity_to_remove);
+                        }
+                        else
+                        {
+                            return $this->redirectToRoute('user_panier');
+                        }
+
+                    }
+                }
 
                 $em->flush();
                 $this->addFlash('info', 'The product has been added to your Bag');

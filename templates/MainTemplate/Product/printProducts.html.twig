@@ -34,11 +34,19 @@
                         <option value="{{ i }}">{{ i }}</option>
 
                     {% endfor %}
+                </select>
+                <select name="quantity_to_remove" class="selectQ">
+
+                        {% for i in 0..product.quantity %}
+
+                            <option value="{{ i }}">{{ i }}</option>
+
+                        {% endfor %}
 
                 </select>
             </div>
             <div class="selectAndButton">
-                <button type="submit">Add</button>
+                <button type="submit">remove</button>
             </div>
 
         </form>
