@@ -49,14 +49,14 @@ class LineProduct
         return $this;
     }
 
-    public function getIdProduits(): ?Produit
+    public function getid_product(): ?Produit
     {
         return $this->id_products;
     }
 
-    public function setIdProduits(?Produit $id_Produits): self
+    public function setIdProduits(?Produit $id_Products): self
     {
-        $this->id_products = $id_Produits;
+        $this->id_products = $id_Products;
 
         return $this;
     }

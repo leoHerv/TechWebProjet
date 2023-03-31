@@ -86,7 +86,7 @@ class Bag
     /**
      * @return Collection<int, LineProduct>
      */
-    public function getIdLineProducts(): Collection
+    public function getid_LineProducts(): Collection
     {
         return $this->id_LineProducts;
     }
