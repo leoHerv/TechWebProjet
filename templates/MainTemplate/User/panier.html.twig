@@ -15,9 +15,6 @@
         <p class="productField nameAndPrice textS">Price</p>
         <p class="productField quantityInBag">InBag</p>
         <div class="selectAndButton">
-            <p class="textS">Select quantity</p>
-        </div>
-        <div class="selectAndButton">
             <p class="textS">RemoveFromBag</p>
         </div>
     </div>
@@ -29,19 +26,6 @@
     <p class="productField nameAndPrice textS">{{ lineproduct.id_product.nom }}</p>
     <p class="productField nameAndPrice textS">{{ lineproduct.price }}</p>
     <p class="productField quantityInBag">{{ lineproduct.quantity }}</p>
-    <div class="selectAndButton">
-        <label>
-            <select name="quantity" class="selectQ">
-
-                {% for i in 0..lineproduct.quantity %}
-
-                    <option value="{{ i }}">{{ i }}</option>
-
-                {% endfor %}
-
-            </select>
-        </label>
-    </div>
     <div class="selectAndButton">
         <button type="submit">Remove</button>
     </div>
