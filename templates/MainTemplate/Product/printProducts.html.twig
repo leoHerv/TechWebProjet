@@ -41,6 +41,28 @@
                 <p class="nameAndPrice textS">{{ product.nom }}</p>
                 <p class="nameAndPrice textS">{{ product.prix }}€</p>
                 <div class="selectAndButton">
+                    <button type="submit">Remove</button>
+                </div>
+                <div class="selectAndButton">
+                    <label>
+                        <select name="quantity_to_remove" class="selectQ">
+
+                            {% for lineproduct in lineproducts %}
+                                {% if lineproduct.id_product.id == product.id %}
+                                    {% for i in 0..lineproduct.quantity %}
+                                        <option value="{{ i }}">{{ i }}</option>
+                                    {% endfor %}
+                                {% else %}
+                                    <option value="0">0</option>
+                                {% endif %}
+                            {% endfor %}
+                        </select>
+                    </label>
+                </div>
+
+
+
+                <div class="selectAndButton">
                     <label>
                         <select name="quantity" class="selectQ">
 

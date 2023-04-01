@@ -23,7 +23,7 @@ class LineProduct
 
     #[ORM\ManyToOne(targetEntity: Produit::class, inversedBy: 'lineProducts')]
     #[ORM\JoinColumn(name : "id_product",nullable: false)]
-    private ?Produit $id_products = null;
+    private ?Produit $id_product = null;
 
     #[ORM\Column]
     private ?float $price = null;
@@ -51,12 +51,12 @@ class LineProduct
 
     public function getid_product(): ?Produit
     {
-        return $this->id_products;
+        return $this->id_product;
     }
 
     public function setIdProduits(?Produit $id_Products): self
     {
-        $this->id_products = $id_Products;
+        $this->id_product = $id_Products;
 
         return $this;
     }

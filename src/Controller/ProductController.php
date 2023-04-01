@@ -53,9 +53,11 @@ class ProductController extends AbstractController
         $productRep = $em->getRepository(Produit::class);
         $products = $productRep->findBy(array('categorie' => $string));
 
-        $lineproducts = $em->getRepository(LineProduct::class);
-        $lineproduct = $lineproducts->findBy(['id_bag' => $bag]);
+        $lineproducts = null;
 
+        if(!empty($bag)) {
+            $lineproducts = $bag->getId_LineProducts();
+        }
         $args = array(
             'categorie' => $name,
             'products' => $products,
@@ -82,7 +84,7 @@ class ProductController extends AbstractController
         $quantity_to_remove = $request->query->get('quantity_to_remove');
 
 
-        if ($quantity == 0) {
+        if ($quantity == 0 && $quantity_to_remove ==0) {
             return $this->redirectToRoute('product_index');
         }
 
@@ -128,15 +130,18 @@ class ProductController extends AbstractController
                 }
                 $product_to_add->setQuantity($product_to_add->getQuantity() - $quantity);
                 $lineproducts = $bag->getid_LineProducts();
-                if (!empty($lineproducts))
+                $bag = $currentUser->getBag();
+                if (!empty($lineproducts) && $quantity_to_remove!=0)
                 {
                     foreach ($lineproducts as $lineproduct)
                     {
-                        if($lineproduct == $product_to_add)
+                        if($lineproduct->getid_product()->getid() == $product_to_add->getid())
                         {
                             if($quantity_to_remove == $lineproduct->getQuantity())
                             {
                                 $product_to_add->setQuantity($product_to_add->getQuantity() + $quantity_to_remove);
+                                $bag->setPrice($bag->getPrice()-($product_to_add->getPrix()*$quantity_to_remove));
+                                $bag->setQuantity($bag->getQuantity()-1);
                                 $em->remove($lineproduct);
                             }
                             else
