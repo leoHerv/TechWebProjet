@@ -3,6 +3,11 @@
 <div id="topHeader">
     <p><a id="title" href="/">Fruits.io</a></p>
 
-    {{ render(controller('App\\Controller\\UserController::getSizePanierAction')) }}
+    <div class="rightHeader">
 
+        {{ render(controller('App\\Controller\\UserController::getSizePanierAction')) }}
+
+        {{ render(controller('App\\Controller\\AnonymeController::imgUserAction')) }}
+
+    </div>
 </div>

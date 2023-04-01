@@ -8,12 +8,9 @@
     border-radius: 5px;
 }
 
-.productField{
-    padding: 0 2% 0 2%;
-}
-
 .nameAndPrice{
-    width: 25%
+    padding: 0 2% 0 2%;
+    width: 20%
 }
 
 .textS{
@@ -34,8 +31,9 @@
 }
 
 .selectAndButton{
-    width: 25%;
+    width: 20%;
     display: flex;
+    justify-content: center;
     align-items: center;
 }
 
@@ -60,4 +58,32 @@ button{
     font-size: calc(1.5vw + 2vh);
     line-height: 77px;
     font-weight: 700;
+}
+
+.imgProduct{
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+    object-position: center;
+}
+
+.divImg{
+    display: flex;
+    width: 20%;
+    height: 90%;
+    padding: 0 1% 0 1%;
+    justify-content: center;
+    align-items: center;
+}
+
+.orderButton{
+    background-color: #b01c16;
+}
+
+.orderDiv{
+
+}
+
+.total{
+    width : 40%;
 }

@@ -1,0 +1,19 @@
+{# affichage pour l'image correspondant à l'utilisateur #}
+
+{% if userRoles is empty %}
+    {% set role = 'Anonyme' %}
+{% elseif 'ROLE_USER' in userRoles %}
+    {% set role = 'User' %}
+{% elseif 'ROLE_ADMIN' in userRoles %}
+    {% set role = 'Admin' %}
+{% elseif 'ROLE_SUPER_ADMIN' in userRoles %}
+    {% set role = 'SuperAdmin' %}
+{% else %}
+    {% set role = 'Anonyme' %}
+{% endif %}
+
+<div class="divImg">
+
+    <img class="headerImg" alt="User" src="{{ asset('Images/UserType/' ~ role ~ '.png') }}"/>
+
+</div>

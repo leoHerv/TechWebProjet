@@ -2,35 +2,55 @@
 
 {% block css %}
     {{ parent() }}
-    <link rel="stylesheet" href="{{ asset('css/Product/printBag.css') }}" />
+    <link rel="stylesheet" href="{{ asset('css/Product/printProducts.css') }}" />
 {% endblock %}
 
 {% block body %}
-    <div id="accueilTitle">
-        <p id="titleP">Panier</p>
-    </div>
+
+    <p class="titleProduct">Panier</p>
 
     <div class="productForm">
+        <div class="divImg">
+            <p class="textS">Image</p>
+        </div>
         <p class="productField nameAndPrice textS">Name</p>
         <p class="productField nameAndPrice textS">Price</p>
-        <p class="productField quantityInBag">InBag</p>
+        <p class="productField nameAndPrice textS">InBag</p>
         <div class="selectAndButton">
-            <p class="textS">RemoveFromBag</p>
+            <p class="textS">Total remove</p>
         </div>
     </div>
 
-{% for lineproduct in panier.id_LineProducts %}
+    {% for lineProduct in panier.id_LineProducts %}
 
-<form class="productForm" action="/product/removeProductFromBag/{{ lineproduct.id }}">
+        <form class="productForm" action="/product/removeProductFromBag/{{ lineProduct.id }}">
 
-    <p class="productField nameAndPrice textS">{{ lineproduct.id_product.nom }}</p>
-    <p class="productField nameAndPrice textS">{{ lineproduct.price }}</p>
-    <p class="productField quantityInBag">{{ lineproduct.quantity }}</p>
-    <div class="selectAndButton">
-        <button type="submit">Remove</button>
-    </div>
+            {% if lineProduct is not empty %}
 
-</form>
-{% endfor %}
+                {% set pathImg =  "Images/fruitsImg/" ~ lineProduct.id_product.img %}
+                <div class="divImg"><img class="imgProduct" alt="{{ lineProduct.id_product.nom }}" src="{{ asset(pathImg) }}"/></div>
+
+            {% else  %}
+
+                <div class="divImg"><img class="imgProduct" alt="Default image" src="{{ asset('Images/defaultImage.png')}}"/></div>
+
+            {% endif %}
+            <p class="productField nameAndPrice textS">{{ lineProduct.id_product.nom }}</p>
+            <p class="productField nameAndPrice textS">{{ lineProduct.price }}€</p>
+            <p class="productField nameAndPrice textS">{{ lineProduct.quantity }}</p>
+            <div class="selectAndButton">
+                <button type="submit">Remove</button>
+            </div>
+
+        </form>
+    {% endfor %}
+    {# TODO faire la commande et remove tout les objects#}
+    <form class="productForm" {# action="/product/removePanier/{{ panier.id }}#}>
+        <p class="productField total textS">Total price : {{ panier.price }}€</p>
+        <p class="productField total textS">Total quantity : {{ panier.quantity }}</p>
+        <div class="selectAndButton">
+            <button class="orderButton" type="submit">Order</button>
+        </div>
+    </form>
 
 {% endblock %}

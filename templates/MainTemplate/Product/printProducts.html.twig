@@ -10,8 +10,11 @@
     <p class="titleProduct">{{ categorie }}</p>
 
     <div class="productForm">
-        <p class="productField nameAndPrice textS">Name</p>
-        <p class="productField nameAndPrice textS">Price</p>
+        <div class="divImg">
+            <p class="textS">Image</p>
+        </div>
+        <p class="nameAndPrice textS">Name</p>
+        <p class="nameAndPrice textS">Price</p>
         <div class="selectAndButton">
             <p class="textS">Select quantity</p>
         </div>
@@ -22,34 +25,40 @@
 
     {% for product in products %}
 
-        <form class="productForm" action="/product/addProductInBag/{{ product.id }}">
+        {% if product.quantity > 0 %}
+            <form class="productForm" action="/product/addProductInBag/{{ product.id }}">
 
-            <p class="productField nameAndPrice textS">{{ product.nom }}</p>
-            <p class="productField nameAndPrice textS">{{ product.prix }}</p>
-            <div class="selectAndButton">
-                <select name="quantity" class="selectQ">
+                {% if product.img is not empty %}
 
-                    {% for i in 0..product.quantity %}
+                    {% set pathImg =  "Images/fruitsImg/" ~ product.img %}
+                    <div class="divImg"><img class="imgProduct" alt="{{ product.nom }}" src="{{ asset(pathImg) }}"/></div>
 
-                        <option value="{{ i }}">{{ i }}</option>
+                {% else  %}
 
-                    {% endfor %}
-                </select>
-                <select name="quantity_to_remove" class="selectQ">
+                    <div class="divImg"><img class="imgProduct" alt="Default image" src="{{ asset('Images/defaultImage.png')}}"/></div>
 
-                        {% for i in 0..product.quantity %}
+                {% endif %}
+                <p class="nameAndPrice textS">{{ product.nom }}</p>
+                <p class="nameAndPrice textS">{{ product.prix }}€</p>
+                <div class="selectAndButton">
+                    <label>
+                        <select name="quantity" class="selectQ">
 
-                            <option value="{{ i }}">{{ i }}</option>
+                            {% for i in 0..product.quantity %}
 
-                        {% endfor %}
+                                <option value="{{ i }}">{{ i }}</option>
 
-                </select>
-            </div>
-            <div class="selectAndButton">
-                <button type="submit">remove</button>
-            </div>
+                            {% endfor %}
 
-        </form>
+                        </select>
+                    </label>
+                </div>
+                <div class="selectAndButton">
+                    <button type="submit">Add</button>
+                </div>
+
+            </form>
+        {% endif %}
 
     {% endfor %}
 

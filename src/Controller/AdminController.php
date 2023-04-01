@@ -5,17 +5,20 @@ namespace App\Controller;
 use App\Entity\User;
 use App\Entity\Produit;
 use App\Form\ProductFormType;
+use App\Service\ImgService;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\Form\Extension\Core\Type\SubmitType;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 use Doctrine\ORM\EntityManagerInterface;
+use Symfony\Component\String\Slugger\SluggerInterface;
 
 class AdminController extends AbstractController
 {
     #[Route('/addProduct', name: 'admin_addProduct')]
-    public function addProductAction(EntityManagerInterface $em , Request $request): Response
+    public function addProductAction(EntityManagerInterface $em , Request $request, SluggerInterface $slugger,
+    ImgService $imgService): Response
     {
         $product = new Produit();
 
@@ -25,6 +28,15 @@ class AdminController extends AbstractController
 
         if($form->isSubmitted() && $form->isValid())
         {
+            $imgFile = $form->get('img')->getData();
+
+            // this condition is needed because the 'brochure' field is not required
+            // so the PDF file must be processed only when a file is uploaded
+            if ($imgFile)
+            {
+                $ImgFileName = $imgService->upload($imgFile);
+                $product->setImg($ImgFileName);
+            }
             $em->persist($product);
             $em->flush();
 
