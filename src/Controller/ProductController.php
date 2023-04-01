@@ -14,8 +14,8 @@ use Symfony\Component\Routing\Annotation\Route;
 #[Route('/product', name: 'product')]
 class ProductController extends AbstractController
 {
-    #[Route('/' , name: '_index')]
-    public function indexAction() : Response
+    #[Route('/', name: '_index')]
+    public function indexAction(): Response
     {
         return $this->render('MainTemplate/User/listProduct.html.twig');
     }
@@ -23,46 +23,46 @@ class ProductController extends AbstractController
     #[Route('/citrus', name: '_citrus')]
     public function citrusAction(EntityManagerInterface $em): Response
     {
-        return $this->afficheProductAction($em,"citrus", "Citrus Fruits");
+        return $this->afficheProductAction($em, "citrus", "Citrus Fruits");
     }
 
     #[Route('/exotic', name: '_exotic')]
     public function exoticAction(EntityManagerInterface $em): Response
     {
-        return $this->afficheProductAction($em,"exotic", "Exotic Fruits");
+        return $this->afficheProductAction($em, "exotic", "Exotic Fruits");
     }
 
     #[Route('/redFruits', name: '_redFruits')]
     public function redFruitsAction(EntityManagerInterface $em): Response
     {
-        return $this->afficheProductAction($em,"redFruits", "Red Fruits");
+        return $this->afficheProductAction($em, "redFruits", "Red Fruits");
     }
 
     #[Route('/others', name: '_others')]
     public function othersAction(EntityManagerInterface $em): Response
     {
-        return $this->afficheProductAction($em,"other", "Others Fruits");
+        return $this->afficheProductAction($em, "other", "Others Fruits");
     }
 
-    public function afficheProductAction(EntityManagerInterface $em , string $string, string $name) : Response
+    public function afficheProductAction(EntityManagerInterface $em, string $string, string $name): Response
     {
 
         $user = $this->getUser();
-        $bag =$user->getBag();
+        $bag = $user->getBag();
 
         $productRep = $em->getRepository(Produit::class);
-        $products = $productRep->findBy(array('categorie'=> $string));
+        $products = $productRep->findBy(array('categorie' => $string));
 
         $lineproducts = $em->getRepository(LineProduct::class);
-        $lineproduct = $lineproducts->findBy(['id_bag'=>$bag]);
+        $lineproduct = $lineproducts->findBy(['id_bag' => $bag]);
 
-        $args =  array(
+        $args = array(
             'categorie' => $name,
             'products' => $products,
-            'lineproduct' =>$lineproducts
+            'lineproducts' => $lineproducts
         );
 
-        return $this->render('MainTemplate/Product/printProducts.html.twig',$args);
+        return $this->render('MainTemplate/Product/printProducts.html.twig', $args);
     }
 
 
@@ -82,16 +82,13 @@ class ProductController extends AbstractController
         $quantity_to_remove = $request->query->get('quantity_to_remove');
 
 
-
-
-        if($quantity == 0)
-        {
+        if ($quantity == 0) {
             return $this->redirectToRoute('product_index');
         }
 
-        if(!empty($product_to_add))
-        {
-            if($product_to_add->getQuantity() >= $quantity) {
+        //ajout produit
+        if (!empty($product_to_add)) {
+            if ($product_to_add->getQuantity() >= $quantity) {
                 if ($currentUser->getBag() == null) {
                     $bag = new Bag();
                     $bag
@@ -103,55 +100,68 @@ class ProductController extends AbstractController
                     $currentUser->setBag($bag);
                 }
 
-                $newLineBag = new LineProduct();
-                $newLineBag
-                    ->setQuantity($quantity)
-                    ->setIdBag($currentUser->getBag())
-                    ->setIdProduits($product_to_add)
-                    ->setPrice($product_to_add->getPrix() * (float)$quantity);
+                $bag = $currentUser->getBag();
 
-                $em->persist($newLineBag);
+                if(!($this->productInBag($product_to_add, $bag))) {
+                    $newLineBag = new LineProduct();
+                    $newLineBag
+                        ->setQuantity($quantity)
+                        ->setIdBag($currentUser->getBag())
+                        ->setIdProduits($product_to_add)
+                        ->setPrice($product_to_add->getPrix() * (float)$quantity);
 
-                $product_to_add->setQuantity($product_to_add->getQuantity() - $quantity);
-
-                $currentUser->getBag()->setPrice($currentUser->getBag()->getPrice()+$newLineBag->getPrice());
-                $currentUser->getBag()->setQuantity($currentUser->getBag()->getQuantity()+1);
-
-                $lineproducts = $em->getRepository(LineProduct::class);
-                $lineproduct = $lineproducts->findBy(['id_bag'=>$bag , 'id_products_id'=>$product_to_add]);
-                if(!empty($lineproduct))
+                    $em->persist($newLineBag);
+                    $currentUser->getBag()->setPrice($currentUser->getBag()->getPrice() + $newLineBag->getPrice());
+                    $currentUser->getBag()->setQuantity($currentUser->getBag()->getQuantity() + 1);
+                }
+                else
                 {
-                    if($quantity_to_remove == $lineproduct->getQuantity())
+                    $lineproducts = $bag->getid_LineProducts();
+                    foreach ($lineproducts as $lineproduct)
                     {
-                        $product_to_add->setQuantity($product_to_add->getQuantity()+$quantity_to_remove);
-                        $em->remove($lineproduct);
+                        if ($lineproduct->getid_product() == $product_to_add)
+                        {
+                            $lineproduct->setQuantity($lineproduct->getQuantity() + $quantity);
+                            $lineproduct->setPrice($product_to_add->getPrix() * $lineproduct->getQuantity());
+                        }
                     }
-                    else
+                }
+                $product_to_add->setQuantity($product_to_add->getQuantity() - $quantity);
+                $lineproducts = $bag->getid_LineProducts();
+                if (!empty($lineproducts))
+                {
+                    foreach ($lineproducts as $lineproduct)
                     {
-                        if($quantity_to_remove < $lineproduct->getQuantity())
+                        if($lineproduct == $product_to_add)
                         {
-                            $product_to_add->setQuantity($product_to_add->getQuantity()+$quantity_to_remove);
+                            if($quantity_to_remove == $lineproduct->getQuantity())
+                            {
+                                $product_to_add->setQuantity($product_to_add->getQuantity() + $quantity_to_remove);
+                                $em->remove($lineproduct);
+                            }
+                            else
+                            {
+                                if ($quantity_to_remove < $lineproduct->getQuantity()) {
+                                    $product_to_add->setQuantity($product_to_add->getQuantity() + $quantity_to_remove);
+                                }
+                                else
+                                {
+                                    return $this->redirectToRoute('user_panier');
+                                }
+                            }
                         }
-                        else
-                        {
-                            return $this->redirectToRoute('user_panier');
-                        }
+                    }
 
-                    }
                 }
 
                 $em->flush();
                 $this->addFlash('info', 'The product has been added to your Bag');
+            } else {
+                $this->addFlash('info', 'Error Quantity');
             }
-            else
-                {
-                    $this->addFlash('info', 'Error Quantity');
-                }
+        } else {
+            $this->addFlash('info', 'Sorry we do not have this Product');
         }
-        else
-            {
-                $this->addFlash('info', 'Sorry we do not have this Product');
-            }
 
         return $this->redirectToRoute('user_panier');
     }
@@ -182,7 +192,7 @@ class ProductController extends AbstractController
             return $this->redirectToRoute('user_panier');
         }
     */
-        if(!empty($product_to_rem)) {
+        if (!empty($product_to_rem)) {
 
             /*if ($quantity != $product_to_rem->getQuantity()) {
                 $product_to_rem->setQuantity($product_to_rem->getQuantity() - $quantity);
@@ -190,7 +200,7 @@ class ProductController extends AbstractController
             }
             else
             {*/
-            $bag->setQuantity($bag->getQuantity()-1);
+            $bag->setQuantity($bag->getQuantity() - 1);
             $em->remove($product_to_rem);
             /*}*/
 
@@ -203,6 +213,21 @@ class ProductController extends AbstractController
 
     }
 
+
+    public function productInBag(Produit $product, Bag $bag): bool
+    {
+        if($bag->getQuantity()!=0) {
+            $lineproducts = $bag->getid_LineProducts();
+            foreach ($lineproducts as $lineproduct) {
+                if ($lineproduct->getid_product()->getId() == $product->getId()) {
+                    return true;
+                } else {
+                    return false;
+                }
+            }
+        }
+        return false;
+    }
 
 
 }
