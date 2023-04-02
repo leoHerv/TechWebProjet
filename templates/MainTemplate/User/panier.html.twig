@@ -45,11 +45,14 @@
         </form>
     {% endfor %}
     {# TODO faire la commande et remove tout les objects#}
-    <form class="productForm" {# action="/product/removePanier/{{ panier.id }}#}>
+    <form class="productForm"  action="/product/orderBag/{{ panier.id }}">
         <p class="productField total textS">Total price : {{ panier.price }}€</p>
         <p class="productField total textS">Total quantity : {{ panier.quantity }}</p>
         <div class="selectAndButton">
             <button class="orderButton" type="submit">Order</button>
+        </div>
+        <div class="selectAndButton">
+            <button class="removeButton" formaction="/product/removeBag/{{ panier.id }}" type="submit">RemoveBag</button>
         </div>
     </form>
 

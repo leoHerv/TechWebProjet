@@ -219,6 +219,59 @@ class ProductController extends AbstractController
     }
 
 
+
+    #[Route(
+        '/removeBag/{idbag}',
+        name: '_removeBag',
+        requirements: ['idbag' => '[1-9]\d*'])]
+    public function removeBagAction(int $idbag , EntityManagerInterface $em ) :Response
+    {
+        $user = $this->getUser();
+        $bag = $user->getBag();
+        if($bag->getid()!=$idbag || $bag->getQuantity()==0)
+        {
+            return $this->redirectToRoute('user_panier');
+        }
+        $lineproducts = $bag->getId_LineProducts();
+        foreach ($lineproducts as $lineproduct)
+            {
+                $product = $lineproduct->getid_product();
+                $product->setQuantity($product->getQuantity()+$lineproduct->getQuantity());
+                $em->remove($lineproduct);
+            }
+        $bag->setPrice(0.0);
+        $bag->setQuantity(0);
+        $em->flush();
+        $this->addFlash('info', 'Panier Supprimer!');
+        return $this->redirectToroute('anonyme_accueil');
+    }
+
+    #[Route(
+        '/orderBag/{idbag}',
+        name: '_orderBag',
+        requirements: ['idbag' => '[1-9]\d*'])]
+    public function orderBagAction(int $idbag , EntityManagerInterface $em ) :Response
+    {
+        $user = $this->getUser();
+        $bag = $user->getBag();
+        if($bag->getid()!=$idbag || $bag->getQuantity()==0)
+        {
+            return $this->redirectToRoute('user_panier');
+        }
+        $lineproducts = $bag->getId_LineProducts();
+        foreach ($lineproducts as $lineproduct)
+        {
+            $em->remove($lineproduct);
+        }
+        $bag->setPrice(0.0);
+        $bag->setQuantity(0);
+        $em->flush();
+        $this->addFlash('info', 'Commande Effectuée!');
+        return $this->redirectToroute('anonyme_accueil');
+    }
+
+
+
     public function productInBag(Produit $product, Bag $bag): bool
     {
         if($bag->getQuantity()!=0) {
@@ -233,6 +286,8 @@ class ProductController extends AbstractController
         }
         return false;
     }
+
+
 
 
 }

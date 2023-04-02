@@ -89,4 +89,6 @@ class UserController extends AbstractController
         return $this->render('Layouts/sizePanier.html.twig', $args);
     }
 
+
+
 }
