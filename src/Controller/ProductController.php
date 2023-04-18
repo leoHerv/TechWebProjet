@@ -74,17 +74,26 @@ class ProductController extends AbstractController
         requirements: ['idProduct' => '[1-9]\d*'])]
     public function addProductInBagAction(int $idProduct, Request $request, EntityManagerInterface $em): Response
     {
+        $quantity_all = $request->query->get('quantity_all');
+        if($quantity_all < 0)
+        {
+            $quantity = 0;
+            $quantity_to_remove = $quantity_all * -1;
+        }else
+        {
+            $quantity = $quantity_all;
+            $quantity_to_remove = 0 ;
+        }
         $currentUser = $this->getUser();
 
         $productRepository = $em->getRepository(Produit::class);
 
         $product_to_add = $productRepository->find($idProduct);
 
-        $quantity = $request->query->get('quantity');
-        $quantity_to_remove = $request->query->get('quantity_to_remove');
 
 
-        if ($quantity == 0 && $quantity_to_remove ==0) {
+
+        if ($quantity_all ==0) {
             return $this->redirectToRoute('product_index');
         }
 
@@ -148,6 +157,8 @@ class ProductController extends AbstractController
                             {
                                 if ($quantity_to_remove < $lineproduct->getQuantity()) {
                                     $product_to_add->setQuantity($product_to_add->getQuantity() + $quantity_to_remove);
+                                    $lineproduct->setQuantity($lineproduct->getQuantity() - $quantity_to_remove);
+                                    $bag->setPrice($bag->getPrice()-($product_to_add->getPrix()*$quantity_to_remove));
                                 }
                                 else
                                 {
