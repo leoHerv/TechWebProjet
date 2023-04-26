@@ -169,16 +169,22 @@ class ProductController extends AbstractController
                     }
 
                 }
-
                 $em->flush();
-                $this->addFlash('info', 'The product has been added to your Bag');
-            } else {
+                //$this->addFlash('info', 'The product has been added to your Bag');
+            }
+            /*
+            else
+            {
                 $this->addFlash('info', 'Error Quantity');
             }
-        } else {
-            $this->addFlash('info', 'Sorry we do not have this Product');
+            */
         }
-
+        /*
+        else
+        {
+            //$this->addFlash('info', 'Sorry we do not have this Product');
+        }
+        */
         return $this->redirectToRoute('user_panier');
     }
 
@@ -228,9 +234,7 @@ class ProductController extends AbstractController
         return $this->redirectToRoute('user_panier');
 
     }
-
-
-
+    
     #[Route(
         '/removeBag/{idbag}',
         name: '_removeBag',

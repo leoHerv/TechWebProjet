@@ -20,7 +20,7 @@ class ImgService
 
     public function upload(UploadedFile $file): string
     {
-        // On crée un fileName "unique" et sur.
+        // On crée un fileName "unique".
         $originalFilename = pathinfo($file->getClientOriginalName(), PATHINFO_FILENAME);
         $safeFilename = $this->slugger->slug($originalFilename);
         $fileName = $safeFilename.'-'.uniqid().'.'.$file->guessExtension();
