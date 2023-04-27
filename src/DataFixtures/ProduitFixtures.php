@@ -58,8 +58,7 @@ class ProduitFixtures extends Fixture
         addProduct($em, 'Apricot', 0.0855, 'other', 585, 'Apricot.png');
         // Noix de coco
         addProduct($em, 'Coconut', 1.19, 'exotic', 130, 'Coconut.png');
-        // Peche
-        addProduct($em, 'Peach', 0.5985, 'other', 610, 'Peach.png');
+
 
         $em->flush();
     }

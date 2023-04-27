@@ -30,13 +30,14 @@ class LineProductFixtures extends Fixture
             ->setQuantity(0);
         $em->persist($bag);
 
+
         $product = new Produit();
         $product
-            ->setNom("test")
-            ->setQuantity(20)
+            ->setNom('Peach')
+            ->setQuantity(610)
             ->setCategorie("other")
-            ->setPrix(1.1)
-            ->setImg(null);
+            ->setPrix(0.5985)
+            ->setImg('Peach.png');
         $em->persist($product);
 
         $quantity = 3;

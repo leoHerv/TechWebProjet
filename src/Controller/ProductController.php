@@ -170,21 +170,8 @@ class ProductController extends AbstractController
 
                 }
                 $em->flush();
-                //$this->addFlash('info', 'The product has been added to your Bag');
             }
-            /*
-            else
-            {
-                $this->addFlash('info', 'Error Quantity');
-            }
-            */
         }
-        /*
-        else
-        {
-            //$this->addFlash('info', 'Sorry we do not have this Product');
-        }
-        */
         return $this->redirectToRoute('user_panier');
     }
 
@@ -209,22 +196,11 @@ class ProductController extends AbstractController
 
         $quantity = $product_to_rem->getQuantity();
 
-        /*if($quantity > $product_to_rem->getQuantity() || $quantity < 0)
-        {
-            return $this->redirectToRoute('user_panier');
-        }
-    */
         if (!empty($product_to_rem)) {
 
-            /*if ($quantity != $product_to_rem->getQuantity()) {
-                $product_to_rem->setQuantity($product_to_rem->getQuantity() - $quantity);
-                $product_to_rem->setPrice($product_to_rem->getQuantity() * $product->getPrix());
-            }
-            else
-            {*/
             $bag->setQuantity($bag->getQuantity() - 1);
             $em->remove($product_to_rem);
-            /*}*/
+
 
             $product->setQuantity($product->getQuantity() + $quantity);
             $bag->setPrice($bag->getPrice() - ($product->getPrix() * $quantity));
@@ -301,7 +277,6 @@ class ProductController extends AbstractController
         }
         return false;
     }
-
 
 
 
